@@ -1,0 +1,76 @@
+<div class="container">
+	<form class="form" name="form" novalidate>
+		<div class="group">
+			<div>
+				<h1>{{$submitCtrl.message}}</h1>
+				<p>The questionaire can be edited any number of times before the deadline.</p>
+			</div>
+			<div>
+				<p class="col-xs-12 col-sm-12 col-lg-12 question">Name</p>
+				<p class="col-xs-12 col-sm-12 col-lg-12 question" ng-model="$submitCtrl.user.name"></p>
+			</div>
+		</div>
+		<div class="group">
+			<h3>College Details</h3>
+			<div>
+				<p class="col-xs-12 col-sm-12 col-lg-12 question">College Name</p>
+				<input type="text" name="name" class="col-xs-12 col-lg-12 col-sm-12">
+			</div>
+			<div>
+				<p class="col-xs-12 col-sm-12 col-lg-12 question">College Address</p>
+				<input type="text" name="name" class="col-xs-12 col-lg-12 col-sm-12" id="coll_add">
+			</div>
+			<div>
+				<p class="col-xs-12 col-sm-12 col-lg-12 question">City</p>
+				<input type="text" name="name" class="col-xs-12 col-lg-12 col-sm-12">
+			</div>
+			<div>
+				<p class="col-xs-12 col-sm-12 col-lg-12 question">State</p>
+				<input type="text" name="name" class="col-xs-12 col-lg-12 col-sm-12">
+			</div>
+		</div>
+		<div class="group">
+			<h3>Education Details</h3>
+			<div>
+				<p class="col-xs-12 col-sm-12 col-lg-12 question">Degree</p>
+				<input type="text" name="name" class="col-xs-12 col-lg-12 col-sm-12">
+			</div>
+			<div>
+				<p class="col-xs-12 col-sm-12 col-lg-12 question">Branch</p>
+				<input type="text" name="name" class="col-xs-12 col-lg-12 col-sm-12">
+			</div>
+			<div>
+				<p class="col-xs-12 col-sm-12 col-lg-12 question">Year</p>
+				<input type="text" name="name" class="col-xs-12 col-lg-12 col-sm-12">
+			</div>
+		</div>
+		<div class="group">
+			<h3>Postal Address (will be used to send certificate and/or kit)</h3>
+			<div>
+				<p class="col-xs-12 col-sm-12 col-lg-12 question">Address</p>
+				<input type="text" name="name" class="col-xs-12 col-lg-12 col-sm-12">
+			</div>
+			<div>
+				<p class="col-xs-12 col-sm-12 col-lg-12 question">City</p>
+				<input type="text" name="name" class="col-xs-12 col-lg-12 col-sm-12">
+			</div>
+			<div>
+				<p class="col-xs-12 col-sm-12 col-lg-12 question">State</p>
+				<input type="text" name="name" class="col-xs-12 col-lg-12 col-sm-12">
+			</div>
+			<div>
+				<p class="col-xs-12 col-sm-12 col-lg-12 question">Pin Code</p>
+				<input type="text" name="name" class="col-xs-12 col-lg-12 col-sm-12">
+			</div>
+		</div>
+		<div class="group">
+			<div>
+				<p class="col-xs-12 col-sm-12 col-lg-12 question">Were you a Shaastra CA previously?</p>
+				<div class="col-xs-12 col-lg-12 col-sm-12">
+					<input type="radio" name="ca" value="yes">Yes
+					<input type="radio" name="ca" value="no">No
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

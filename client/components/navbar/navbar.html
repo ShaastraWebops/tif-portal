@@ -1,0 +1,27 @@
+<div class="navbar navbar-inverse navbar-fixed-top" style="background: linear-gradient(-40deg, #131540, #4B53FF); box-shadow: 0px 0px 15px black; border: 0px;">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/#top" class="navbar-brand">caportal</a>
+    </div>
+    <div uib-collapse="$ctrl.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li><a href="/#one">Why</a></li>
+          <li><a href="/#two">What</a></li>
+          <li><a href="/#three">How</a></li>
+          <li><a href="/#four">Responsibilities</a></li>
+          <li><a href="/#five">T&C</a></li>
+        <li ng-show="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <oauth-buttons classes="btn-block"></oauth-buttons>
+      </ul>
+    </div>
+  </div>
+</div>
