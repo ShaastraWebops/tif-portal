@@ -26,7 +26,9 @@ export class SubmitComponent {
     this.message = 'Hello';
 
     this.getCurrentUser = Auth.getCurrentUserSync;
-    this.user.name = this.getCurrentUser.name;
+    this.val = this.getCurrentUser();
+
+    console.log(this.val.email);
   }
 
 }

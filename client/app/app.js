@@ -46,6 +46,6 @@ angular.module('caportalApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBo
 angular.element(document)
   .ready(() => {
     angular.bootstrap(document, ['caportalApp'], {
-      strictDi: true
+      strictDi: false
     });
   });
