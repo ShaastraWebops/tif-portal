@@ -9,8 +9,8 @@ module.exports = {
   DOMAIN: 'http://localhost:3000',
   SESSION_SECRET: 'caportal-secret',
 
-  FACEBOOK_ID: '1363769900374546',
-  FACEBOOK_SECRET: '83fea7a1aa4466f47a0c30c9c88bcfcc',
+  FACEBOOK_ID: 'facebook-id',
+  FACEBOOK_SECRET: 'facebook-secret',
   callbackURL: 'http://localhost:3000/auth/facebook/callback',
   // Control debug level for modules using visionmedia/debug
   DEBUG: ''
