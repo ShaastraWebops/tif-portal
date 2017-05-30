@@ -36,6 +36,34 @@ var UserSchema = new Schema({
   },
   provider: String,
   salt: String,
+  phonenumber: Number,
+  wnumber: Number,
+  college: {
+    name: String,
+    address: String,
+    city: String,
+    state: String
+  },
+  education: {
+    degree: String,
+    branch: String,
+    year: String
+  },
+  postal: {
+    address: String,
+    city: String,
+    state: String,
+    pin: String
+  },
+  previous: Boolean,  //whether he had been a CA in a previous year
+  prevyear: String,
+  social: String,
+  fblink: String,
+  questions: {
+    why: String,
+    right: String,
+    past: String
+  },
   facebook: {},
   github: {}
 });

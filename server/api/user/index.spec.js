@@ -10,7 +10,8 @@ var userCtrlStub = {
   me: 'userCtrl.me',
   changePassword: 'userCtrl.changePassword',
   show: 'userCtrl.show',
-  create: 'userCtrl.create'
+  create: 'userCtrl.create',
+  submit: 'userCtrl.submit'
 };
 
 var authServiceStub = {
@@ -65,6 +66,14 @@ describe('User API Router:', function() {
     it('should be authenticated and route to user.controller.me', function() {
       expect(routerStub.get
         .withArgs('/me', 'authService.isAuthenticated', 'userCtrl.me')
+        ).to.have.been.calledOnce;
+    });
+  });
+
+  describe('PUT /api/users/submit', function() {
+    it('should be authenticated and route to user.controller.submit', function() {
+      expect(routerStub.put
+        .withArgs('/submit', 'authService.isAuthenticated', 'userCtrl.submit')
         ).to.have.been.calledOnce;
     });
   });

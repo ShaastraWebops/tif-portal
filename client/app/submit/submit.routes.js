@@ -6,5 +6,5 @@ export default function($stateProvider) {
     .state('submit', {
       url: '/submit',
       template: '<submit></submit>'
-    });
+    })
 }
