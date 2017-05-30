@@ -6,34 +6,25 @@ import routes from './submit.routes';
 
 export class SubmitComponent {
   /*@ngInject*/
+  val = {};
+  user = {};
 
-  user = {
-    name: '',
-    collName: '',
-    collAddress: '',
-    collCity: '',
-    collState: '',
-    degree: '',
-    branch: '',
-    year: '',
-    postAddress: '',
-    postCity: '',
-    postState: '',
-    postPINCode: ''
+  constructor(Auth, $scope) {
+    
+    this.getCurrentUser = Auth.getCurrentUserSync;
+    console.log(this.user);
+    this.getCurrentUser().$promise.then(function(data){
+      $scope.val = JSON.parse(angular.toJson(data));
+    });
   }
 
-  constructor(Auth) {
-    this.message = 'Hello';
+  $onInit(){
 
-    this.getCurrentUser = Auth.getCurrentUserSync;
-    this.val = this.getCurrentUser();
-
-    console.log(this.val.email);
   }
 
 }
 
-export default angular.module('caportalApp.submit', [uiRouter])
+export default angular.module('caportalApp.submit', [uiRouter,])
   .config(routes)
   .component('submit', {
     template: require('./submit.html'),

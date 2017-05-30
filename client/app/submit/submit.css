@@ -4,7 +4,22 @@
 }
 
 .group{
-	border: 1px solid black;
-	border-collapse: collapse;
-	padding-top: 1em;
+	margin: 10px;
+}
+
+h3{
+	padding-top: 25px;
+}
+
+input{
+	font-size: 12px;
+	padding: 5px 10px;
+	border-radius: 2px;
+	border-style: solid;
+	border: 1px solid #E8E8E8;
+}
+
+p{
+	font-family: 'Open sans', sans-serif;
+	margin: 15px 0px 2px 0px;
 }
