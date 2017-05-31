@@ -7,5 +7,5 @@ export default function($stateProvider) {
       url: '/submit',
       template: '<submit></submit>',
       authenticate: true
-    })
+    });
 }

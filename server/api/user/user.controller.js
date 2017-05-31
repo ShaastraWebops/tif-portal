@@ -66,11 +66,11 @@ export function show(req, res, next) {
 export function submit(req, res) {
   return User.findById(req.user._id).exec()
     .then(user => {
-      user.phonenumber=req.body.phonenumber;
-      user.wnumber=req.body.wnumber;
-      user.previous=req.body.previous;
-      user.prevyear=req.body.prevyear;
-      user.social=req.body.social;
+      user.phonenumber = req.body.phonenumber;
+      user.wnumber = req.body.wnumber;
+      user.previous = req.body.previous;
+      user.prevyear = req.body.prevyear;
+      user.social = req.body.social;
       user.college.name = req.body.college.name;
       user.college.address = req.body.college.address;
       user.college.city = req.body.college.city;
@@ -78,13 +78,13 @@ export function submit(req, res) {
       user.education.degree = req.body.education.degree;
       user.education.branch = req.body.education.branch;
       user.education.year = req.body.education.year;
-      user.postal.address=req.body.postal.address;
-      user.postal.city=req.body.postal.city;
-      user.postal.state=req.body.postal.state;
-      user.postal.pin=req.body.postal.pin;
-      user.questions.why=req.body.questions.why;
-      user.questions.right=req.body.questions.right;
-      user.questions.past=req.body.questions.past;
+      user.postal.address = req.body.postal.address;
+      user.postal.city = req.body.postal.city;
+      user.postal.state = req.body.postal.state;
+      user.postal.pin = req.body.postal.pin;
+      user.questions.why = req.body.questions.why;
+      user.questions.right = req.body.questions.right;
+      user.questions.past = req.body.questions.past;
       return user.save()
         .then(() => {
           res.json({success: true});
@@ -92,8 +92,6 @@ export function submit(req, res) {
         .catch(handleError(res));
     });
 }
-
-
 
 /**
  * Deletes a user
