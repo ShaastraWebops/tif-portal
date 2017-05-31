@@ -5,6 +5,7 @@ export default function($stateProvider) {
   $stateProvider
     .state('submit', {
       url: '/submit',
-      template: '<submit></submit>'
+      template: '<submit></submit>',
+      authenticate: true
     })
 }
