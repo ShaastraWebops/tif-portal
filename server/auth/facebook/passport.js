@@ -8,7 +8,8 @@ export function setup(User, config) {
     callbackURL: config.facebook.callbackURL,
     profileFields: [
       'displayName',
-      'emails'
+      'emails',
+      'link'
     ]
   },
   function(accessToken, refreshToken, profile, done) {

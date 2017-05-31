@@ -71,7 +71,6 @@ export function submit(req, res) {
       user.previous=req.body.previous;
       user.prevyear=req.body.prevyear;
       user.social=req.body.social;
-      user.fblink=req.body.fblink;
       user.college.name = req.body.college.name;
       user.college.address = req.body.college.address;
       user.college.city = req.body.college.city;
