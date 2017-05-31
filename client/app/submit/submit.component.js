@@ -11,6 +11,7 @@ export class SubmitComponent {
   constructor(Auth, $scope,$http,$timeout) {
     this.submit={};
     this.getCurrentUser = Auth.getCurrentUserSync;
+    this.isLoggedIn = Auth.isLoggedInSync;
     this.getCurrentUser().$promise.then(function(data){
       $scope.val = JSON.parse(angular.toJson(data));
     });
@@ -21,8 +22,9 @@ export class SubmitComponent {
   $onInit(){
     this.a=true;
     this.$http.get('/api/users/me').then(response => {
-    this.success-false;
+    this.success=false;
     this.submit=response.data;
+    console.log(this.submit);
     this.previous;
     if(this.submit.previous){
       this.previous='yes';

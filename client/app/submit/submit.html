@@ -1,3 +1,7 @@
+<div ng-hide="submitCtrl.isLoggedIn()" class="container">
+	Please login to register
+</div>
+<div ng-show="submitCtrl.isLoggedIn()">
 <div class="container" ng-show="submitCtrl.a">
 	<h2 align="center" class="group">
 		<u>CAMPUS AMBASSADOR PROGRAM</u>
@@ -133,4 +137,5 @@
 		<div class="row show-hide-message" ng-show="submitCtrl.success">
 		<div class="alert alert-success"> {{submitCtrl.success}} </div>
 		</div>
+</div>
 </div>

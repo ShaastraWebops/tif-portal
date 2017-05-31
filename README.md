@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 # caportal
-
-This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 4.2.0.
-
-## Getting Started
 
 ### Prerequisites
 
@@ -28,5 +23,4 @@ Run `gulp build` for building and `gulp serve` for preview.
 
 Running `npm test` will run the unit tests with karma.
 =======
-# CA-Site-2018
->>>>>>> ac58f71fae5ed58a7f6736f28fcc4dc5c240511a
+
