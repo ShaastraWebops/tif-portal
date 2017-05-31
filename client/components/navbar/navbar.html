@@ -16,12 +16,12 @@
           <li><a href="/#three">How</a></li>
           <li><a href="/#four">Responsibilities</a></li>
           <li><a href="/#five">T&C</a></li>
-          <li ng-show="$ctrl.isLoggedIn()"><a href="/submit">Registration Form</a></li>
         <li ng-show="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <oauth-buttons classes="btn-block"></oauth-buttons>
+        <li ng-show="$ctrl.isLoggedIn()"><a href="/submit">Registration Form</a></li>
+       <li>  <oauth-buttons classes="btn-block"></oauth-buttons> </li>
       </ul>
     </div>
   </div>
