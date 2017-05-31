@@ -80,6 +80,8 @@
 		<u>CAMPUS AMBASSADOR PROGRAM</u>
 	<br><br>  Registration Form - Part B
 </h2>
+<div align="left"><button ng-click="submitCtrl.back();" class="btn btn-default">Previous Page</button>
+</div>
 	<form class="form" name="form" novalidate>
     <div class="group">
       <h3>Previous experience</h3>
@@ -131,6 +133,7 @@
   </div>
 		<div align="center"><button ng-click="submitCtrl.submitform(submit);" ng-disabled="!submitCtrl.iagree" class="btn btn-default">Submit</button>
 		</div>
+		<br>
 		<div class="row show-hide-message" ng-show="submitCtrl.success">
 		<div class="alert alert-success"> {{submitCtrl.success}} </div>
 		</div>

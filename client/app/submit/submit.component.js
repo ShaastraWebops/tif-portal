@@ -8,21 +8,34 @@ export class SubmitComponent {
   /*@ngInject*/
   val = {};
   user = {};
-  constructor(Auth, $scope,$http) {
+  constructor(Auth, $scope,$http,$timeout) {
+    this.submit={};
     this.getCurrentUser = Auth.getCurrentUserSync;
     this.getCurrentUser().$promise.then(function(data){
       $scope.val = JSON.parse(angular.toJson(data));
     });
     this.$http=$http;
+    this.$timeout=$timeout;
   }
 
-  $onInit($timeout,$location){
+  $onInit(){
     this.a=true;
-    this.submit={};
+    this.$http.get('/api/users/me').then(response => {
+    this.success-false;
+    this.submit=response.data;
     this.previous;
+    if(this.submit.previous){
+      this.previous='yes';
+    }
+    else {
+      this.previous='no';
+    }
     this.iagree=false;
     this.next=function(){
       this.a=false;
+    }
+    this.back=function(){
+      this.a=true;
     }
     this.submitform=function(){
       if(this.previous==='yes'){
@@ -33,15 +46,14 @@ export class SubmitComponent {
       }
       this.$http.put('/api/users/submit',this.submit)
         .then(response => {
-          if(response.success==true){
-          $timeout(function(){
-           this.success="Form Successfully Submitted.";
-          },1500);
+          console.log(response.data);
+          if(response.data.success==true){
+          this.success="Form Successfully submitted";
           }
         });
     };
+  });
   }
-
 }
 
 export default angular.module('caportalApp.submit', [uiRouter,])

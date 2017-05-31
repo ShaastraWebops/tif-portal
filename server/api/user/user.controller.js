@@ -88,7 +88,7 @@ export function submit(req, res) {
       user.questions.past=req.body.questions.past;
       return user.save()
         .then(() => {
-          res.json({success: true}).end();
+          res.json({success: true});
         })
         .catch(handleError(res));
     });
