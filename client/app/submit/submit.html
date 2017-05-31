@@ -96,7 +96,7 @@
           <input type="radio" name="ca" value="no"  ng-model="submitCtrl.previous">No
         </div>
         <br>
-        <p class="col-xs-12 col-sm-12 col-lg-12 question">If yes, which year?</p>
+        <p class="col-xs-12 col-sm-12 col-lg-12 question" ng-show="submitCtrl.previous">If yes, which year?</p>
         <input type="text" name="name" ng-model="submitCtrl.submit.prevyear" class="col-xs-12 col-lg-12 col-sm-12">
       </div>
     </div>
@@ -131,7 +131,7 @@
   <h5> I wish to represent Shaastra 2018 for my institute and I have read and agree to all the Terms and Conditions stated by Shaastra for the Campus Ambassador Program on the CA website.
   </h5>
   </div>
-		<div align="center"><button ng-click="submitCtrl.submitform(submit);" ng-disabled="!submitCtrl.iagree" class="btn btn-default">Submit</button>
+		<div align="center"><button ng-click="submitCtrl.submitform(submit);" ng-disabled="!submitCtrl.iagree" class="btn btn-primary">Submit</button>
 		</div>
 		<br>
 		<div class="row show-hide-message" ng-show="submitCtrl.success">
