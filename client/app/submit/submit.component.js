@@ -10,11 +10,6 @@ export class SubmitComponent {
   user = {};
   constructor(Auth, $scope, $http, $timeout) {
     this.submit = {};
-    this.getCurrentUser = Auth.getCurrentUserSync;
-    this.isLoggedIn = Auth.isLoggedInSync;
-    this.getCurrentUser().$promise.then(function(data) {
-      $scope.val = JSON.parse(angular.toJson(data));
-    });
     this.$http = $http;
     this.$timeout = $timeout;
   }
