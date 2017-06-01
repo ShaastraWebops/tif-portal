@@ -8,6 +8,3 @@ dist
 /server/config/local.env.sample.js
 npm-debug.log
 coverage
-dist.tar.gz
-dist
-node_modules.tar.gz
