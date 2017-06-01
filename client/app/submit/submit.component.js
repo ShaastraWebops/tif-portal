@@ -28,8 +28,7 @@ export class SubmitComponent {
       this.previous;
       if(this.submit.previous) {
         this.previous = 'yes';
-      }
-      else {
+      } else {
         this.previous = 'no';
       }
       this.iagree = false;
@@ -42,8 +41,7 @@ export class SubmitComponent {
       this.submitform = function() {
         if(this.previous === 'yes') {
           this.submit.previous = true;
-        }
-        else {
+        } else {
           this.submit.previous = false;
         }
         this.$http.put('/api/users/submit', this.submit)
