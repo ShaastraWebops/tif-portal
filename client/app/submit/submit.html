@@ -1,74 +1,135 @@
 <div>
-<div class="container" ng-show="submitCtrl.a">
+<div class="container " ng-show="submitCtrl.a">
 	<h2 align="center" class="group">
 	<br><br>  Registration Form - Part A
 </h2>
-	<form class="form" name="form" novalidate>
-		<div class="group">
+
+	<form class="form" name="theform" novalidate>
+		<div class="form-group has-feedback">
 			<h3>Contact Details</h3>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">Contact Number</p>
-				<input type="tel" name="number" ng-model="submitCtrl.submit.phonenumber" class="col-xs-12 col-lg-12 col-sm-12" id="coll_add">
+			<div class="input-group" ng-class="{'has-error':!theform.Cnumber.$valid && (theform.Cnumber.$dirty || theform.Cnumber.$touched),'has-success':theform.Cnumber.$valid}">
+				<label for="coll_add1" class="control-label ">Contact No</label>
+				<input type="text" name="Cnumber" ng-model="submitCtrl.submit.phonenumber" ng-pattern="/^[0-9]{10}$/"  ng-required="true" class="form-control " id="coll_add1"  />
+				<p class="help-block" ng-show="theform.Cnumber.$error.required && theform.Cnumber.$touched">
+					This feild is required
+				</p>
+				<div ng-class="{'glyphicon glyphicon-ok form-control-feedback':theform.Cnumber.$valid, 'glyphicon glyphicon-remove-sign form-control-feedback': !theform.Cnumber.$valid && (!theform.Cnumber.$pristine || theform.Cnumber.$touched)}">
+
+				</div>
+
+				<p class="help-block" ng-show="theform.Cnumber.$invalid && theform.Cnumber.$dirty">
+						The Contact No. must be 10 digits long
+				</p>
 			</div>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">Whatsapp Number</p>
-				<input type="tel" name="number" ng-model="submitCtrl.submit.wnumber" class="col-xs-12 col-lg-12 col-sm-12">
+			<div class="input-group" ng-class="{'has-error':!theform.Wnumber.$valid && (!theform.Wnumber.$pristine || theform.Wnumber.$touched),'has-success':theform.Wnumber.$valid}"  >
+				<label for="Wnumber" class="control-label">Whatsapp Number</label>
+				<input type="tel" name="Wnumber" id="Wnumber" ng-model="submitCtrl.submit.wnumber" ng-pattern="/^[0-9]{10}$/" ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12 ">
+				<br />
+				<div ng-class="{'glyphicon glyphicon-ok form-control-feedback':theform.Wnumber.$valid, 'glyphicon glyphicon-remove-sign form-control-feedback': !theform.Wnumber.$valid && (!theform.Wnumber.$pristine || theform.Wnumber.$touched)}">
+
+				</div>
+				<p class="help-block" ng-show="theform.Wnumber.$error.required && theform.Wnumber.$touched">
+
+					This feild is required
+				</p>
+				<p class="help-block" ng-show="!theform.Wnumber.$valid && theform.Wnumber.$dirty">
+				The Whatsapp No. must be 10 digits long
+				</p>
 			</div>
 		</div>
 		<br>
-		<div class="group">
+		<div class="form-group">
 			<h3>College Details</h3>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">College Name</p>
-				<input type="text" name="name" ng-model="submitCtrl.submit.college.name" class="col-xs-12 col-lg-12 col-sm-12">
+			<div class="input-group" ng-class="{'has-error':!theform.ClgName.$valid && !theform.ClgName.$untouched,'has-success':theform.ClgName.$valid}" >
+				<label for="ClgName" class="control-label">College Name</label>
+				<input type="text" name="ClgName" id="ClgName" ng-model="submitCtrl.submit.college.name" ng-required="true"  class="form-control col-xs-12 col-lg-12 col-sm-12">
+				<p class="help-block" ng-show="theform.ClgName.$error.required && theform.ClgName.$touched">
+					This feild is required
+				</p>
 			</div>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">College Address</p>
-				<input type="text" name="name" ng-model="submitCtrl.submit.college.address" class="col-xs-12 col-lg-12 col-sm-12" id="coll_add">
+			<div class="input-group" ng-class="{'has-error':!theform.ClgAddress.$valid && !theform.ClgAddress.$untouched,'has-success':theform.ClgAddress.$valid}" >
+				<label for="ClgAddress" class="control-label">College Address</label>
+				<input type="text" name="ClgAddress" id="ClgAddress" ng-model="submitCtrl.submit.college.address" ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12" id="coll_add">
+				<p class="help-block" ng-show="theform.ClgAddress.$error.required && theform.ClgAddress.$touched">
+					This feild is required
+				</p>
 			</div>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">City</p>
-				<input type="text" name="name" ng-model="submitCtrl.submit.college.city" class="col-xs-12 col-lg-12 col-sm-12">
+			<div class="input-group" ng-class="{'has-error':!theform.ClgCity.$valid && !theform.ClgCity.$untouched,'has-success':theform.ClgCity.$valid}" >
+				<label for="ClgCity" class="control-label">City</label>
+				<input type="text" name="ClgCity" id="ClgCity" ng-model="submitCtrl.submit.college.city" ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12">
+				<p class="help-block" ng-show="theform.ClgCity.$error.required && theform.ClgCity.$touched">
+					This feild is required
+				</p>
 			</div>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">State</p >
-				<input type="text" name="name" ng-model="submitCtrl.submit.college.state" class="col-xs-12 col-lg-12 col-sm-12">
+			<div class="input-group" ng-class="{'has-error':!theform.ClgState.$valid && !theform.ClgState.$untouched,'has-success':theform.ClgState.$valid}" >
+				<label for="ClgState" class="control-label">State</label>
+				<input type="text" name="ClgState" id="ClgState" ng-model="submitCtrl.submit.college.state" ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12">
+				<p class="help-block" ng-show="theform.ClgState.$error.required && theform.ClgState.$touched">
+					This feild is required
+				</p>
 			</div>
 		</div>
 		<br>
-		<div class="group">
+		<div class="form-group">
 			<h3>Education Details</h3>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">Degree</p>
-				<input type="text" name="name" ng-model="submitCtrl.submit.education.degree"  class="col-xs-12 col-lg-12 col-sm-12">
+			<div class="input-group" ng-class="{'has-error':!theform.EduDeg.$valid && !theform.EduDeg.$untouched,'has-success':theform.EduDeg.$valid}" >
+				<label for="EduDeg" class="control-label">Degree</label>
+				<input type="text" name="EduDeg"  id="EduDeg" ng-model="submitCtrl.submit.education.degree"  ng-required="true"   class="form-control col-xs-12 col-lg-12 col-sm-12">
+				<p class="help-block" ng-show="theform.EduDeg.$error.required && theform.EduDeg.$touched">
+					This feild is required
+				</p>
 			</div>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">Branch</p>
-				<input type="text" name="name" ng-model="submitCtrl.submit.education.branch" class="col-xs-12 col-lg-12 col-sm-12">
+			<div class="input-group" ng-class="{'has-error':!theform.EduBranch.$valid && !theform.EduBranch.$untouched,'has-success':theform.EduBranch.$valid}" >
+				<label for="EduBranch" class="control-label">Branch</label>
+				<input type="text" name="EduBranch" id="EduBranch" ng-model="submitCtrl.submit.education.branch"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12">
+				<p class="help-block" ng-show="theform.EduBranch.$error.required && theform.EduBranch.$touched">
+					This feild is required
+				</p>
 			</div>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">Year</p>
-				<input type="text" name="name" ng-model="submitCtrl.submit.education.year" class="col-xs-12 col-lg-12 col-sm-12">
+			<div class="input-group" ng-class="{'has-error':!theform.EduYear.$valid && !theform.EduYear.$untouched,'has-success':theform.EduYear.$valid}" >
+				<label for="EduYear" class="control-label">Year</label>
+				<input type="text" name="EduYear" id="EduYear" ng-model="submitCtrl.submit.education.year"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12" placeholder="2nd year, 3rd year etc.">
+				<p class="help-block" ng-show="theform.EduYear.$error.required && theform.EduYear.$touched">
+					This feild is required
+				</p>
 			</div>
 		</div>
 		<br><br>
-		<div class="group">
+		<div class="form-group has-feedback">
 			<h3>Postal Address (will be used to send certificate and/or kit)</h3>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">Address</p>
-				<input type="text" name="name" ng-model="submitCtrl.submit.postal.address" class="col-xs-12 col-lg-12 col-sm-12">
+			<div class="input-group" ng-class="{'has-error':!theform.PostalAddress.$valid && !theform.PostalAddress.$untouched,'has-success':theform.PostalAddress.$valid}" >
+				<label for="PostalAddress" class="control-label">Address</label>
+				<input type="text" name="PostalAddress" id="PostalAddress" ng-model="submitCtrl.submit.postal.address"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12">
+				<p class="help-block" ng-show="theform.PostalAddress.$error.required && theform.PostalAddress.$touched">
+					This feild is required
+				</p>
 			</div>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">City</p>
-				<input type="text" name="name" ng-model="submitCtrl.submit.postal.city" class="col-xs-12 col-lg-12 col-sm-12">
+			<div class="input-group" ng-class="{'has-error':!theform.PostalCity.$valid && !theform.PostalCity.$untouched,'has-success':theform.PostalCity.$valid}" >
+				<label for="PostalCity" class="control-label">City</label>
+				<input type="text" name="PostalCity" id="PostalCity" ng-model="submitCtrl.submit.postal.city"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12">
+				<p class="help-block" ng-show="theform.PostalCity.$error.required && theform.PostalCity.$touched">
+					This feild is required
+				</p>
 			</div>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">State</p>
-				<input type="text" name="name" ng-model="submitCtrl.submit.postal.state" class="col-xs-12 col-lg-12 col-sm-12">
+			<div class="input-group" ng-class="{'has-error':!theform.PostalState.$valid && !theform.PostalState.$untouched,'has-success':theform.PostalState.$valid}" >
+				<label for="PostalState" class="control-label">State</label>
+				<input type="text" name="PostalState" id="PostalState" ng-model="submitCtrl.submit.postal.state"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12">
+				<p class="help-block" ng-show="theform.PostalState.$error.required && theform.PostalState.$touched">
+					This feild is required
+				</p>
 			</div>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">Pin Code</p>
-				<input type="text" name="name" ng-model="submitCtrl.submit.postal.pin" class="col-xs-12 col-lg-12 col-sm-12">
+			<div class="input-group" ng-class="{'has-error':!theform.PostalPin.$valid && (!theform.PostalPin.$untouched || !theform.PostalPin.$pristine) ,'has-success':theform.PostalPin.$valid}" >
+				<label for="PostalPin" class="control-label">Pin Code</label>
+				<input type="text" name="PostalPin" id="PostalPin" ng-model="submitCtrl.submit.postal.pin" ng-pattern="/^[0-9]{6}$/"	 ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12">
+				<div ng-class="{'glyphicon glyphicon-ok form-control-feedback':theform.PostalPin.$valid, 'glyphicon glyphicon-remove-sign form-control-feedback': !theform.PostalPin.$valid && (!theform.PostalPin.$pristine || theform.PostalPin.$touched)}">
+
+				</div>
+				<p class="help-block" ng-show="theform.PostalPin.$error.required && theform.PostalPin.$touched">
+					This feild is required
+				</p>
+				<p class="help-block" ng-show="theform.PostalPin.$invalid && theform.PostalPin.$dirty">
+						The Postal No should be 6 digits long
+				</p>
 			</div>
 		</div>
 		<div align="center"><button ng-click="submitCtrl.next();" class="btn btn-default">Next Page</button>
@@ -82,52 +143,70 @@
 <div align="left"><button ng-click="submitCtrl.back();" class="btn btn-default">Previous Page</button>
 </div>
 	<form class="form" name="form" novalidate>
-    <div class="group">
+    <div class="form-group">
       <h3>Previous experience</h3>
-      <div>
-        <p class="col-xs-12 col-sm-12 col-lg-12 question">Were you a Shaastra CA previously?</p>
-        <div class="col-xs-12 col-lg-12 col-sm-12">
-          <input type="radio" name="ca" value="yes" ng-model="submitCtrl.previous">Yes
-          <input type="radio" name="ca" value="no"  ng-model="submitCtrl.previous">No
-        </div>
+      <div class="input-group" ng-class="{'has-error':form.CaPrev.$pristine && form.CaPrev.$invalid,'has-success':form.CaPrev.$dirty}"  >
+        <label for="CaPrev" class="control-label">Were you a Shaastra CA previously?</label>
+				<!-- <select class="form-control" name="loca" name="CaPrev" id="CaPrev" ng-required="true"  >
+					<option disabled selected value="null"> select an option  </option>
+					<option >YES</option>
+					<option >NO</option> -->
+					<br />
+					<input type="radio" name="CaPrevY" id="CaPrevY" value="yes" ng-model="submitCtrl.previous">Yes <br />
+          <input type="radio" name="CaPrevN" id="CaPrevN" value="no"  ng-model="submitCtrl.previous">No	<br />
         <br>
-        <p class="col-xs-12 col-sm-12 col-lg-12 question" ng-show="submitCtrl.previous">If yes, which year?</p>
-        <input type="text" name="name" ng-model="submitCtrl.submit.prevyear" class="col-xs-12 col-lg-12 col-sm-12">
+			</div>
+
+				<div class="input-group" ng-show="form.CaPrevY.$touched" ng-class="{'has-success':form.PrevYear.$dirty}">
+        <label for="PrevYear" ng-show="submitCtrl.previous" class="control-label">If yes, which year?</label>
+        <input type="text" name="PrevYear" id="PrevYear" ng-model="submitCtrl.submit.prevyear" class="form-control col-xs-12 col-lg-12 col-sm-12">
       </div>
     </div>
-		<div class="group">
+		<div class="form-group">
 			<h3>Social Info</h3>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">Which social media sites do you use?</p>
-				<input type="text" name="name" ng-model="submitCtrl.submit.social" class="col-xs-12 col-lg-12 col-sm-12">
+			<div class="input-group" ng-class="{'has-error':!form.Social.$valid && !form.Social.$untouched,'has-success':form.Social.$valid}" >
+				<label for="Social" class="control-label">Which social media sites do you use?</label>
+				<input type="text" name="Social" id="Social" ng-model="submitCtrl.submit.social"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12">
+				<p class="help-block" ng-show="form.Social.$error.required && form.Social.$touched">
+					This feild is required
+				</p>
 			</div>
 		</div>
 		<br>
-		<div class="group">
+		<div class="form-group">
 			<h3>Questions</h3>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">Why do you wish to become a Campus Ambassador?</p>
-				<input type="text" name="name" ng-model="submitCtrl.submit.questions.why" class="col-xs-12 col-lg-12 col-sm-12">
+			<div class="input-group" ng-class="{'has-error':!form.WhyQues.$valid && !form.WhyQues.$untouched,'has-success':form.WhyQues.$valid}" >
+				<label for="WhyQues" class="control-label">Why do you wish to become a Campus Ambassador?</label>
+				<input type="text" name="WhyQues" id="WhyQues" ng-model="submitCtrl.submit.questions.why"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12">
+				<p class="help-block" ng-show="form.WhyQues.$error.required && form.WhyQues.$touched">
+					This feild is required
+				</p>
 			</div>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">Why do you think you are the right candidate for this position? </p>
-				<input type="text" name="name" ng-model="submitCtrl.submit.questions.right" class="col-xs-12 col-lg-12 col-sm-12" id="coll_add">
+			<div class="input-group" ng-class="{'has-error':!form.RightQues.$valid && !form.RightQues.$untouched,'has-success':form.RightQues.$valid}" >
+				<label for="RightQues" class="control-label">Why do you think you are the right candidate for this position? </label>
+				<input type="text" name="RightQues" id="RightQues" ng-model="submitCtrl.submit.questions.right"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12" id="coll_add">
+				<p class="help-block" ng-show="form.RightQues.$error.required && form.RightQues.$touched">
+					This feild is required
+				</p>
 			</div>
-			<div>
-				<p class="col-xs-12 col-sm-12 col-lg-12 question">Do you have any past experience in handling Positions of Responsibility? </p>
-				<input type="text" name="name" ng-model="submitCtrl.submit.questions.past" class="col-xs-12 col-lg-12 col-sm-12">
+			<div class="input-group" ng-class="{'has-error':!form.PastQues.$valid && !form.PastQues.$untouched,'has-success':form.PastQues.$valid}" >
+				<label for="PastQues" class="control-label">Do you have any past experience in handling Positions of Responsibility? </label>
+				<input type="text" name="PastQues" id="PastQues" ng-model="submitCtrl.submit.questions.past"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12">
+				<p class="help-block" ng-show="form.PastQues.$error.required && form.PastQues.$touched">
+					This feild is required
+				</p>
 			</div>
 		</div>
     <br><br><br>
   </form>
   <br><br>
-  <div class="group">
-    <input type="checkbox" ng-model="submitCtrl.iagree">
+  <div class="form-group">
+    <input type="checkbox" ng-model="submitCtrl.iagree" ng-required="true" >
   <h5> I wish to represent Shaastra 2018 for my institute and I have read and agree to all the Terms and Conditions stated by Shaastra for the Campus Ambassador Program on the CA website.
   </h5>
   <h5>You can edit your response any number of times before the deadline.</h5>
   </div>
-		<div align="center"><button ng-click="submitCtrl.submitform(submit);" ng-disabled="!submitCtrl.iagree" class="btn btn-primary">Submit</button>
+		<div align="center"><button ng-click="submitCtrl.submitform(submit);" ng-disabled="!submitCtrl.iagree || theform.$error.required || theform.$error.pattern || form.$error.required" class="btn btn-primary">Submit</button>
 		</div>
 		<br>
 		<div class="row show-hide-message" ng-show="submitCtrl.success">

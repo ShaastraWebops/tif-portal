@@ -23,3 +23,7 @@ p{
 	font-family: 'Open sans', sans-serif;
 	margin: 15px 0px 2px 0px;
 }
+/*input.ng-invalid.ng-touched {
+	border: 1px rgb(188, 18, 18) solid;
+	box-shadow: 0 0 2px 1px rgba(188,18,18,0.8);
+}*/
