@@ -20,6 +20,7 @@ var UserSchema = new Schema({
       }
     }
   },
+  submitted:{type: Boolean, default: false},
   role: {
     type: String,
     default: 'user'
@@ -56,7 +57,7 @@ var UserSchema = new Schema({
     pin: String
   },
   previous: Boolean,  //whether he had been a CA in a previous year
-  prevyear: String,
+  prevyear: {type: String, default: null},
   social: String,
   fblink: String,
   questions: {

@@ -17,10 +17,11 @@
           <li><a href="/#four">Responsibilities</a></li>
           <li><a href="/#five">T&C</a></li>
         <li ng-show="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
+        <li ng-show="$ctrl.isAdmin()"><a href="/list">Registered Users</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li ng-show="$ctrl.isLoggedIn()"><a href="/submit">Registration Form</a></li>
+        <li ng-show="$ctrl.isLoggedIn()&&!$ctrl.isAdmin()"><a href="/submit">Registration Form</a></li>
         <!-- <li ng-hide="$ctrl.isLoggedIn()"><oauth-buttons classes="btn-block"></oauth-buttons> </li> -->
         <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
         <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>

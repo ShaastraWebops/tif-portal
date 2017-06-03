@@ -11,7 +11,9 @@ var userCtrlStub = {
   changePassword: 'userCtrl.changePassword',
   show: 'userCtrl.show',
   create: 'userCtrl.create',
-  submit: 'userCtrl.submit'
+  submit: 'userCtrl.submit',
+  list: 'userCtrl.list',
+  export: 'userCtrl.exp'
 };
 
 var authServiceStub = {
@@ -50,6 +52,22 @@ describe('User API Router:', function() {
     it('should verify admin role and route to user.controller.index', function() {
       expect(routerStub.get
         .withArgs('/', 'authService.hasRole.admin', 'userCtrl.index')
+        ).to.have.been.calledOnce;
+    });
+  });
+
+  describe('GET /api/users/list', function() {
+    it('should verify admin role and route to user.controller.list', function() {
+      expect(routerStub.get
+        .withArgs('/', 'authService.hasRole.admin', 'userCtrl.list')
+        ).to.have.been.calledOnce;
+    });
+  });
+
+  describe('GET /api/users/export', function() {
+    it('should verify admin role and route to user.controller.exp', function() {
+      expect(routerStub.get
+        .withArgs('/', 'authService.hasRole.admin', 'userCtrl.exp')
         ).to.have.been.calledOnce;
     });
   });
