@@ -48,6 +48,9 @@ const paths = {
         test: {
           integration: [`${serverPath}/**/*.integration.js`, 'mocha.global.js'],
           unit: [`${serverPath}/**/*.spec.js`, 'mocha.global.js']
+        },
+        options: {
+            presets: ['es2015']
         }
     },
     karma: 'karma.conf.js',
