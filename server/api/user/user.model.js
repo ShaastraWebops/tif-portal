@@ -20,7 +20,7 @@ var UserSchema = new Schema({
       }
     }
   },
-  submitted:{type: Boolean, default: false},
+  submitted: {type: Boolean, default: false},
   role: {
     type: String,
     default: 'user'

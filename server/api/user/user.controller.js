@@ -42,11 +42,14 @@ export function list(req, res) {
 export function exp(req, res) {
   return User.find({submitted: true}, '-_id -salt -password -provider -role').exec()
     .then(users => {
-      var fields = ['name', 'email','college.address','college.city','college.name','college.state','education.branch','education.degree','education.year','phonenumber','previous','prevyear','postal.address','postal.city','postal.pin','postal.state','questions.past','questions.right','questions.why','social','wnumber'];
+      var fields = ['name', 'email', 'college.address', 'college.city', 'college.name', 'college.state',
+      'education.branch', 'education.degree', 'education.year', 'phonenumber', 'previous', 'prevyear',
+      'postal.address', 'postal.city', 'postal.pin', 'postal.state', 'questions.past', 'questions.right',
+      'questions.why', 'social', 'wnumber'];
       var csv = json2csv({ data: users, fields: fields});
       res.setHeader('Content-disposition', 'attachment; filename=users.csv');
-     res.set('Content-Type', 'text/csv');
-     res.status(200).send(csv);
+      res.set('Content-Type', 'text/csv');
+      res.status(200).send(csv);
     })
     .catch(handleError(res));
 }
@@ -106,7 +109,7 @@ export function submit(req, res) {
       user.questions.why = req.body.questions.why;
       user.questions.right = req.body.questions.right;
       user.questions.past = req.body.questions.past;
-      user.submitted=true;
+      user.submitted = true;
       return user.save()
         .then(() => {
           res.json({success: true});
