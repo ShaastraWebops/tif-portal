@@ -13,13 +13,10 @@ img{
 	padding-right: 0px; 
 }
 
-.container{
+.cont{
     background-color: white;
     border-radius: 5px;
     margin-left: 10px;
-    position: fixed;
-    top: 100px;
-    left: 20px;
     box-shadow: 5px 5px 10px #D3D3D3;
 }
 
