@@ -5,3 +5,10 @@ footer.footer {
   position: fixed;
   bottom: 0;
 }
+
+img{
+	height: 72px;
+	width: 72px;
+	padding-left: 0px;
+	padding-right: 0px; 
+}
