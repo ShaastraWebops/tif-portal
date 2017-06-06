@@ -1,5 +1,6 @@
 .glyphicon.glyphicon-menu-down{
     font-size: 50px;
+    color: gainsboro;
 }
 
 .block{
@@ -10,6 +11,7 @@
 }
 
 .desc, .list{
+    background-color: white;
     line-height: 200%;
     display: block;
     padding: 20px 30px;
