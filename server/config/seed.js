@@ -48,17 +48,79 @@ export default function seedDatabaseIfNeeded() {
     User.find({}).remove()
       .then(() => {
         User.create({
-          provider: 'local',
-          name: 'Test User',
-          email: 'test@example.com',
-          password: 'test'
+          name: 'John',
+          email: 'john@mail.com',
+          submitted: true,
+          role: 'user',
+          password: 'john',
+          phonenumber: 123456789,
+          wnumber: 987654321,
+          college: {
+            name: 'Johns College',
+            address: 'Johns Colleges Address',
+            city: 'Johns Colleges city',
+            state: 'city!'
+          },
+          education: {
+            degree: 'Johns degree',
+            branch: 'Johns branch',
+            year: 'year!'
+          },
+          postal: {
+            address: 'Johns address',
+            city: 'Johns city',
+            state: 'Johns state',
+            pin: 'pin!'
+          },
+          previous: false,
+          social: 'Johns social!!!',
+          fblink: 'johnDoe',
+          questions: {
+            why: 'CA is great you have got to be one!!!',
+            right: 'I dont know what this means!',
+            past: 'you dont want to know'
+          }
         }, {
           provider: 'local',
           role: 'admin',
           name: 'Admin',
           email: 'admin@example.com',
           password: 'admin'
-        })
+        },
+          {
+            name: 'Daren',
+            email: 'daren@mail.com',
+            submitted: true,
+            role: 'user',
+            password: 'daren',
+            phonenumber: 7892340982,
+            wnumber: 7892340982,
+            college: {
+              name: 'Darens College',
+              address: 'Darens Colleges Address',
+              city: 'Darens Colleges city',
+              state: 'city!'
+            },
+            education: {
+              degree: 'Darens degree',
+              branch: 'Darens branch',
+              year: 'year!'
+            },
+            postal: {
+              address: 'Darens address',
+              city: 'Darens city',
+              state: 'Darens state',
+              pin: 'pin!'
+            },
+            previous: false,
+            social: 'Darens social!!!',
+            fblink: 'daren_fblink',
+            questions: {
+              why: 'Getting famous and also no age restriction so ...!!!',
+              right: 'Even I dont know  what this means!',
+              past: 'I was born yesterday'
+            }
+          })
         .then(() => console.log('finished populating users'))
         .catch(err => console.log('error populating users', err));
       });
