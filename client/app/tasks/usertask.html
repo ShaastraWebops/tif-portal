@@ -1,0 +1,28 @@
+<div ng-hide="taskCtrl.form" class="box">
+  <div class="row show-hide-message" ng-show="taskCtrl.success">
+  <div class="alert alert-success"> {{taskCtrl.success}} </div>
+  </div>
+  <div class="row show-hide-message" ng-show="taskCtrl.error">
+  <div class="alert alert-danger"> {{taskCtrl.error}} </div>
+  </div>
+  <table class="table table-hover table-bordered">
+  <thead class="thead-inverse">
+  <tr>
+    <th> Title</th>
+    <th> Description</th>
+    <th> Deadline</th>
+    <th> Points</th>
+  </tr>
+
+  </thead>
+  <tbody>
+    <tr ng-repeat="task in taskCtrl.tasks">
+      <td>{{ task.title }}</td>
+      <td>{{ task.description }}</td>
+      <td>{{ task.deadline.day }}  {{ task.deadline.month}}, {{task.deadline.year}}</td>
+      <td>{{ task.points }}</td>
+      <td><button class="btn btn-primary" ng-click="taskCtrl.apply(task._id);"> Apply </button></td>
+    </tr>
+  </tbody>
+  </table>
+</div>

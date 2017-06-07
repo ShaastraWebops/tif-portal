@@ -19,6 +19,7 @@ import _Auth from '../components/auth/auth.module';
 import account from './account';
 import admin from './admin';
 import list from './list/list.component';
+import task from './tasks/task.component';
 import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
 import main from './main/main.component';
@@ -29,7 +30,7 @@ import util from '../components/util/util.module';
 import './app.css';
 
 angular.module('caportalApp', [ngCookies, ngFilesaver, ngResource, ngSanitize, uiRouter, uiBootstrap, _Auth,
-  account, admin, 'validation.match', navbar, list, footer, main, submit, constants, util
+  account, admin, 'validation.match', navbar, task, list, footer, main, submit, constants, util
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {

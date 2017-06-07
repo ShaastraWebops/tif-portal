@@ -1,0 +1,18 @@
+input[name="title"] {
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+input[name="description"] {
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+input[type="number"] {
+    width: 100%;
+    max-width: 120px;
+    box-sizing: border-box;
+}
+.box {
+  padding-left: 10%;
+}
