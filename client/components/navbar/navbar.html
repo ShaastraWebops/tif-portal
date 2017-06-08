@@ -1,3 +1,25 @@
+<style>
+.dropdown{
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #131540;
+}
+
+.super:hover .dropdown{
+  display: inline-block;
+}
+
+.dropdown a{
+  display: block;
+  text-align: left;
+  float: none;
+  padding: 15px;
+  color: white;
+}
+</style>
+
+
 <div class="navbar navbar-inverse navbar-fixed-top" style="background: linear-gradient(-40deg, #131540, #4B53FF); box-shadow: 0px 0px 15px black; border: 0px;">
   <div class="container">
     <div class="navbar-header">
@@ -28,9 +50,14 @@
         <!-- <li ng-hide="$ctrl.isLoggedIn()"><oauth-buttons classes="btn-block"></oauth-buttons> </li> -->
         <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
         <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
-        <li ng-show="$ctrl.isLoggedIn()"><p class="navbar-text">Hello {{ $ctrl.getCurrentUser().name }}</p> </li>
-        <li ng-show="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-        <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
+        <div class="super">
+          <li ng-show="$ctrl.isLoggedIn()"><p class="navbar-text">Hello {{ $ctrl.getCurrentUser().name }}</p> </li>
+          <div class="dropdown">       
+            <!--<li ng-show="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>-->
+            <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
+            <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="changepwd">Change Password</a></li>
+          </div>
+        </div>
       </ul>
     </div>
   </div>
