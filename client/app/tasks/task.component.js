@@ -48,7 +48,7 @@ export class AdminComponent {
     this.gettasks = function() {
       this.$http.get('/api/tasks/gettasks').then(res => {
         if(res.status==200){
-          this.tasks=res.data;
+          this.tasks=res.data.tasks;
         }
       });
     }
@@ -76,28 +76,81 @@ export class UserComponent {
      this.$http=$http;
   }
 
-  $onInit(){
+  gettasks() {
 
-      this.$http.get('/api/tasks/gettasks').then(res => {
-        if(res.status==200){
-          this.tasks=res.data;
+    this.$http.get('/api/tasks/gettasks').then(res => {
+      if(res.status==200){
+        const resp = res.data;
+        var tasksArray = resp.tasks;
+        const userid = resp.userid;
+        var tasksFinalArray = [];
+
+        for (var i = 0; i < tasksArray.length; i++) {
+
+          var task = {
+
+            _id: tasksArray[i]._id,
+            title: tasksArray[i].title,
+            description: tasksArray[i].description,
+            deadline: tasksArray[i].deadline,
+            points: tasksArray[i].points,
+            applyDisable: false
+          };
+
+          for (var j = 0; j < tasksArray[i].pending.length; j++) {
+
+            var pendingArray = tasksArray[i].pending;
+            if (pendingArray[j] == userid) {
+
+              task.applyDisable = true;
+              break;
+            }
+            else if (pendingArray[j] != userid) {
+
+              task.applyDisable = false;
+            }
+          }
+          tasksFinalArray.push(task);
         }
-      });
-
-      this.apply = function(task) {
-        this.$http.put('/api/tasks/apply/' + task).then(res => {
-          if(res.data.success)
-          {
-            this.success = res.data.message;
-            this.error=false;
-          }
-          else {
-            this.error = res.data.message;
-            this.success = false;
-          }
-        });
+        this.tasks = tasksFinalArray;
       }
+    });
+  }
 
+  $onInit(){
+      this.gettasks();
+  }
+
+  apply(task) {
+
+      this.$http.put('/api/tasks/apply/' + task).then(res => {
+        if(res.data.success)
+        {
+          this.success = res.data.message;
+          this.error=false;
+
+          var formData = new FormData;
+
+          var file = $('#file')[0].files[0];
+          formData.append('uploadedFile', file);
+
+          this.$http.post('/api/uploads/', formData, {
+
+            transformRequest: angular.identity,
+            headers: {
+              'Content-Type': undefined
+            }
+          }).then(response => {
+
+            console.log(response);
+          });
+        }
+        else {
+          this.error = res.data.message;
+          this.success = false;
+        }
+        this.gettasks();
+      });
   }
 
 }

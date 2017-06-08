@@ -21,7 +21,12 @@
       <td>{{ task.description }}</td>
       <td>{{ task.deadline.day }}  {{ task.deadline.month}}, {{task.deadline.year}}</td>
       <td>{{ task.points }}</td>
-      <td><button class="btn btn-primary" ng-click="taskCtrl.apply(task._id);"> Apply </button></td>
+      <td>
+        <form ng-submit="taskCtrl.apply(task._id)">
+          <input class="form-control" type="file" id="file" style="width: 220px" />
+          <button class="btn btn-primary" ng-disabled="task.applyDisable"> Apply </button>
+    		</form>
+      </td>
     </tr>
   </tbody>
   </table>

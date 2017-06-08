@@ -57,9 +57,11 @@ export function apply(req, res) {
 }
 
 export function gettasks(req, res) {
+
+  var userid = req.user._id;
   Task.find({}).exec()
   .then(tasks => {
-    res.status(200).json(tasks);
+    res.status(200).json({tasks: tasks, userid: userid});
   })
   .catch(handleError(res));
 }
