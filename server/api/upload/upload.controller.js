@@ -10,7 +10,7 @@ var storage = multer.diskStorage({
   },
   filename: function(req, file, cb) {
 
-    saveWithName = file.fieldname + '-' + Date.now() + ".pdf";
+    saveWithName = file.fieldname + '-' + Date.now() + "." + file.originalname.split('.').pop();
     cb(null, saveWithName)
   }
 });
@@ -25,7 +25,7 @@ export function uploadFile(req, res) {
 
       return res.json({success: false,  msg: "Error while uploading file", name: 'no file was uploaded'});
     }
-    res.json({success: true, msg: "File Uploaded!", name: "saveWithName"});
+    res.json({success: true, msg: "File Uploaded!", name: saveWithName});
     console.log(req.files);
   });
 }
