@@ -23,7 +23,11 @@
       <td>{{ task.points }}</td>
       <td>
         <form ng-submit="taskCtrl.apply(task._id)">
-          <input class="form-control" type="file" id="file" style="width: 220px" />
+          <label class="custom-file-upload">
+           <input ng-click="taskCtrl.uploaded();" class="form-control" name="file" onchange="document.getElementById('file_name').value = this.value.split('\\').pop().split('/').pop()" type="file" id="file" style="display: none;"/>
+               Click Here to upload proof
+               <input type="text" name="file_name" id="file_name">
+           </label>
           <button class="btn btn-primary" ng-disabled="task.applyDisable"> Apply </button>
     		</form>
       </td>

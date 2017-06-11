@@ -16,3 +16,15 @@ input[type="number"] {
 .box {
   padding-left: 10%;
 }
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.iframe {
+  height: 300px;
+  width: 300px;
+  resize: both;
+  overflow: auto;
+}

@@ -7,6 +7,6 @@ import * as auth from '../../auth/auth.service';
 
 var router = new Router();
 
-router.post('/', auth.isAuthenticated(), controller.uploadFile);
+router.post('/:id', auth.isAuthenticated(), controller.uploadFile);
 
 module.exports = router;

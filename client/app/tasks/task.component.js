@@ -9,9 +9,14 @@ export class AdminComponent {
   /*@ngInject*/
   val = {};
   user = {};
-  constructor($http, $scope) {
+  constructor($http, $scope, $stateParams) {
     this.$http = $http;
     this.$scope = $scope;
+    $scope.pending= [];
+      if($stateParams.id)
+      {
+        this.taskid = $stateParams.id;
+      }
     $scope.years = [2016, 2017, 2018, 2019, 2020];
     $scope.months = [
      'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
@@ -37,6 +42,37 @@ export class AdminComponent {
   }
 
   $onInit() {
+    this.users = [];
+    if(this.taskid){
+      this.$http.get('/api/tasks/'+this.taskid).then(res => {
+        console.log(res.data);
+        if(res.data.success)
+        {
+          this.taskname = res.data.task.title;
+        }
+      });
+
+      this.$http.get('/api/tasks/getusers/' + this.taskid).then(res => {
+        this.users = res.data.users;
+      });
+      this.file = function(files,name){
+        this.$scope.name =  name;
+        this.$scope.fileshow = true;
+        for(var i=0;i<files.length;i++)
+        {
+          if(files[i].taskid === this.taskid)
+          {
+            this.$scope.url = '/image/' + files[i].name;
+            break;
+          }
+        }
+      }
+      this.back = function(){
+        this.$scope.fileshow = false;
+        console.log("hi");
+      }
+    }
+    else{
     this.form=false;
     this.task={};
     this.task.deadline={};
@@ -68,12 +104,14 @@ export class AdminComponent {
 
 }
 }
+}
 
 export class UserComponent {
 
 
-  constructor($http){
+  constructor($http,$scope){
      this.$http=$http;
+     this.$scope = $scope;
   }
 
   gettasks() {
@@ -119,10 +157,15 @@ export class UserComponent {
 
   $onInit(){
       this.gettasks();
+      this.fileuploaded = false;
+      this.uploaded = function() {
+        this.fileuploaded = true;
+      }
   }
 
   apply(task) {
-
+    console.log(this.fileuploaded);
+    if(this.fileuploaded){
       this.$http.put('/api/tasks/apply/' + task).then(res => {
         if(res.data.success)
         {
@@ -132,17 +175,15 @@ export class UserComponent {
           var formData = new FormData;
 
           var file = $('#file')[0].files[0];
+          console.log(file);
           formData.append('uploadedFile', file);
-
-          this.$http.post('/api/uploads/', formData, {
+          this.$http.post('/api/uploads/' + task, formData, {
 
             transformRequest: angular.identity,
             headers: {
               'Content-Type': undefined
             }
           }).then(response => {
-
-            console.log(response);
           });
         }
         else {
@@ -151,6 +192,10 @@ export class UserComponent {
         }
         this.gettasks();
       });
+    }
+    else {
+      this.error = "No file uploaded";
+    }
   }
 
 }
@@ -165,6 +210,11 @@ export default angular.module('caportalApp.task', [uiRouter])
   .component('usertask', {
     template: require('./usertask.html'),
     controller: UserComponent,
+    controllerAs: 'taskCtrl'
+  })
+  .component('users', {
+    template: require('./users.html'),
+    controller: AdminComponent,
     controllerAs: 'taskCtrl'
   })
   .name;
