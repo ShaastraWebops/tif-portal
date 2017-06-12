@@ -12,5 +12,10 @@ export default function($stateProvider) {
       url: '/usertasks',
       template: '<usertask></usertask>',
       authenticate: true
+    })
+    .state('users', {
+      url: '/users/:id',
+      template: '<users></users>',
+      authenticate: true
     });
 }

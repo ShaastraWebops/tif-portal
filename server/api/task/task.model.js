@@ -14,11 +14,14 @@ var TaskSchema = new Schema({
     year: Number
   },
   points: Number,
+  files: [String],
   pending:[
-  {type: Schema.Types.ObjectId, ref: 'User'}
+  {type: Schema.Types.ObjectId, ref: 'User'
+  }
    ],
   approved:[
-  {type: Schema.Types.ObjectId, ref: 'User'}
+  {type: Schema.Types.ObjectId, ref: 'User'
+}
 ]
 });
 

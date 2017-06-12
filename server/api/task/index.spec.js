@@ -7,7 +7,9 @@ var proxyquire = require('proxyquire').noPreserveCache();
 var taskCtrlStub = {
   create: 'taskCtrl.create',
   gettasks: 'taskCtrl.gettasks',
-  apply: 'taskCtrl.apply'
+  apply: 'taskCtrl.apply',
+  getusers: 'taskCtrl.getusers',
+  show: 'taskCtrl.show'
 };
 
 var authServiceStub = {
@@ -33,7 +35,7 @@ var taskIndex = proxyquire('./index', {
       return routerStub;
     }
   },
-  './task.controller': userCtrlStub,
+  './task.controller': taskCtrlStub,
   '../../auth/auth.service': authServiceStub
 });
 
@@ -41,6 +43,15 @@ describe('User API Router:', function() {
   it('should return an express router instance', function() {
     expect(taskIndex).to.equal(routerStub);
   });
+
+  describe('GET /api/tasks/:id', function() {
+    it('should be authenticated and route to task.controller.show', function() {
+      expect(routerStub.get
+        .withArgs('/:id', 'authService.isAuthenticated', 'taskCtrl.show')
+        ).to.have.been.calledOnce;
+    });
+  });
+
 
   describe('POST /api/tasks/create', function() {
     it('should verify admin role and route to task.controller.create', function() {
@@ -54,6 +65,14 @@ describe('User API Router:', function() {
     it('should be authenticated and route to task.controller.gettasks', function() {
       expect(routerStub.get
         .withArgs('/', 'taskCtrl.gettasks')
+        ).to.have.been.calledOnce;
+    });
+  });
+
+  describe('GET /api/tasks/getusers/:id', function() {
+    it('should verify admin role and route to task.controller.getusers', function() {
+      expect(routerStub.get
+        .withArgs('/', 'taskCtrl.getusers')
         ).to.have.been.calledOnce;
     });
   });

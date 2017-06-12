@@ -61,7 +61,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="task in taskCtrl.tasks">
-      <td>{{ task.title }}</td>
+      <td><a href = "/users/{{task._id}}">{{ task.title }}</a></td>
       <td>{{ task.description }}</td>
       <td>{{ task.deadline.day }}  {{ task.deadline.month}}, {{task.deadline.year}}</td>
       <td>{{ task.points }}</td>

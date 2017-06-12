@@ -35,6 +35,10 @@ var UserSchema = new Schema({
       }
     }
   },
+  files: [{
+    taskid: String,
+    name: String
+  }],
   provider: String,
   salt: String,
   phonenumber: Number,

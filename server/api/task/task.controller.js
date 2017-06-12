@@ -1,6 +1,7 @@
 'use strict';
 
 import Task from './task.model';
+import User from '../user/user.model';
 
 function validationError(res, statusCode) {
   statusCode = statusCode || 422;
@@ -54,6 +55,34 @@ export function apply(req, res) {
        });
 
     });
+}
+
+export function getusers(req, res) {
+
+  var id = req.params.id;
+  User.find({'files.taskid': id}).exec()
+  .then(users => {
+    if(!users){
+      res.json({success: false, message: "Users no longer exists"});
+    }
+    else {
+      res.json({success: true, users: users});
+    }
+  })
+  .catch(handleError(res));
+}
+
+export function show(req, res) {
+  var taskId = req.params.id;
+
+  return Task.findById(taskId).exec()
+    .then(task => {
+      if(!task) {
+        return res.status(404);
+      }
+      res.json({success: true, task: task});
+    })
+    .catch(handleError(res));
 }
 
 export function gettasks(req, res) {
