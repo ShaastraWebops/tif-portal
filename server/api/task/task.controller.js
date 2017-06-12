@@ -41,7 +41,7 @@ export function apply(req, res) {
     return Task.findById(taskid).exec()
       .then(task => {
         if(!task) {
-          res.json({success: false, message : "No such task available"});
+        return res.json({success: false, message : "No such task available"});
         }
         Task.update({_id:taskid},{$addToSet:{pending: userid}}, function(err,msg){
         if(err) throw err;
@@ -93,4 +93,34 @@ export function gettasks(req, res) {
     res.status(200).json({tasks: tasks, userid: userid});
   })
   .catch(handleError(res));
+}
+
+export function approve(req, res) {
+
+  var taskId = req.params.id;
+  var userid = req.body.userid;
+
+  Task.findById(taskId).exec()
+  .then(task => {
+    if(!task) {
+
+      return res.json({success: false, msg: "no such tasks exists!"});
+    }
+    var points = task.points;
+    Task.update({_id: taskId}, {$addToSet:{approved: userid}}, function(err, msg){
+
+      if (err) throw err;
+      if(msg.nModified == 0) {
+
+        res.json({success: false, msg: 'Already approved!'});
+      }
+      else {
+        res.json({success: true, msg: "Approved!"});
+        User.update({_id: userid}, {$inc: {points: points}}, function(err, msg) {
+
+          if (err) throw err;
+        });
+      }
+    });
+  });
 }

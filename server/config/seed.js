@@ -7,7 +7,7 @@
 import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
 import config from './environment/';
-
+import Task from  '../api/task/task.model';
 export default function seedDatabaseIfNeeded() {
   if(config.seedDB) {
     Thing.find({}).remove()
@@ -44,6 +44,24 @@ export default function seedDatabaseIfNeeded() {
       })
     .then(() => console.log('finished populating things'))
     .catch(err => console.log('error populating things', err));
+
+    Task.find({}).remove()
+      .then(() => {
+        let thing = Task.create({
+          title: 'Task-1',
+          description: 'This is the first task!',
+          deadline: {
+
+            month: "November",
+            day: 5,
+            year: 2018
+          },
+          points: 10
+        });
+        return thing;
+      })
+    .then(() => console.log('finished populating tasks'))
+    .catch(err => console.log('error populating tasks', err));
 
     User.find({}).remove()
       .then(() => {

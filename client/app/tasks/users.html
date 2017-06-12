@@ -14,7 +14,7 @@
   <tr ng-repeat="user in taskCtrl.users">
     <td>{{ user.name }}</td>
     <td>{{ user.email }}</td>
-    <td><button class="btn btn-link" ng-click="taskCtrl.file(user.files,user.name);">Click here to view uploaded file</button></td>
+    <td><button class="btn btn-link" ng-click="taskCtrl.file(user.files,user.name, user._id);">Click here to view uploaded file</button></td>
   </tr>
 </tbody>
 </table>
@@ -23,6 +23,10 @@
   <button class="btn btn-default" ng-click="taskCtrl.back();">
      Go Back
    </button>
+   <button class="btn btn-success" ng-click="taskCtrl.approve()">
+     Approve Submission
+   </button>
+   <div class="alert alert-success" ng-show="taskCtrl.message"> {{taskCtrl.message}} </div>
  <h1>{{ name }}'s submission for {{ taskCtrl.taskname }}</h1>
  <iframe ng-src="{{ url }}" width = "70%" height="1000px" />
 </div>

@@ -24,13 +24,14 @@ import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
 import main from './main/main.component';
 import submit from './submit/submit.component';
+import leaderboard from './leaderboard/leaderboard.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 
 import './app.css';
 
 angular.module('caportalApp', [ngCookies, ngFilesaver, ngResource, ngSanitize, uiRouter, uiBootstrap, _Auth,
-  account, admin, 'validation.match', navbar, task, list, footer, main, submit, constants, util
+  account, admin, 'validation.match', navbar, task, list, footer, main, submit, leaderboard, constants, util
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {

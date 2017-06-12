@@ -41,6 +41,16 @@ export class AdminComponent {
  }
   }
 
+  approve() {
+
+    console.log(this.taskid);
+    console.log(this.$scope.userid);
+    this.$http.put('/api/tasks/approve/' + this.taskid, {userid: this.$scope.userid}).then(response => {
+      this.message = response.data.msg;
+
+    });
+  }
+
   $onInit() {
     this.users = [];
     if(this.taskid){
@@ -55,9 +65,10 @@ export class AdminComponent {
       this.$http.get('/api/tasks/getusers/' + this.taskid).then(res => {
         this.users = res.data.users;
       });
-      this.file = function(files,name){
+      this.file = function(files,name,id){
         this.$scope.name =  name;
         this.$scope.fileshow = true;
+        this.$scope.userid = id;
         for(var i=0;i<files.length;i++)
         {
           if(files[i].taskid === this.taskid)
