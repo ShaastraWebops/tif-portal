@@ -12,13 +12,12 @@
 }
 
 .fa{
-		display: inline;
-		padding: 5px 5px;
-    margin: 5px;
+	display: inline;
+	padding: 5px 5px;
+	margin-top: 20px;
+	margin-bottom: 20px;
     color: white;
-		opacity: 1.0;
-		/*filter: invert(0) drop-shadow(5px 5px 1px  grey);*/
-		/*transition: all 400ms ease-in-out;*/
+	opacity: 1.0;
 }
 
 .fa:hover{

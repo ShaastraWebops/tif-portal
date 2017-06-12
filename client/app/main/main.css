@@ -35,6 +35,7 @@
 #heading{
     font-family: 'Rubik', sans-serif;
     margin: 20% 20% 60px 20%;
+    font-weight: bolder;
     text-align: center;
     font-size: 3em;
 }
