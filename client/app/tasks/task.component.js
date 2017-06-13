@@ -169,8 +169,13 @@ export class UserComponent {
   $onInit(){
       this.gettasks();
       this.fileuploaded = false;
+      this.fileupload = false;
       this.uploaded = function() {
         this.fileuploaded = true;
+      }
+      this.upload = function(id) {
+        this.fileupload = !this.fileupload;
+        this.id = id;
       }
   }
 
@@ -182,9 +187,10 @@ export class UserComponent {
         {
           this.success = res.data.message;
           this.error=false;
-
+          this.fileupload = false;
+          this.fileuploaded = false;
           var formData = new FormData;
-
+          console.log($('#file'));
           var file = $('#file')[0].files[0];
           console.log(file);
           formData.append('uploadedFile', file);
@@ -195,6 +201,8 @@ export class UserComponent {
               'Content-Type': undefined
             }
           }).then(response => {
+            angular.element("input[name='file']").val(null);
+            angular.element("input[name='file_name']").val(null);
           });
         }
         else {
