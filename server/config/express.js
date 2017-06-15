@@ -17,7 +17,7 @@ import lusca from 'lusca';
 import config from './environment';
 import passport from 'passport';
 import session from 'express-session';
-import connectMongo from 'connect-mongo';
+import connectMongo from 'connect-mongo/es5';
 import mongoose from 'mongoose';
 var MongoStore = connectMongo(session);
 
