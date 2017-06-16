@@ -57,6 +57,15 @@ export default function seedDatabaseIfNeeded() {
             year: 2018
           },
           points: 10
+        },{
+          title: "Task-2",
+          description: "This is the second task!",
+          deadline: {
+            month: "December",
+            day: 6,
+            year: 2019
+          },
+          points: 10
         });
         return thing;
       })
