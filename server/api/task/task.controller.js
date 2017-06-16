@@ -88,7 +88,8 @@ export function show(req, res) {
 export function gettasks(req, res) {
 
   var userid = req.user._id;
-  Task.find({}).exec()
+  Task.find({}).
+  populate('approved').exec()
   .then(tasks => {
     res.status(200).json({tasks: tasks, userid: userid});
   })

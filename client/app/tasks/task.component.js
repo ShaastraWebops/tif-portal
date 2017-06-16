@@ -95,7 +95,26 @@ export class AdminComponent {
     this.gettasks = function() {
       this.$http.get('/api/tasks/gettasks').then(res => {
         if(res.status==200){
-          this.tasks=res.data.tasks;
+          var tasksArray = res.data.tasks;
+          var tasksFinalArray = [];
+          for (var i = 0; i < tasksArray.length; i++) {
+
+            var task = tasksArray[i];
+            task.completed = false;
+            task.completedByWhome = [];
+
+            if (task.approved.length != 0) {
+
+              task.completed = true;
+            }
+            if (task.completed) {
+
+              for (var j = 0; j < task.approved.length; j++) {
+
+                task.completedByWhome.push(task.approved[j].name);
+              }
+            } tasksFinalArray.push(task);
+          }this.tasks = tasksFinalArray;
         }
       });
     }
@@ -112,9 +131,8 @@ export class AdminComponent {
         }
       });
     }
-
-}
-}
+  }
+ }
 }
 
 export class UserComponent {
@@ -136,21 +154,14 @@ export class UserComponent {
         var approvalMsg = "Approved!";
         for (var i = 0; i < tasksArray.length; i++) {
 
-          var task = {
+          var task = tasksArray[i];
+          task.applyDisable = false;
+          task.completed_user = "N/A";
+          task.completed = false;
 
-            _id: tasksArray[i]._id,
-            title: tasksArray[i].title,
-            description: tasksArray[i].description,
-            deadline: tasksArray[i].deadline,
-            points: tasksArray[i].points,
-            applyDisable: false,
-            completed_user: "N/A",
-            completed: false
-          };
+          for (var j = 0; j < task.pending.length; j++) {
 
-          for (var j = 0; j < tasksArray[i].pending.length; j++) {
-
-            var pendingArray = tasksArray[i].pending;
+            var pendingArray = task.pending;
             if (pendingArray[j] == userid) {
 
               task.applyDisable = true;
@@ -159,10 +170,10 @@ export class UserComponent {
           }
 
           if (task.applyDisable) {
-          for (var j = 0; j < tasksArray[i].approved.length; j++) {
+          for (var j = 0; j < task.approved.length; j++) {
 
-            var approvedArray = tasksArray[i].approved;
-            if (approvedArray[j] == userid) {
+            var approvedArray = task.approved;
+            if (approvedArray[j]._id == userid) {
 
               task.completed_user = approvalMsg;
               break;
@@ -172,7 +183,7 @@ export class UserComponent {
 
             task.completed_user = "Not Checked!";
           }
-          if (tasksArray[i].approved.length != 0) {
+          if (task.approved.length != 0) {
 
             task.completed = true;
           }
