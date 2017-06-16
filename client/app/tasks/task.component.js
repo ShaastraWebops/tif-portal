@@ -133,7 +133,7 @@ export class UserComponent {
         var tasksArray = resp.tasks;
         const userid = resp.userid;
         var tasksFinalArray = [];
-
+        var approvalMsg = "Approved!";
         for (var i = 0; i < tasksArray.length; i++) {
 
           var task = {
@@ -143,7 +143,9 @@ export class UserComponent {
             description: tasksArray[i].description,
             deadline: tasksArray[i].deadline,
             points: tasksArray[i].points,
-            applyDisable: false
+            applyDisable: false,
+            completed_user: "N/A",
+            completed: false
           };
 
           for (var j = 0; j < tasksArray[i].pending.length; j++) {
@@ -154,11 +156,27 @@ export class UserComponent {
               task.applyDisable = true;
               break;
             }
-            else if (pendingArray[j] != userid) {
+          }
 
-              task.applyDisable = false;
+          if (task.applyDisable) {
+          for (var j = 0; j < tasksArray[i].approved.length; j++) {
+
+            var approvedArray = tasksArray[i].approved;
+            if (approvedArray[j] == userid) {
+
+              task.completed_user = approvalMsg;
+              break;
             }
           }
+          if (task.completed_user != approvalMsg) {
+
+            task.completed_user = "Not Checked!";
+          }
+          if (tasksArray[i].approved.length != 0) {
+
+            task.completed = true;
+          }
+        }
           tasksFinalArray.push(task);
         }
         this.tasks = tasksFinalArray;

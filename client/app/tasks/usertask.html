@@ -12,6 +12,8 @@
     <th> Description</th>
     <th> Deadline</th>
     <th> Points</th>
+    <th> Status </th>
+    <th> Your Status </th>
   </tr>
 
   </thead>
@@ -21,7 +23,9 @@
       <td>{{ task.description }}</td>
       <td>{{ task.deadline.day }}  {{ task.deadline.month}}, {{task.deadline.year}}</td>
       <td>{{ task.points }}</td>
-      <td> <button class="btn btn-default" ng-click="taskCtrl.upload(task._id);">Document Upload </button></td>
+      <td ng-hide="task.completed"> <button class="btn btn-default" ng-click="taskCtrl.upload(task._id);" ng-disabled="task.applyDisable">Document Upload </button></td>
+      <td ng-show="task.completed"> The task has been completed! </td>
+      <td> {{task.completed_user}} </td>
     </tr>
   </tbody>
   </table>
@@ -36,7 +40,7 @@
            Click Here to upload proof
            <input type="text" name="file_name" id="file_name">
        </label>
-      <button class="btn btn-primary" ng-disabled="task.applyDisable"> Apply </button>
+      <button class="btn btn-primary"> Apply </button>
     </form>
   </div>
 </div>
