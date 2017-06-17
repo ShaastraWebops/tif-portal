@@ -171,7 +171,16 @@
 					This field is required
 				</p>
 			</div>
+			<div class="input-group" ng-class="{'has-error':!form.fb.$valid && !form.fb.$pristine ,'has-success':form.fb.$valid}" >
+				<label for="fb" class="control-label">Enter your Facebook profile link (if applicable)</label>
+				<input type="text" name="fb" id="fb" ng-model="submitCtrl.submit.fblink" ng-pattern="/^(https?:\/\/)?(www\.)?facebook.com\/[a-z_\-A-Z0-9(\.\?)?]/" class="form-control col-xs-12 col-lg-12 col-sm-12">
+
+				<p class="help-block" ng-show="form.fb.$invalid && form.fb.$dirty && form.fb.$touched">
+						Enter a valid profile link
+				</p>
+			</div>
 		</div>
+
 		<br>
 		<div class="form-group">
 			<h3>Questions</h3>
@@ -206,7 +215,7 @@
   </h5>
   <h5>You can edit your response any number of times before the deadline.</h5>
   </div>
-		<div align="center"><button ng-click="submitCtrl.submitform(submit);" ng-disabled="!submitCtrl.iagree || theform.$error.required || theform.$error.pattern || form.$error.required" class="btn btn-primary">Submit</button>
+		<div align="center"><button ng-click="submitCtrl.submitform(submit);" ng-disabled="!submitCtrl.iagree || theform.$error.required || theform.$error.pattern || form.$error.required || form.$error.pattern" class="btn btn-primary">Submit</button>
 		</div>
 		<br>
 		<div class="row show-hide-message" ng-show="submitCtrl.success">

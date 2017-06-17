@@ -101,7 +101,7 @@ export default function seedDatabaseIfNeeded() {
           },
           previous: false,
           social: 'Johns social!!!',
-          fblink: 'johnDoe',
+          fblink: '',
           questions: {
             why: 'CA is great you have got to be one!!!',
             right: 'I dont know what this means!',
@@ -141,7 +141,7 @@ export default function seedDatabaseIfNeeded() {
             },
             previous: false,
             social: 'Darens social!!!',
-            fblink: 'daren_fblink',
+            fblink: '',
             questions: {
               why: 'Getting famous and also no age restriction so ...!!!',
               right: 'Even I dont know  what this means!',

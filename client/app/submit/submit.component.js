@@ -39,6 +39,10 @@ export class SubmitComponent {
         } else {
           this.submit.previous = false;
         }
+        if(this.submit.fblink === null||this.submit.fblink === '')
+        {
+          this.submit.fblink = '';
+        }
         this.$http.put('/api/users/submit', this.submit)
         .then(resp => {
           console.log(response.data);
