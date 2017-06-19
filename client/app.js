@@ -16,9 +16,9 @@ particlesJS('particles-js',
   {
   "particles": {
     "number": {
-      "value": 100,
+      "value": 170,
       "density": {
-        "enable": false,
+        "enable": true,
         "value_area": 800
       }
     },
@@ -26,7 +26,7 @@ particlesJS('particles-js',
       "value": "#ffffff"
     },
     "shape": {
-      "type": "star",
+      "type": "circle",
       "stroke": {
         "width": 0,
         "color": "#000000"
@@ -35,7 +35,7 @@ particlesJS('particles-js',
         "nb_sides": 5
       },
       "image": {
-        "src": "http://wiki.lexisnexis.com/academic/images/f/fb/Itunes_podcast_icon_300.jpg",
+        "src": "img/github.svg",
         "width": 100,
         "height": 100
       }
@@ -51,7 +51,7 @@ particlesJS('particles-js',
       }
     },
     "size": {
-      "value": 4,
+      "value": 3,
       "random": true,
       "anim": {
         "enable": false,
@@ -68,11 +68,11 @@ particlesJS('particles-js',
       "width": 1
     },
     "move": {
-      "enable": true,
-      "speed": 14,
-      "direction": "left",
+      "enable": false,
+      "speed": 6,
+      "direction": "none",
       "random": false,
-      "straight": true,
+      "straight": false,
       "out_mode": "out",
       "bounce": false,
       "attract": {
@@ -87,17 +87,17 @@ particlesJS('particles-js',
     "events": {
       "onhover": {
         "enable": false,
-        "mode": "grab"
+        "mode": "repulse"
       },
       "onclick": {
-        "enable": true,
-        "mode": "repulse"
+        "enable": false,
+        "mode": "push"
       },
       "resize": true
     },
     "modes": {
       "grab": {
-        "distance": 200,
+        "distance": 400,
         "line_linked": {
           "opacity": 1
         }
