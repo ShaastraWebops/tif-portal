@@ -12,6 +12,7 @@
 
 .desc, .list{
     background-color: white;
+    opacity: 0.5;
     line-height: 200%;
     display: block;
     padding: 20px 30px;
@@ -23,8 +24,9 @@
 
 .qn{
     background: white;
+    opacity: 0.5;
     margin-top: 0px;
-    margin-bottom: 0px; 
+    margin-bottom: 0px;
     margin-right: 20px;
     padding: 15px 25px;
     display: inline-block;

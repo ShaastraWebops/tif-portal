@@ -24,22 +24,46 @@ li{list-style:none}
 
 /* ---- base ---- */
 
-html,body{
-	background: white;
-}
 
-html{
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
+
 
 body{
   font:normal 75% Arial, Helvetica, sans-serif;
+  background: url("bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 canvas{
   display:block;
 	position: fixed;
 }
+
+/*body{
+
+width: 100%;
+  height: auto;
+  display: block;
+  position: absolute;
+} */
+
+
+
+/*html::after {
+  content: "";
+  background: url("bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: 0;
+} */
 
 
 /* ---- stats.js ---- */

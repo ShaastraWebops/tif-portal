@@ -17,3 +17,7 @@
 	align-items: center;
 	text-decoration: none;
 }
+.user-list {
+	background-color: white;
+  opacity: 0.5;
+}
