@@ -12,7 +12,7 @@
 
 .desc, .list{
     background-color: white;
-    opacity: 0.5;
+    opacity: 1;
     line-height: 200%;
     display: block;
     padding: 20px 30px;
@@ -24,14 +24,14 @@
 
 .qn{
     background: white;
-    opacity: 0.5;
+    opacity: 1;
     margin-top: 0px;
     margin-bottom: 0px;
     margin-right: 20px;
     padding: 15px 25px;
     display: inline-block;
     font-family: 'Rubik', sans-serif;
-    box-shadow: 10px 10px 25px #D3D3D3;
+    box-shadow: 10px 10px 25px #26297F;
 }
 
 #heading{
@@ -40,6 +40,7 @@
     font-weight: bolder;
     text-align: center;
     font-size: 3em;
+    color: white;
 }
 
 .navbar-inverse .navbar-nav>li>a{
@@ -49,4 +50,8 @@
 
 .last{
     float: right;
+}
+
+.desc, li{
+    font-size: 15px;
 }
