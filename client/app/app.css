@@ -46,6 +46,7 @@
 /* inject:css */
 @import 'admin/admin.css';
 @import 'leaderboard/leaderboard.css';
+@import 'list/list.css';
 @import 'main/main.css';
 @import 'submit/submit.css';
 @import 'tasks/task.css';
