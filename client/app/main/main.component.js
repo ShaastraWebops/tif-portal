@@ -7,12 +7,36 @@ export class MainController {
   awesomeThings = [];
   newThing = '';
 
+
   /*@ngInject*/
-  constructor($http) {
+  constructor($http,$scope,Auth) {
     this.$http = $http;
+    this.Auth = Auth;
+    this.$scope = $scope;
+    $scope.show=false;
   }
 
   $onInit() {
+    this.Auth.isLoggedIn().then(res => {
+      if(res)
+      {
+        this.$http.get('/api/users/me').then(res => {
+           if(res.status === 200)
+           {
+             if(res.data.dob){
+             this.$scope.show = true;
+             this.$scope.month = res.data.dob.month;
+             this.$scope.day = res.data.dob.day;
+             this.$scope.year = res.data.dob.year;
+           }
+           else {
+             this.$scope.show = true;
+             this.$scope.month = "Not Provided";
+           }
+           }
+        });
+      }
+    });
     this.$http.get('/api/things')
       .then(response => {
         this.awesomeThings = response.data;

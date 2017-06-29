@@ -35,6 +35,11 @@ var UserSchema = new Schema({
       }
     }
   },
+  dob: {
+    month: String,
+    day: Number,
+    year: Number
+  },
   files: [{
     taskid: String,
     name: String
