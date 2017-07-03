@@ -40,6 +40,9 @@ var UserSchema = new Schema({
     day: Number,
     year: Number
   },
+  fbdob: {
+    type: String
+  },
   files: [{
     taskid: String,
     name: String

@@ -45,6 +45,7 @@ export default function(app) {
   app.use(methodOverride());
   app.use(cookieParser());
   app.use(passport.initialize());
+  app.use(passport.session());
 
 
   // Persist sessions with MongoStore / sequelizeStore
@@ -54,6 +55,7 @@ export default function(app) {
     secret: config.secrets.session,
     saveUninitialized: true,
     resave: false,
+    cookie: {secure: false},
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
       db: 'caportal'

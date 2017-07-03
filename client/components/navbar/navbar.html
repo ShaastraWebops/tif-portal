@@ -47,9 +47,9 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li ng-show="$ctrl.isLoggedIn()&&!$ctrl.isAdmin()"><a href="/submit">Registration Form</a></li>
-        <!-- <li ng-hide="$ctrl.isLoggedIn()"><oauth-buttons classes="btn-block"></oauth-buttons> </li> -->
-        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
-        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+         <li ng-hide="$ctrl.isLoggedIn()"><oauth-buttons></oauth-buttons> </li>
+      <!--  <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
+        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li> -->
         <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="settings">Change Password</a></li>
         <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
       </ul>

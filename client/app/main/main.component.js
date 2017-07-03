@@ -14,6 +14,7 @@ export class MainController {
     this.Auth = Auth;
     this.$scope = $scope;
     $scope.show=false;
+    $scope.fbshow=false;
   }
 
   $onInit() {
@@ -23,6 +24,10 @@ export class MainController {
         this.$http.get('/api/users/me').then(res => {
            if(res.status === 200)
            {
+             if(res.data.fbdob){
+               this.$scope.dob = res.data.fbdob;
+               this.$scope.fbshow = true;
+             }
              if(res.data.dob){
              this.$scope.show = true;
              this.$scope.month = res.data.dob.month;

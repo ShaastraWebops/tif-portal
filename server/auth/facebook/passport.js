@@ -2,6 +2,15 @@ import passport from 'passport';
 import {Strategy as FacebookStrategy} from 'passport-facebook';
 
 export function setup(User, config) {
+  passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
   passport.use(new FacebookStrategy({
     clientID: config.facebook.clientID,
     clientSecret: config.facebook.clientSecret,
@@ -9,10 +18,12 @@ export function setup(User, config) {
     profileFields: [
       'displayName',
       'emails',
-      'link'
+      'link',
+      'birthday'
     ]
   },
   function(accessToken, refreshToken, profile, done) {
+    console.log(profile);
     User.findOne({'facebook.id': profile.id}).exec()
       .then(user => {
         if(user) {
@@ -23,6 +34,7 @@ export function setup(User, config) {
           name: profile.displayName,
           email: profile.emails[0].value,
           role: 'user',
+          fbdob: profile._json.birthday,
           provider: 'facebook',
           facebook: profile._json
         });
@@ -32,4 +44,6 @@ export function setup(User, config) {
       })
       .catch(err => done(err));
   }));
+
+
 }

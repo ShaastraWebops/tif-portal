@@ -43,9 +43,15 @@ export class AdminComponent {
 
   approve() {
 
-    console.log(this.taskid);
-    console.log(this.$scope.userid);
     this.$http.put('/api/tasks/approve/' + this.taskid, {userid: this.$scope.userid}).then(response => {
+      this.message = response.data.msg;
+
+    });
+  }
+
+  reject() {
+
+    this.$http.put('/api/tasks/reject/' + this.taskid, {userid: this.$scope.userid}).then(response => {
       this.message = response.data.msg;
 
     });
