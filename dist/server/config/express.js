@@ -32,6 +32,7 @@ exports.default = function (app) {
   app.use((0, _methodOverride2.default)());
   app.use((0, _cookieParser2.default)());
   app.use(_passport2.default.initialize());
+  app.use(_passport2.default.session());
 
   // Persist sessions with MongoStore / sequelizeStore
   // We need to enable sessions for passport-twitter because it's an
@@ -40,6 +41,7 @@ exports.default = function (app) {
     secret: _environment2.default.secrets.session,
     saveUninitialized: true,
     resave: false,
+    cookie: { secure: false },
     store: new MongoStore({
       mongooseConnection: _mongoose2.default.connection,
       db: 'caportal'
@@ -164,9 +166,9 @@ var _expressSession = require('express-session');
 
 var _expressSession2 = _interopRequireDefault(_expressSession);
 
-var _connectMongo = require('connect-mongo');
+var _es = require('connect-mongo/es5');
 
-var _connectMongo2 = _interopRequireDefault(_connectMongo);
+var _es2 = _interopRequireDefault(_es);
 
 var _mongoose = require('mongoose');
 
@@ -174,6 +176,6 @@ var _mongoose2 = _interopRequireDefault(_mongoose);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var MongoStore = (0, _connectMongo2.default)(_expressSession2.default);
+var MongoStore = (0, _es2.default)(_expressSession2.default);
 //import shrinkRay from 'shrink-ray';
 //# sourceMappingURL=express.js.map

@@ -14,7 +14,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var router = new _express.Router();
 
-router.get('/', auth.hasRole('admin'), controller.index);
+router.get('/', controller.index);
 router.get('/list', auth.hasRole('admin'), controller.list);
 router.get('/export', auth.hasRole('admin'), controller.exp);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);

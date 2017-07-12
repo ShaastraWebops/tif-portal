@@ -62,7 +62,7 @@ function list(req, res) {
 
 function exp(req, res) {
   return _user2.default.find({ submitted: true }, '-_id -salt -password -provider -role').exec().then(function (users) {
-    var fields = ['name', 'email', 'college.address', 'college.city', 'college.name', 'college.state', 'education.branch', 'education.degree', 'education.year', 'phonenumber', 'previous', 'prevyear', 'postal.address', 'postal.city', 'postal.pin', 'postal.state', 'questions.past', 'questions.right', 'questions.why', 'social', 'wnumber'];
+    var fields = ['name', 'email', 'college.address', 'college.city', 'college.name', 'college.state', 'education.branch', 'education.degree', 'education.year', 'phonenumber', 'previous', 'prevyear', 'postal.address', 'postal.city', 'postal.pin', 'postal.state', 'questions.past', 'questions.right', 'questions.why', 'social', 'wnumber', 'fblink'];
     var csv = json2csv({ data: users, fields: fields });
     res.setHeader('Content-disposition', 'attachment; filename=users.csv');
     res.set('Content-Type', 'text/csv');
@@ -108,6 +108,7 @@ function submit(req, res) {
     user.previous = req.body.previous;
     user.prevyear = req.body.prevyear;
     user.social = req.body.social;
+    user.fblink = req.body.fblink;
     user.college.name = req.body.college.name;
     user.college.address = req.body.college.address;
     user.college.city = req.body.college.city;

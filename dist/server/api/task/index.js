@@ -19,6 +19,7 @@ router.get('/getusers/:id', auth.hasRole('admin'), controller.getusers);
 router.get('/gettasks', auth.isAuthenticated(), controller.gettasks);
 router.put('/apply/:id', auth.isAuthenticated(), controller.apply);
 router.get('/:id', auth.isAuthenticated(), controller.show);
+router.put('/approve/:id', auth.hasRole('admin'), controller.approve);
 
 module.exports = router;
 //# sourceMappingURL=index.js.map
