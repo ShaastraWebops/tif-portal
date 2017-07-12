@@ -8,6 +8,7 @@ exports.apply = apply;
 exports.getusers = getusers;
 exports.show = show;
 exports.gettasks = gettasks;
+exports.approve = approve;
 
 var _task = require('./task.model');
 
@@ -54,7 +55,7 @@ function apply(req, res) {
   var error = false;
   return _task2.default.findById(taskid).exec().then(function (task) {
     if (!task) {
-      res.json({ success: false, message: "No such task available" });
+      return res.json({ success: false, message: "No such task available" });
     }
     _task2.default.update({ _id: taskid }, { $addToSet: { pending: userid } }, function (err, msg) {
       if (err) throw err;
@@ -94,8 +95,36 @@ function show(req, res) {
 function gettasks(req, res) {
 
   var userid = req.user._id;
-  _task2.default.find({}).exec().then(function (tasks) {
+  _task2.default.find({}).populate('approved').exec().then(function (tasks) {
     res.status(200).json({ tasks: tasks, userid: userid });
   }).catch(handleError(res));
+}
+
+function approve(req, res) {
+
+  var taskId = req.params.id;
+  var userid = req.body.userid;
+
+  _task2.default.findById(taskId).exec().then(function (task) {
+    if (!task) {
+
+      return res.json({ success: false, msg: "no such tasks exists!" });
+    }
+    var points = task.points;
+    _task2.default.update({ _id: taskId }, { $addToSet: { approved: userid } }, function (err, msg) {
+
+      if (err) throw err;
+      if (msg.nModified == 0) {
+
+        res.json({ success: false, msg: 'Already approved!' });
+      } else {
+        res.json({ success: true, msg: "Approved!" });
+        _user2.default.update({ _id: userid }, { $inc: { points: points } }, function (err, msg) {
+
+          if (err) throw err;
+        });
+      }
+    });
+  });
 }
 //# sourceMappingURL=task.controller.js.map

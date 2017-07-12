@@ -47,7 +47,8 @@ export class SubmitComponent {
         .then(resp => {
           console.log(response.data);
           if(resp.data.success == true) {
-            this.success = 'Form Successfully submitted';
+            alert('Successfully Registered');
+            window.location='/';
           }
         });
       };

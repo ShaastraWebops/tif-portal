@@ -49,6 +49,14 @@ var UserSchema = new _mongoose.Schema({
       }
     }
   },
+  dob: {
+    month: String,
+    day: Number,
+    year: Number
+  },
+  fbdob: {
+    type: String
+  },
   files: [{
     taskid: String,
     name: String
@@ -83,6 +91,7 @@ var UserSchema = new _mongoose.Schema({
     right: String,
     past: String
   },
+  points: { type: Number, default: 0 },
   facebook: {},
   github: {}
 });

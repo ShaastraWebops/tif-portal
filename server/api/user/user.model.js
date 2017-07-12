@@ -77,6 +77,10 @@ var UserSchema = new Schema({
     right: String,
     past: String
   },
+  selected: {
+    type: Number,
+    default: 0
+  },
   points: {type: Number, default: 0},
   facebook: {},
   github: {}

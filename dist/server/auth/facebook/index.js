@@ -19,13 +19,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var router = _express2.default.Router();
 
 router.get('/', _passport2.default.authenticate('facebook', {
-  scope: ['email', 'user_about_me'],
+  scope: ['email', 'user_about_me', 'user_birthday'],
   failureRedirect: '/signup',
   session: false
 })).get('/callback', _passport2.default.authenticate('facebook', {
   failureRedirect: '/signup',
   session: false
 }), _auth.setTokenCookie);
+
+/*  .get('/auth/facebook/callback',passport.authenticate('facebook',{failureRedirect: '/login'}))
+  .get('/auth/facebook',passport.authenticate('facebook',{scope: 'email'})); */
 
 exports.default = router;
 //# sourceMappingURL=index.js.map
