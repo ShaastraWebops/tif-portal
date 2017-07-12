@@ -10,17 +10,17 @@ import config from './environment/';
 import Task from  '../api/task/task.model';
 export default function seedDatabaseIfNeeded() {
   if(config.seedDB) {
-    User.find({}).remove()
-      .then(() => {
-        User.create({
-          provider: 'local',
-          role: 'admin',
-          name: 'Admin',
-          email: 'studentrelati',
-          password: 'admin'
-        })
-        .then(() => console.log('finished populating users'))
-        .catch(err => console.log('error populating users', err));
-      });
+    // User.find({}).remove()
+    //   .then(() => {
+    //     User.create({
+    //       provider: 'local',
+    //       role: 'admin',
+    //       name: 'Admin',
+    //       email: 'studentrelations@shaastra.org',
+    //       password: 'admin'
+    //     })
+    //     .then(() => console.log('finished populating users'))
+    //     .catch(err => console.log('error populating users', err));
+    //   });
   }
 }
