@@ -7,7 +7,7 @@ module.exports = {
 
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/caportal-dev'
+    uri: 'mongodb://caportal-devOwner:' + process.env.DEV_PASSWORD + '@localhost/caportal-dev'
   },
 
   // Seed database on startup
