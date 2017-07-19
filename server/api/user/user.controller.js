@@ -3,6 +3,7 @@
 import User from './user.model';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
+const sendgrid = require("sendgrid")(process.env.CASITE);
 var json2csv = require('json2csv');
 
 function validationError(res, statusCode) {
@@ -66,7 +67,27 @@ export function create(req, res) {
       var token = jwt.sign({ _id: user._id }, config.secrets.session, {
         expiresIn: 60 * 60 * 5
       });
-      res.json({ token });
+      var text_body = "Hello "+user.name+ ",\n\n Greetings from Shaastra 2018, IIT Madras! \n\nThank you for signing up for the Shaastra Campus Ambassador Program. Please complete the questionnaire on the portal by 25th August 2017.\n You will be intimidated by mail if you are selected to become a Campus Ambassador. Meanwhile please like and follow our Facebook page: fb.com/Shaastra for updates.\n If you have any queries contact us on studentrelations@shaastra.org \n\n\nRegards, \nTeam Shaastra \n IIT Madras ";
+var receiver = user.email;
+    var params = {
+        to: receiver,
+        from: 'studentrelations@shaastra.org',
+        //cc: 'summitregistrations@shaastra.org',
+        fromname: 'Student Relations, Shaastra',
+        subject: 'Shaastra 2018 || Campus Ambassador',
+        text: text_body
+    };
+    var email = new sendgrid.Email(params);
+    console.log(email);
+    sendgrid.send(email, function (err, json) {
+      if(err)
+        console.log('Error sending mail - ', err);
+      else
+        {
+          console.log('Success sending mail - ', json);
+        }
+    });
+    res.json({ token });
     })
     .catch(validationError(res));
 }

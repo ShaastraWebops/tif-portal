@@ -49,13 +49,14 @@ export default class SignupController {
         email: this.user.email,
         password: this.user.password,
         dob: {
-          month: this.$scope.month,
-          day: this.$scope.day,
-          year: this.$scope.year
+          month: this.$scope.month || null,   //as date of birth is commented out in html file
+          day: this.$scope.day || null,
+          year: this.$scope.year || null
         }
       })
         .then(() => {
           // Account created, redirect to home
+          console.log("HOOOI");
           this.$state.go('main');
         })
         .catch(err => {
