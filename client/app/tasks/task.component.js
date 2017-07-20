@@ -65,12 +65,32 @@ export class AdminComponent {
         if(res.data.success)
         {
           this.taskname = res.data.task.title;
+          var taskSel = res.data.task;
         }
-      });
 
       this.$http.get('/api/tasks/getusers/' + this.taskid).then(res => {
-        this.users = res.data.users;
+        const usersArray = res.data.users;
+        var usersFinalArray = [];
+        for (var j = 0; j < usersArray.length; j++){
+          var user_ins = usersArray[j];
+          user_ins.approved = false;
+          user_ins.rejected = false;
+          for (var k = 0; k < taskSel.approved.length; k++) {
+            if (taskSel.approved[k] == user_ins._id) {
+              user_ins.approved = true;
+              break;
+            }
+          }
+          for (var k = 0; k < taskSel.rejected.length; k++) {
+            if (taskSel.rejected[k] == user_ins._id) {
+              user_ins.rejected = true;
+              break;
+            }
+          }usersFinalArray.push(user_ins);
+        }this.users = usersFinalArray;
       });
+  });
+
       this.file = function(files,name,id){
         this.$scope.name =  name;
         this.$scope.fileshow = true;
@@ -158,6 +178,7 @@ export class UserComponent {
         const userid = resp.userid;
         var tasksFinalArray = [];
         var approvalMsg = "Approved!";
+        var rejectionMsg = "Rejected!";
         for (var i = 0; i < tasksArray.length; i++) {
 
           var task = tasksArray[i];
@@ -176,23 +197,31 @@ export class UserComponent {
           }
 
           if (task.applyDisable) {
-          for (var j = 0; j < task.approved.length; j++) {
 
-            var approvedArray = task.approved;
+          var approvedArray = task.approved;
+          for (var j = 0; j < task.approved.length; j++) {
             if (approvedArray[j]._id == userid) {
 
               task.completed_user = approvalMsg;
               break;
             }
           }
-          if (task.completed_user != approvalMsg) {
+            var rejectedArray = task.rejected;
+            for (var j = 0; j < task.rejected.length; j++) {
+              if (rejectedArray[j] == userid) {
 
-            task.completed_user = "Not Checked!";
-          }
-          if (task.approved.length != 0) {
+                task.completed_user = rejectionMsg;
+                break;
+              }
+            }
+            if (task.completed_user != approvalMsg && task.completed_user != rejectionMsg) {
+
+              task.completed_user = "Not Checked!";
+            }
+        }
+        if (task.approved.length != 0) {
 
             task.completed = true;
-          }
         }
           tasksFinalArray.push(task);
         }

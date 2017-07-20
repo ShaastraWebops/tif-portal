@@ -21,8 +21,12 @@ var TaskSchema = new Schema({
    ],
   approved:[
   {type: Schema.Types.ObjectId, ref: 'User'
-}
-]
+  }
+   ],
+  rejected:[
+  {type: Schema.Types.ObjectId, ref: 'User'
+  }
+   ]
 });
 
 /**

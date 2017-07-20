@@ -12,19 +12,26 @@
 </thead>
 <tbody>
   <tr ng-repeat="user in taskCtrl.users">
-    <td>{{ user.name }}</td>
-    <td>{{ user.email }}</td>
-    <td><button class="btn btn-link" ng-click="taskCtrl.file(user.files,user.name, user._id);">Click here to view uploaded file</button></td>
+    <td ng-class='{success : user.approved, danger: user.rejected}'>{{ user.name }}</td>
+    <td ng-class='{success : user.approved, danger: user.rejected}'>{{ user.email }}</td>
+    <td ng-class='{success : user.approved, danger: user.rejected}'>
+      <button class="btn btn-link" ng-click="taskCtrl.file(user.files,user.name, user._id);">
+        Click here to view uploaded file
+      </button>
+    </td>
   </tr>
 </tbody>
 </table>
 </div>
 <div ng-show="fileshow" class="box">
   <button class="btn btn-default" ng-click="taskCtrl.back();">
-     Go Back
+     <h1>Go Back</h1>
    </button>
    <button class="btn btn-success" ng-click="taskCtrl.approve()">
      Approve Submission
+   </button>
+   <button class="btn btn-danger" ng-click="taskCtrl.reject()">
+       Reject Submission
    </button>
    <div class="alert alert-success" ng-show="taskCtrl.message"> {{taskCtrl.message}} </div>
  <h1>{{ name }}'s submission for {{ taskCtrl.taskname }}</h1>

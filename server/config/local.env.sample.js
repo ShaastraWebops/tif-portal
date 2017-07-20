@@ -13,5 +13,5 @@ module.exports = {
   FACEBOOK_SECRET: 'FACEBOOK_SECRET',
   callbackURL: 'http://localhost:3000/auth/facebook/callback',
   // Control debug level for modules using visionmedia/debug
-  DEBUG: ''
+  DEBUG: '',
 };

@@ -2,7 +2,7 @@
 
 import Task from './task.model';
 import User from '../user/user.model';
-
+import mongoose from 'mongoose';
 function validationError(res, statusCode) {
   statusCode = statusCode || 422;
   return function(err) {
@@ -96,6 +96,31 @@ export function gettasks(req, res) {
   .catch(handleError(res));
 }
 
+export function reject(req, res) {
+  
+  var taskId = req.params.id;
+  var userid = req.body.userid;
+
+  Task.findById(taskId).exec()
+  .then(task => {
+    if (!task) {
+      return res.json({success: false, msg: 'no such task exists!'});
+    }
+    Task.update({_id: taskId}, {$addToSet: {rejected: userid}}, function(err, msg) {
+      if (err) throw err;
+      if  (msg.nModified == 0){
+        res.json({success: false, msg: 'Already rejected!'});
+      }
+      else {
+        Task.update({'_id': taskId}, {$pull: {'approved': mongoose.Types.ObjectId(userid)}}, function(err, msg) {
+          if (err) throw err;
+          res.json({success: true, msg: "Rejected!"});
+        });
+      }
+    });
+  });  
+}
+
 export function approve(req, res) {
 
   var taskId = req.params.id;
@@ -105,7 +130,7 @@ export function approve(req, res) {
   .then(task => {
     if(!task) {
 
-      return res.json({success: false, msg: "no such tasks exists!"});
+      return res.json({success: false, msg: "no such task exists!"});
     }
     var points = task.points;
     Task.update({_id: taskId}, {$addToSet:{approved: userid}}, function(err, msg){
@@ -116,10 +141,13 @@ export function approve(req, res) {
         res.json({success: false, msg: 'Already approved!'});
       }
       else {
-        res.json({success: true, msg: "Approved!"});
         User.update({_id: userid}, {$inc: {points: points}}, function(err, msg) {
 
           if (err) throw err;
+        });
+        Task.update({'_id': taskId}, {$pull: {'rejected': mongoose.Types.ObjectId(userid)}}, function(err, msg) {
+          if (err) throw err;
+          res.json({success: true, msg: "Approved!"});
         });
       }
     });
