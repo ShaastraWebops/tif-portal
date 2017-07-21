@@ -173,7 +173,7 @@
 			</div>
 			<div class="input-group" ng-class="{'has-error':!form.fb.$valid && !form.fb.$pristine ,'has-success':form.fb.$valid}" >
 				<label for="fb" class="control-label">Enter your Facebook profile link (if applicable)</label>
-				<input type="text" name="fb" id="fb" ng-model="submitCtrl.submit.fblink" ng-pattern="/^(https?:\/\/)?(www\.)?facebook.com\/[a-z_\-A-Z0-9(\.\?)?]/" class="form-control col-xs-12 col-lg-12 col-sm-12">
+				<input type="text" name="fb" id="fb" ng-model="submitCtrl.submit.fblink" ng-pattern="/(https?:\/\/)?(www\.)?facebook.com\/[a-z_\-A-Z0-9(\.\?)?]/" class="form-control col-xs-12 col-lg-12 col-sm-12">
 
 				<p class="help-block" ng-show="form.fb.$invalid && form.fb.$dirty && form.fb.$touched">
 						Enter a valid profile link
