@@ -33,7 +33,7 @@ export function index(req, res) {
 }
 
 export function list(req, res) {
-  return User.find({submitted: true}, '-_id -salt -password -provider -role').exec()
+  return User.find({submitted: true}, '-salt -password -provider -role').exec()
     .then(users => {
       res.status(200).json(users);
     })
@@ -62,7 +62,7 @@ export function create(req, res) {
   var newUser = new User(req.body);
   newUser.provider = 'local';
   newUser.role = 'user';
-  newUser.save()
+  return newUser.save()
     .then(function(user) {
       var token = jwt.sign({ _id: user._id }, config.secrets.session, {
         expiresIn: 60 * 60 * 5
@@ -77,6 +77,7 @@ var receiver = user.email;
         subject: 'Shaastra 2018 || Campus Ambassador',
         text: text_body
     };
+    console.log(params);
     var email = new sendgrid.Email(params);
     console.log(email);
     sendgrid.send(email, function (err, json) {
@@ -148,6 +149,84 @@ export function destroy(req, res) {
   return User.findByIdAndRemove(req.params.id).exec()
     .then(function() {
       res.status(204).end();
+    })
+    .catch(handleError(res));
+}
+
+export function select(req, res) {
+  return User.findById(req.params.id).exec()
+    .then(function(user) {
+      if(!user)
+      {
+        res.json({success: false,message: "No User found"});
+      }
+      else{
+      user.selected=1;
+      return user.save()
+        .then(() => {
+          var text_body = "Hello "+user.name+ ",\n\n Greetings from Shaastra 2018, IIT Madras! \n\nFirst of all, congratulations on being selected as a Campus Ambassador for your college. We would like to welcome you to the team behind India’s largest completely student-run technical extravaganza - Shaastra 2018.\nWith a strong team of 500 students of IIT Madras and hundreds of Campus Ambassadors across India, Shaastra 2018 aims to give the best technical experience to everyone in the country ranging from school students to engineers of the future.\nWith this in mind, we hope you have an amazing journey working with us as you represent your college.\nFurther instructions and information would be communicated to you shortly. We request you to keep checking the CA Portal as well as your email.\n\nLooking forward to work with you.\n\nRegards,\nTeam Shaastra\nIIT Madras";
+        var params = {
+            to: user.email,
+            from: 'studentrelations@shaastra.org',
+            //cc: 'summitregistrations@shaastra.org',
+            fromname: 'Student Relations, Shaastra',
+            subject: 'Shaastra 2018 || Campus Ambassador',
+            text: text_body
+        };
+        console.log(params);
+        var email = new sendgrid.Email(params);
+        console.log(email);
+        sendgrid.send(email, function (err, json) {
+          if(err)
+            console.log('Error sending mail - ', err);
+          else
+            {
+              console.log('Success sending mail - ', json);
+            }
+        });
+          res.json({success: true, message: "User updated"});
+        })
+        .catch(handleError(res));
+     }
+    })
+    .catch(handleError(res));
+}
+
+export function reject(req, res) {
+  return User.findById(req.params.id).exec()
+    .then(function(user) {
+      if(!user)
+      {
+        res.status(400).json({message: "No User found"});
+      }
+      else{
+      user.selected=2;
+      var name=user.name,email=user.email;
+      return user.save()
+        .then(() => {
+          var text_body = "Hello "+name+ ",\n\n Greetings from Shaastra 2018, IIT Madras! \n\nWe regret to inform you that your application for being a Shaastra Campus Ambassador couldn’t be accommodated. However, lose hope not, for you can try again for next year - which will see a bigger CA Program.\nTill then, get a feel of Shaastra - visit the IIT Madras campus in January and experience the largest student-run technical extravaganza. With a host of workshops, international competitions, lectures, exhibitions and shows, Shaastra is bound to amaze you.\n\nWe look forward to see you at Shaastra 2018, and as a Campus Ambassador next year!\n\nRegards,\nTeam Shaastra\nIIT Madras";
+        var params = {
+            to: email,
+            from: 'studentrelations@shaastra.org',
+            //cc: 'summitregistrations@shaastra.org',
+            fromname: 'Student Relations, Shaastra',
+            subject: 'Shaastra 2018 || Campus Ambassador',
+            text: text_body
+        };
+        var email = new sendgrid.Email(params);
+        console.log(email);
+        sendgrid.send(email, function (err, json) {
+          if(err)
+            console.log('Error sending mail - ', err);
+          else
+            {
+              console.log('Success sending mail - ', json);
+            }
+        });
+          res.status(200).json({message: "User updated"});
+        })
+        .catch(handleError(res));
+     }
     })
     .catch(handleError(res));
 }

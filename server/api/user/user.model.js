@@ -21,6 +21,7 @@ var UserSchema = new Schema({
     }
   },
   submitted: {type: Boolean, default: false},
+  selected: {type: Number, default: 0},   //0 means decided, 1 means approvedand 2 means rejected
   role: {
     type: String,
     default: 'user'

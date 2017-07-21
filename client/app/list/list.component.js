@@ -28,6 +28,32 @@ export class ListComponent {
       });
     };
   }
+
+  selected(id){
+    this.$http.put('/api/users/selected/'+id).then(res => {
+      if(res.status === 200)
+      {
+        this.$http.get('/api/users/list').then(response => {
+          if(response.status === 200) {
+            this.users = response.data;
+          }
+        });
+      }
+    });
+  }
+
+  rejected(id){
+    this.$http.put('/api/users/rejected/'+id).then(res => {
+      if(res.status === 200)
+      {
+        this.$http.get('/api/users/list').then(response => {
+          if(response.status === 200) {
+            this.users = response.data;
+          }
+        });
+      }
+    });
+  }
 }
 
 export default angular.module('caportalApp.list', [uiRouter])

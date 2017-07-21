@@ -15,6 +15,7 @@ input[type="number"] {
 }
 .box {
   padding-left: 10%;
+  padding-top: 5%;
 }
 .custom-file-upload {
     border: 1px solid #ccc;
