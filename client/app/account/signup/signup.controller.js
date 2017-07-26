@@ -13,8 +13,9 @@ export default class SignupController {
 
 
   /*@ngInject*/
-  constructor(Auth, $state,$scope) {
+  constructor(Auth, $state,$scope,$http) {
     this.Auth = Auth;
+    this.$http = $http;
     this.$state = $state;
     this.$scope = $scope;
     $scope.years = [1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010];
@@ -55,8 +56,6 @@ export default class SignupController {
         }
       })
         .then(() => {
-          // Account created, redirect to home
-          console.log("HOOOI");
           this.$state.go('main');
         })
         .catch(err => {
