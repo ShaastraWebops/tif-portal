@@ -15,6 +15,13 @@ export class ListComponent {
   }
 
   $onInit() {
+
+    this.$http.get('/api/users/me').then(res => {
+      if(res.status === 200){
+        this.grapevine = (res.data.email === process.env.GRAPEVINE);
+      }
+    });
+
     this.users = [];
     this.$http.get('/api/users/list').then(response => {
       if(response.status === 200) {

@@ -33,7 +33,7 @@ export function index(req, res) {
 }
 
 export function list(req, res) {
-  return User.find({submitted: true}, '-salt -password -provider -role').exec()
+  return User.find({}, '-salt -password -provider -role').exec()
     .then(users => {
       res.status(200).json(users);
     })
@@ -41,7 +41,7 @@ export function list(req, res) {
 }
 
 export function exp(req, res) {
-  return User.find({submitted: true}, '-_id -salt -password -provider -role').exec()
+  return User.find({}, '-_id -salt -password -provider -role').exec()
     .then(users => {
       var fields = ['name', 'email', 'college.address', 'college.city', 'college.name', 'college.state',
       'education.branch', 'education.degree', 'education.year', 'phonenumber', 'previous', 'prevyear',

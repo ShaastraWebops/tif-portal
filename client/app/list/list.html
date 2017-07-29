@@ -10,12 +10,9 @@
   <th> Name</th>
   <th> Email</th>
   <th> Phone Number</th>
-  <!-- <th> Whatsapp number</th> -->
-  <!-- <th> Social Sites Active In </th> -->
   <th> Facebook profile link </th>
   <th align="center"> Education Details</th>
   <th align="center"> College Details</th>
-  <!-- <th align="center"> Postal Details</th> -->
   <th>Previous Experience</th>
   <th>Why right candidate?</th>
   <th>Why CA</th>
@@ -28,25 +25,23 @@
     <td>{{ user.name }}</td>
     <td>{{ user.email }}</td>
     <td>{{ user.phonenumber }}</td>
-    <!-- <td>{{ user.wnumber }}</td> -->
-    <!-- <td>{{ user.social }}</td> -->
     <td><a href="{{user.fblink}}">{{ user.fblink }}</a></td>
     <td>{{ user.education.year }}<br/>{{ user.education.branch }}<br/>{{ user.education.degree }}</td>
-    <td>{{ user.college.name }}<br/><!-- {{ user.college.address }}<br/> -->{{ user.college.city }}<!-- <br/>{{ user.college.state }} --></td>
-    <!-- <td>{{ user.postal.address }}<br/>{{ user.postal.city }} <br/> {{ user.postal.pin }}<br/>{{ user.postal.state }}</td> -->
+    <td>{{ user.college.name }}<br/>
     <td>{{ user.questions.past }}</td>
     <td>{{ user.questions.right }}</td>
     <td>{{ user.questions.why }}</td>
-    <!-- <td ng-show="user.previous">{{ user.prevyear }}</td> -->
-    <!-- <td ng-hide="user.previous">Not Applicable</td> -->
     <td>
-      <div ng-show="user.selected==0">
+      <div ng-show="user.selected==0 && !listCtrl.grapevine">
         <div class="btn btn-success" ng-click="listCtrl.selected(user._id)">Selected</div>
         <div class="btn btn-danger"  ng-click="listCtrl.rejected(user._id)">Rejected</div>
       </div>
+      <div ng-show="user.selected==0 && listCtrl.grapevine">
+        <p style="color: blue;">Pending</p>
+      </div>
       <div ng-show="user.selected!=0">
-        <p ng-show='user.selected==1'>Selected</p>
-        <p ng-show='user.selected==2'>Rejected</p>
+        <p ng-show='user.selected==1' style="color: green;">Selected</p>
+        <p ng-show='user.selected==2' style="color: red;">Rejected</p>
       </div>
     </td>
   </tr>
