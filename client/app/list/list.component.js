@@ -18,7 +18,7 @@ export class ListComponent {
 
     this.$http.get('/api/users/me').then(res => {
       if(res.status === 200){
-        this.grapevine = (res.data.email === process.env.GRAPEVINE);
+        this.grapevine = (res.data.email.endsWith('@thegrapevine.co.in'));
       }
     });
 
