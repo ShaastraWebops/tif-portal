@@ -67,9 +67,9 @@ export default function(app) {
    */
   if(env !== 'test' && !process.env.SAUCE_USERNAME) {
     app.use(lusca({
-      csrf: {
-        angular: false
-      },
+      // csrf: {
+      //   angular: false
+      // },
       xframe: 'SAMEORIGIN',
       hsts: {
         maxAge: 31536000, //1 year, in seconds

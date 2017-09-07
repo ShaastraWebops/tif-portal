@@ -5,8 +5,13 @@ import {registerEvents} from './city.events';
 
 var CitySchema = new mongoose.Schema({
   name: String,
-  info: String,
-  active: Boolean
+  workshops: [{
+  	name: String,
+  	count: {
+  		type: Number,
+  		default: 0
+  	}
+  }]
 });
 
 registerEvents(CitySchema);
