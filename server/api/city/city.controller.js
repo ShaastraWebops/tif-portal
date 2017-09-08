@@ -90,6 +90,20 @@ export function upsert(req, res) {
   if(req.body._id) {
     delete req.body._id;
   }
+  
+  if(req.body.workshops.length==1){
+    req.body.workshops[0].count = req.body.workshops[0].count + 1;
+  }
+  else if(req.body.workshops.length==2){
+    req.body.workshops[0].count = req.body.workshops[0].count + 1;
+    req.body.workshops[1].count = req.body.workshops[1].count + 1;
+  }
+  else if(req.body.workshops.length==3){
+    req.body.workshops[0].count = req.body.workshops[0].count + 1;
+    req.body.workshops[1].count = req.body.workshops[1].count + 1;
+    req.body.workshops[2].count = req.body.workshops[2].count + 1;
+  }
+
   return City.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: true, setDefaultsOnInsert: true, runValidators: true}).exec()
 
     .then(respondWithResult(res))

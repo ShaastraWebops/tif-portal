@@ -10,10 +10,11 @@ import path from 'path';
 export default function(app) {
 
   app.use(function(req, res, next) {
-     res.header("Access-Control-Allow-Origin", "*");
-     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-     next();
-   });
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");  //if any error comes Access-Control-Allow-Methods not given or so, just add it here
+    next();
+});
   // Insert routes below
   app.use('/api/citys', require('./api/city'));
   app.use('/api/uploads', require('./api/upload'));
