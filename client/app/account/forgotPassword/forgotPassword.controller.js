@@ -2,13 +2,14 @@
 
 export default class fpController {
   /*@ngInject*/
-  constructor($http, $state) {
+  constructor($http, $state, $window) {
     this.$state = $state;
+    this.$window=$window;
+
     this.$http = $http;
-    this.blah="forgotpassword controller blah";
     this.submitted = false;
     this.message = '';
-    this.reset={};
+    this.email='';
     // this.$state.go('main');
 
   }
@@ -19,14 +20,19 @@ export default class fpController {
     this.message = 'Working...';
 
     if(form.$valid) {
-      this.$http.post('/api/users/forgotPassword', { email: this.reset.email })
+      this.$http.post('/api/users/forgotpass', { email: this.email })
       .then((message) => {
-        this.message = 'Sent a mail to ' + this.reset.email + ' with further information';
-              this.reset.email = '';
+          this.$window.alert('Mail Sent to ' + this.email + ' with further Instructions');
+
+              this.email = '';
+              this.submitted = false;
+              this.message = '';
+
+
       })
       .catch((message) =>{
         this.message = 'Email does not exist (or) some error has occurred';
-        this.reset.email = '';
+        this.email = '';
       });
     }
   }

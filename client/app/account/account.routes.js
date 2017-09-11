@@ -34,8 +34,8 @@ export default function routes($stateProvider) {
       controllerAs:'vm'
     })
     .state('resetpassword', {
-        // url: '/resetpassword/:email/:token',
-        url: '/resetpassword',
+        url: '/resetpassword/:email/:token',
+        // url: '/resetpassword',
         template: require('./resetPassword/resetPassword.html'),
         controller: 'rpController',
         controllerAs:'vm'
