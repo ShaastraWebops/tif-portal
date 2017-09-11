@@ -27,6 +27,19 @@ export default function routes($stateProvider) {
       controller: 'SignupController',
       controllerAs: 'vm'
     })
+    .state('forgotpassword',{
+      url:'/forgotpassword',
+      template: require('./forgotPassword/forgotPassword.html'),
+      controller: 'fpController',
+      controllerAs:'vm'
+    })
+    .state('resetpassword', {
+        url: '/resetpassword/:email/:token',
+        // url: '/resetpassword',
+        template: require('./resetPassword/resetPassword.html'),
+        controller: 'rpController',
+        controllerAs:'vm'
+      })
     .state('settings', {
       url: '/settings',
       template: require('./settings/settings.html'),
