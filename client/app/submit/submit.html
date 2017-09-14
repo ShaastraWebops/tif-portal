@@ -137,40 +137,40 @@
   <h2 align="center" class="group">
 	<br><br>  Registration Form - Team Details
 </h2>
-<form  class="form" name="formp4" novalidate>
+<form  class="form" name="formp2" novalidate>
 <div align="left"><button ng-click="submitCtrl.back();" class="btn btn-default">Previous Page</button></div>
  
-  <div class="form-group input-group" ng-class="{'has-error':!formp4.team_name.$valid && !formp4.team_name.$untouched,'has-success':formp4.team_name.$valid}" >
+  <div class="form-group input-group" ng-class="{'has-error':!formp2.team_name.$valid && !formp2.team_name.$untouched,'has-success':formp2.team_name.$valid}" >
       <label class="control-label">Team Name *</label>
-      <input type="text" name="team_name" class="form-control" ng-required="true" placeholder="Team Name" ng-model="ctrl.newparticipant.team_name" />
-      <p class="help-block" ng-show="formp4.team_name.$error.required && formp4.team_name.$touched">
+      <input type="text" name="team_name" size="100%;" class="form-control" ng-required="true" placeholder="Team Name" ng-model="ctrl.newparticipant.team_name" />
+      <p class="help-block" ng-show="formp2.team_name.$error.required && formp2.team_name.$touched">
         This field is required
       </p>
       </div>
       <label>Team Members and their email IDs ( Maximum 5 members including you)</label><br/>
       <div class="form-group input-group" >
       <label class="control-label">Member 1</label><br/>
-      <input type="text" name="mem1_name" class="form-control" placeholder="Name" ng-model="ctrl.newparticipant.name" disabled="true"/></div>
+      <input type="text" name="mem1_name" size="100%;" class="form-control  col-xs-12 col-lg-6 col-sm-8" placeholder="Name" ng-model="ctrl.newparticipant.name" disabled="true"/></div>
   <div class="form-group input-group" >
-      <input type="text" name="mem1_email"  class="form-control" placeholder="Please go back to previous step and fill the Email-ID there" ng-model="ctrl.newparticipant.email" disabled="true"/>
+      <input type="text" name="mem1_email"  class="form-control  col-xs-12 col-lg-6 col-sm-8" placeholder="Please go back to previous step and fill the Email-ID there" ng-model="ctrl.newparticipant.email" disabled="true"/>
     </div>
     <br>
 
 
-  <div class="form-group input-group " ng-class="{'has-error':!formp4.mem2_email.$valid && !formp4.mem2_name.$error.required && (!formp4.mem2_email.$pristine || formp4.mem2_email.$touched),'has-success':formp4.mem2_email.$valid && formp4.mem2_email.$dirty}" >
+  <div class="form-group input-group " ng-class="{'has-error':!formp2.mem2_email.$valid && !formp2.mem2_name.$error.required && (!formp2.mem2_email.$pristine || formp2.mem2_email.$touched),'has-success':formp2.mem2_email.$valid && formp2.mem2_email.$dirty}" >
  
       <label class="control-label">Member 2</label>
-      <input type="text" name="mem2_name" ng-required="true" class="form-control" placeholder="Name " ng-model="ctrl.newparticipant.mem2_name" />
+      <input type="text" name="mem2_name" size="100%;" ng-required="true" class="form-control  col-xs-12 col-lg-6 col-sm-8" placeholder="Name " ng-model="ctrl.newparticipant.mem2_name" />
     </div>
-  <div class="form-group input-group has-feedback" ng-class="{'has-error': (!formp4.mem2_name.$error.required  && formp4.mem2_email.$untouched)  || (!formp4.mem2_email.$valid),'has-success':formp4.mem2_email.$valid && !formp4.mem2_email.$error.required && !formp4.mem2_name.$error.required}" >
-      <input type="email" name="mem2_email" ng-required="true" class="form-control" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" placeholder="Enter the Email-id"ng-model="ctrl.newparticipant.mem2_email" />
-      <p class="help-block" ng-show=" formp4.mem2_email.$error.required && !formp4.mem2_name.$error.required">
+  <div class="form-group input-group has-feedback" ng-class="{'has-error': (!formp2.mem2_name.$error.required  && formp2.mem2_email.$untouched)  || (!formp2.mem2_email.$valid),'has-success':formp2.mem2_email.$valid && !formp2.mem2_email.$error.required && !formp2.mem2_name.$error.required}" >
+      <input type="email" name="mem2_email" size="100%;" ng-required="true" class="form-control  col-xs-12 col-lg-6 col-sm-8" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" placeholder="Enter the Email-id" ng-model="ctrl.newparticipant.mem2_email" />
+      <p class="help-block" ng-show=" formp2.mem2_email.$error.required && !formp2.mem2_name.$error.required">
         The Email of the member is required
       </p>
-      <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':formp4.mem2_email.$valid && formp4.mem2_email.$dirty, 'glyphicon glyphicon-remove-sign form-control-feedback': !formp4.mem2_email.$valid && !formp4.mem2_name.$error.required && (!formp4.mem2_email.$pristine || formp4.mem2_email.$touched)}">
+      <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':formp2.mem2_email.$valid && formp2.mem2_email.$dirty, 'glyphicon glyphicon-remove-sign form-control-feedback': !formp2.mem2_email.$valid && !formp2.mem2_name.$error.required && (!formp2.mem2_email.$pristine || formp2.mem2_email.$touched)}">
       </div>
 
-      <p class="help-block" ng-show="formp4.mem2_email.$invalid && !formp4.mem2_email.$error.required">
+      <p class="help-block" ng-show="formp2.mem2_email.$invalid && !formp2.mem2_email.$error.required">
           Please Enter a valid Email ID
       </p>
     </div>
@@ -178,55 +178,72 @@
 
 <br>
 
-    <div class="form-group input-group " ng-class="{'has-error':!formp4.mem3_email.$valid && !formp4.mem3_name.$error.required && (!formp4.mem3_email.$pristine || formp4.mem3_email.$touched),'has-success':formp4.mem3_email.$valid && formp4.mem3_email.$dirty}" >
+    <div class="form-group input-group " ng-class="{'has-error':!formp2.mem3_email.$valid && !formp2.mem3_name.$error.required && (!formp2.mem3_email.$pristine || formp2.mem3_email.$touched),'has-success':formp2.mem3_email.$valid && formp2.mem3_email.$dirty}" >
         <label class="control-label">Member 3</label>
-        <input type="text" name="mem3_name" ng-required="true" class="form-control" placeholder="Name " ng-model="ctrl.newparticipant.mem3_name" />
+        <input type="text" name="mem3_name" size="100%;" ng-required="true" class="form-control" placeholder="Name " ng-model="ctrl.newparticipant.mem3_name" />
       </div>
-    <div class="form-group input-group has-feedback" ng-class="{'has-error': (!formp4.mem3_name.$error.required  && formp4.mem3_email.$untouched)  || (!formp4.mem3_email.$valid),'has-success':formp4.mem3_email.$valid && !formp4.mem3_email.$error.required && !formp4.mem3_name.$error.required}" >
-        <input type="email" name="mem3_email" ng-required="true" class="form-control" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" placeholder="Enter the Email-id"ng-model="ctrl.newparticipant.mem3_email" />
-        <p class="help-block" ng-show=" formp4.mem3_email.$error.required && !formp4.mem3_name.$error.required">
+    <div class="form-group input-group has-feedback" ng-class="{'has-error': (!formp2.mem3_name.$error.required  && formp2.mem3_email.$untouched)  || (!formp2.mem3_email.$valid),'has-success':formp2.mem3_email.$valid && !formp2.mem3_email.$error.required && !formp2.mem3_name.$error.required}" >
+        <input type="email" name="mem3_email" ng-required="true" class="form-control" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" placeholder="Enter the Email-id" size="100%;" ng-model="ctrl.newparticipant.mem3_email" />
+        <p class="help-block" ng-show=" formp2.mem3_email.$error.required && !formp2.mem3_name.$error.required">
           The Email of the member is required
         </p>
-        <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':formp4.mem3_email.$valid && formp4.mem3_email.$dirty, 'glyphicon glyphicon-remove-sign form-control-feedback': !formp4.mem3_email.$valid && !formp4.mem3_name.$error.required && (!formp4.mem3_email.$pristine || formp4.mem3_email.$touched)}">
+        <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':formp2.mem3_email.$valid && formp2.mem3_email.$dirty, 'glyphicon glyphicon-remove-sign form-control-feedback': !formp2.mem3_email.$valid && !formp2.mem3_name.$error.required && (!formp2.mem3_email.$pristine || formp2.mem3_email.$touched)}">
         </div>
 
-        <p class="help-block" ng-show="formp4.mem3_email.$invalid && !formp4.mem3_email.$error.required">
+        <p class="help-block" ng-show="formp2.mem3_email.$invalid && !formp2.mem3_email.$error.required">
             Please Enter a valid Email ID
         </p>
       </div>
 
 <br>
-      <div class="form-group input-group " ng-class="{'has-error':!formp4.mem4_email.$valid && !formp4.mem4_name.$error.required && (!formp4.mem4_email.$pristine || formp4.mem4_email.$touched),'has-success':formp4.mem4_email.$valid && formp4.mem4_email.$dirty}" >
+      <div class="form-group input-group " ng-class="{'has-error':!formp2.mem4_email.$valid && !formp2.mem4_name.$error.required && (!formp2.mem4_email.$pristine || formp2.mem4_email.$touched),'has-success':formp2.mem4_email.$valid && formp2.mem4_email.$dirty}" >
 
           <label class="control-label">Member 4</label>
-          <input type="text" name="mem4_name" ng-required="true" class="form-control" placeholder="Name " ng-model="ctrl.newparticipant.mem4_name" />
+          <input type="text" name="mem4_name" size="100%;" ng-required="true" class="form-control" placeholder="Name " ng-model="ctrl.newparticipant.mem4_name" />
         </div>
-      <div class="form-group input-group has-feedback" ng-class="{'has-error': (!formp4.mem4_name.$error.required  && formp4.mem4_email.$untouched)  || (!formp4.mem4_email.$valid),'has-success':formp4.mem4_email.$valid && !formp4.mem4_email.$error.required && !formp4.mem4_name.$error.required}" >
-          <input type="email" name="mem4_email" ng-required="true" class="form-control" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" placeholder="Enter the Email-id"ng-model="ctrl.newparticipant.mem4_email" />
-          <p class="help-block" ng-show=" formp4.mem4_email.$error.required && !formp4.mem4_name.$error.required">
+      <div class="form-group input-group has-feedback" ng-class="{'has-error': (!formp2.mem4_name.$error.required  && formp2.mem4_email.$untouched)  || (!formp2.mem4_email.$valid),'has-success':formp2.mem4_email.$valid && !formp2.mem4_email.$error.required && !formp2.mem4_name.$error.required}" >
+          <input type="email" name="mem4_email" size="100%;" ng-required="true" class="form-control" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" placeholder="Enter the Email-id" ng-model="ctrl.newparticipant.mem4_email" />
+          <p class="help-block" ng-show=" formp2.mem4_email.$error.required && !formp2.mem4_name.$error.required">
             The Email of the member is required
           </p>
-          <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':formp4.mem4_email.$valid && formp4.mem4_email.$dirty, 'glyphicon glyphicon-remove-sign form-control-feedback': !formp4.mem4_email.$valid && !formp4.mem4_name.$error.required && (!formp4.mem4_email.$pristine || formp4.mem4_email.$touched)}">
+          <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':formp2.mem4_email.$valid && formp2.mem4_email.$dirty, 'glyphicon glyphicon-remove-sign form-control-feedback': !formp2.mem4_email.$valid && !formp2.mem4_name.$error.required && (!formp2.mem4_email.$pristine || formp2.mem4_email.$touched)}">
           </div>
 
-          <p class="help-block" ng-show="formp4.mem4_email.$invalid && !formp4.mem4_email.$error.required">
+          <p class="help-block" ng-show="formp2.mem4_email.$invalid && !formp2.mem4_email.$error.required">
               Please Enter a valid Email ID
           </p>
         </div>
 <br>
-        <div class="form-group input-group " ng-class="{'has-error':!formp4.mem5_email.$valid && !formp4.mem5_name.$error.required && (!formp4.mem5_email.$pristine || formp4.mem5_email.$touched),'has-success':formp4.mem5_email.$valid && formp4.mem5_email.$dirty}" >
+        <div class="form-group input-group " ng-class="{'has-error':!formp2.mem5_email.$valid && !formp2.mem5_name.$error.required && (!formp2.mem5_email.$pristine || formp2.mem5_email.$touched),'has-success':formp2.mem5_email.$valid && formp2.mem5_email.$dirty}" >
             <label class="control-label">Member 5</label>
-            <input type="text" name="mem5_name" ng-required="true" class="form-control" placeholder="Name " ng-model="ctrl.newparticipant.mem5_name" />
+            <input type="text" name="mem5_name" size="100%;" ng-required="true" class="form-control" placeholder="Name " ng-model="ctrl.newparticipant.mem5_name" />
           </div>
-        <div class="form-group input-group has-feedback" ng-class="{'has-error': (!formp4.mem5_name.$error.required  && formp4.mem5_email.$untouched)  || (!formp4.mem5_email.$valid),'has-success':formp4.mem5_email.$valid && !formp4.mem5_email.$error.required && !formp4.mem5_name.$error.required}" >
-            <input type="email" name="mem5_email" ng-required="true" class="form-control" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" placeholder="Enter the Email-id"ng-model="ctrl.newparticipant.mem5_email" />
-            <p class="help-block" ng-show=" formp4.mem5_email.$error.required && !formp4.mem5_name.$error.required">
+        <div class="form-group input-group has-feedback" ng-class="{'has-error': (!formp2.mem5_name.$error.required  && formp2.mem5_email.$untouched)  || (!formp2.mem5_email.$valid),'has-success':formp2.mem5_email.$valid && !formp2.mem5_email.$error.required && !formp2.mem5_name.$error.required}" >
+            <input type="email" name="mem5_email" ng-required="true" size="100%;" class="form-control" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" placeholder="Enter the Email-id" ng-model="ctrl.newparticipant.mem5_email" />
+            <p class="help-block" ng-show=" formp2.mem5_email.$error.required && !formp2.mem5_name.$error.required">
               The Email of the member is required
             </p>
-            <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':formp4.mem5_email.$valid && formp4.mem5_email.$dirty, 'glyphicon glyphicon-remove-sign form-control-feedback': !formp4.mem5_email.$valid && !formp4.mem5_name.$error.required && (!formp4.mem5_email.$pristine || formp4.mem5_email.$touche)}">
+            <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':formp2.mem5_email.$valid && formp2.mem5_email.$dirty, 'glyphicon glyphicon-remove-sign form-control-feedback': !formp2.mem5_email.$valid && !formp2.mem5_name.$error.required && (!formp2.mem5_email.$pristine || formp2.mem5_email.$touche)}">
             </div>
 
-            <p class="help-block" ng-show="formp4.mem5_email.$invalid && !formp4.mem5_email.$error.required">
+            <p class="help-block" ng-show="formp2.mem5_email.$invalid && !formp2.mem5_email.$error.required">
+                Please Enter a valid Email ID
+            </p>
+          </div>
+          <br>
+                  <div class="form-group input-group " ng-class="{'has-error':!formp2.mem6_email.$valid && !formp2.mem6_name.$error.required && (!formp2.mem6_email.$pristine || formp2.mem6_email.$touched),'has-success':formp2.mem6_email.$valid && formp2.mem6_email.$dirty}" >
+            <label class="control-label">Member 6</label>
+            <input type="text" name="mem6_name" size="100%;" ng-required="true" class="form-control" placeholder="Name " ng-model="ctrl.newparticipant.mem6_name" />
+          </div>
+        <div class="form-group input-group has-feedback" ng-class="{'has-error': (!formp2.mem6_name.$error.required  && formp2.mem6_email.$untouched)  || (!formp2.mem6_email.$valid),'has-success':formp2.mem6_email.$valid && !formp2.mem6_email.$error.required && !formp2.mem6_name.$error.required}" >
+            <input type="email" name="mem6_email" size="100%;" ng-required="true" class="form-control" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" placeholder="Enter the Email-id" ng-model="ctrl.newparticipant.mem6_email" />
+            <p class="help-block" ng-show=" formp2.mem6_email.$error.required && !formp2.mem6_name.$error.required">
+              The Email of the member is required
+            </p>
+            <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':formp2.mem6_email.$valid && formp2.mem6_email.$dirty, 'glyphicon glyphicon-remove-sign form-control-feedback': !formp2.mem6_email.$valid && !formp2.mem6_name.$error.required && (!formp2.mem6_email.$pristine || formp2.mem6_email.$touche)}">
+            </div>
+
+            <p class="help-block" ng-show="formp2.mem6_email.$invalid && !formp2.mem6_email.$error.required">
                 Please Enter a valid Email ID
             </p>
           </div>
@@ -245,7 +262,19 @@
 
 <!-- ______________________________________________________________________________________________________________________________________- -->
 
+<!-- ______________________________________________________________________________________________________________________________________- -->
 
+<div class="container" ng-show="submitCtrl.showpage(3)" style="width: 100%;">
+  <h2 align="center" class="group">
+	<br><br>  Registration Form - Project 
+</h2>
+<div align="left"><button ng-click="submitCtrl.back();" class="btn btn-default">Previous Page</button>
+</div>
+<form>
+
+<div align="center"><button ng-click="submitCtrl.next();" class="btn btn-default">Next Page</button>
+</form>
+</div>
 
 
 
@@ -254,59 +283,50 @@
 <!-- ______________________________________________________________________________________________________________________________________- -->
 
 
+<!-- ______________________________________________________________________________________________________________________________________- -->
 
-<div class="container" ng-show="submitCtrl.showpage(3)" style="width: 100%;">
+
+
+<div class="container" ng-show="submitCtrl.showpage(4)" style="width: 100%;">
   <h2 align="center" class="group">
 	<br><br>  Registration Form - Project Details
 </h2>
 <div align="left"><button ng-click="submitCtrl.back();" class="btn btn-default">Previous Page</button>
 </div>
-	<form class="form" name="formp3" novalidate>
+	<form class="form" name="formp4" novalidate>
 
-		<div class="form-group">
-			<h3>Social Info</h3>
-			<div class="input-group" ng-class="{'has-error':!formp3.Social.$valid && !formp3.Social.$untouched,'has-success':formp3.Social.$valid}" >
-				<label for="Social" class="control-label">Which social media sites do you use?</label>
-				<input type="text" name="Social" id="Social" ng-model="submitCtrl.submit.social"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12">
-				<p class="help-block" ng-show="formp3.Social.$error.required && formp3.Social.$touched">
-					This field is required
-				</p>
-			</div>
-			<div class="input-group" ng-class="{'has-error':!formp3.fb.$valid && !formp3.fb.$pristine ,'has-success':formp3.fb.$valid}" >
-				<label for="fb" class="control-label">Enter your Facebook profile link (if applicable)</label>
-				<input type="text" name="fb" id="fb" ng-model="submitCtrl.submit.fblink" ng-pattern="/(https?:\/\/)?(www\.)?facebook.com\/[a-z_\-A-Z0-9(\.\?)?]/" class="form-control col-xs-12 col-lg-12 col-sm-12">
-
-				<p class="help-block" ng-show="formp3.fb.$invalid && formp3.fb.$dirty && formp3.fb.$touched">
-						Enter a valid profile link
-				</p>
-			</div>
-		</div>
-
-		<br>
 		<div class="form-group">
 			<h3>Questions</h3>
-			<div class="input-group" ng-class="{'has-error':!formp3.WhyQues.$valid && !formp3.WhyQues.$untouched,'has-success':formp3.WhyQues.$valid}" >
-				<label for="WhyQues" class="control-label">Why do you wish to become a Campus Ambassador?</label>
-				<input type="text" name="WhyQues" id="WhyQues" ng-model="submitCtrl.submit.questions.why"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12">
-				<p class="help-block" ng-show="formp3.WhyQues.$error.required && formp3.WhyQues.$touched">
+			<div class="input-group" ng-class="{'has-error':!formp4.WhyQues.$valid && !formp4.WhyQues.$untouched,'has-success':formp4.WhyQues.$valid}" >
+				<label for="WhyQues" class="control-label">What is your project about?</label>
+				<textarea name="WhyQues" id="WhyQues" ng-model="submitCtrl.submit.questions.what"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12"/>
+				<p class="help-block" ng-show="formp4.WhyQues.$error.required && formp4.WhyQues.$touched">
 					This field is required
 				</p>
 			</div>
-			<div class="input-group" ng-class="{'has-error':!formp3.RightQues.$valid && !formp3.RightQues.$untouched,'has-success':formp3.RightQues.$valid}" >
-				<label for="RightQues" class="control-label">Why do you think you are the right candidate for this position? </label>
-				<input type="text" name="RightQues" id="RightQues" ng-model="submitCtrl.submit.questions.right"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12" id="coll_add">
-				<p class="help-block" ng-show="formp3.RightQues.$error.required && formp3.RightQues.$touched">
+			<div class="input-group" ng-class="{'has-error':!formp4.RightQues.$valid && !formp4.RightQues.$untouched,'has-success':formp4.RightQues.$valid}" >
+				<label for="RightQues" class="control-label">Why do you think your Idea Rocks </label>
+				<textarea name="RightQues" id="RightQues" ng-model="submitCtrl.submit.questions.howbetter"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12" id="coll_add" />
+				<p class="help-block" ng-show="formp4.RightQues.$error.required && formp4.RightQues.$touched">
 					This field is required
 				</p>
 			</div>
-			<div class="input-group" ng-class="{'has-error':!formp3.PastQues.$valid && !formp3.PastQues.$untouched,'has-success':formp3.PastQues.$valid}" >
-				<label for="PastQues" class="control-label">Do you have any past experience in handling Positions of Responsibility? </label>
-				<input type="text" name="PastQues" id="PastQues" ng-model="submitCtrl.submit.questions.past"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12">
-				<p class="help-block" ng-show="formp3.PastQues.$error.required && formp3.PastQues.$touched">
+			<div class="input-group" ng-class="{'has-error':!formp4.PastQues.$valid && !formp4.PastQues.$untouched,'has-success':formp4.PastQues.$valid}" >
+				<label for="PastQues" class="control-label">Do you have any past experience?</label>
+				<textarea name="PastQues" id="PastQues" ng-model="submitCtrl.submit.questions.past"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12" />
+				<p class="help-block" ng-show="formp4.PastQues.$error.required && formp4.PastQues.$touched">
 					This field is required
 				</p>
 			</div>
 		</div>
+		<div class="input-group " ng-class="{'has-error':!formp4.plinks.$valid && !formp4.plinks.$untouched,'has-success':formp4.plinks.$valid}">
+		
+		<label  for="plinks" class="control-label">Project Link</label>
+		<input type="text" name="plinks" ng-model="submitCtrl.submit.projlink" ng-required='true' class="form-control" size="100%;">
+		<p class="help-block" ng-show="formp4.plinks.$error.required && formp4.plinks.$touched">
+			This field is required
+		</p>
+	</div>
     <br><br><br>
   </form>
   <br><br>
@@ -316,7 +336,7 @@
   </h5>
   <h5>You can edit your response any number of times before the deadline.</h5>
   </div>
-		<div align="center"><button ng-click="submitCtrl.submitform(submit);" ng-disabled="!submitCtrl.iagree || formp1.$error.required || formp1.$error.pattern || formp3.$error.required || formp3.$error.pattern" class="btn btn-primary">Submit</button>
+		<div align="center"><button ng-click="submitCtrl.submitform(submit);" ng-disabled="!submitCtrl.iagree || formp1.$error.required || formp1.$error.pattern || formp4.$error.required || formp4.$error.pattern" class="btn btn-primary">Submit</button>
 		</div>
 		<br>
 		<div class="row show-hide-message" ng-show="submitCtrl.success">
@@ -326,14 +346,7 @@
 </div>
 
 <style type="text/css">
-@media screen and (max-width: 900px) {
   input {
-    width:100%;
+    width:100px;
   }
-}
-@media screen and (min-width: 900px) {
-  input {
-    width:50%;
-  }
-}
 </style>
