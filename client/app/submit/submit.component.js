@@ -13,6 +13,9 @@ export class SubmitComponent {
     this.$http = $http;
     this.$timeout = $timeout;
     this.currpage=3;
+    this.verticals=['Agriculture','Transportation','Robotics','Healthcare','Communication','Green Technology','Home Comfort'];
+    this.vertical='';
+    this.othervertical='';
   }
 
   $onInit() {
@@ -20,15 +23,7 @@ export class SubmitComponent {
       this.success = false;
       this.submit = response.data;
       console.log(this.submit);
-      this.previous;
-      if(this.submit.previous) {
-        this.previous = 'yes';
-      } else {
-        this.previous = 'no';
-      }
-      this.iagree = false;
-
-
+      this.iagree = true;
     });
   }
   showpage(pgno){return pgno == this.currpage;}
@@ -36,15 +31,6 @@ export class SubmitComponent {
   back() { this.currpage -= 1;};
 
   submitform() {
-    if(this.previous === 'yes') {
-      this.submit.previous = true;
-    } else {
-      this.submit.previous = false;
-    }
-    if(this.submit.fblink === null||this.submit.fblink === '')
-    {
-      this.submit.fblink = '';
-    }
     this.$http.put('/api/users/submit', this.submit)
     .then(resp => {
       console.log(response.data);

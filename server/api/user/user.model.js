@@ -63,12 +63,23 @@ var UserSchema = new Schema({
     pin: String
   },
   teamname:String,
-  team:[{
-    name:String,
-    email:String,
-    phonenumber:Number,
-    wnumber:Number
-      }],
+  teammates:{
+    mem2_name:String,
+    mem2_email:String,
+    mem2_phno:Number,
+    mem3_name:String,
+    mem3_email:String,
+    mem3_phno:Number,
+    mem4_name:String,
+    mem4_email:String,
+    mem4_phno:Number,
+    mem5_name:String,
+    mem5_email:String,
+    mem5_phno:Number,
+    mem6_name:String,
+    mem6_email:String,
+    mem6_phno:Number
+     },
   projname:{type:String, default:'__NAME__'},
   vertical:String,
   projdetails:String,
