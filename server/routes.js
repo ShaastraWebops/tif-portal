@@ -16,11 +16,7 @@ export default function(app) {
     next();
 });
   // Insert routes below
-  app.use('/api/citys', require('./api/city'));
-  app.use('/api/uploads', require('./api/upload'));
-  app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
-  app.use('/api/tasks', require('./api/task'));
   app.use('/auth', require('./auth').default);
 
   app.get('/image/:url', function (req, res) {

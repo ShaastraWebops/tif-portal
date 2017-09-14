@@ -12,10 +12,10 @@ export class SubmitComponent {
     this.submit = {};
     this.$http = $http;
     this.$timeout = $timeout;
+    this.currpage=2;
   }
 
   $onInit() {
-    this.a = true;
     this.$http.get('/api/users/me').then(response => {
       this.success = false;
       this.submit = response.data;
@@ -27,31 +27,31 @@ export class SubmitComponent {
         this.previous = 'no';
       }
       this.iagree = false;
-      this.next = function() {
-        this.a = false;
-      };
-      this.back = function() {
-        this.a = true;
-      };
-      this.submitform = function() {
-        if(this.previous === 'yes') {
-          this.submit.previous = true;
-        } else {
-          this.submit.previous = false;
-        }
-        if(this.submit.fblink === null||this.submit.fblink === '')
-        {
-          this.submit.fblink = '';
-        }
-        this.$http.put('/api/users/submit', this.submit)
-        .then(resp => {
-          console.log(response.data);
-          if(resp.data.success == true) {
-            alert('Successfully Registered');
-            window.location='/';
-          }
-        });
-      };
+
+
+    });
+  }
+  showpage(pgno){return pgno == this.currpage;}
+  next() {this.currpage += 1;};
+  back() { this.currpage -= 1;};
+
+  submitform() {
+    if(this.previous === 'yes') {
+      this.submit.previous = true;
+    } else {
+      this.submit.previous = false;
+    }
+    if(this.submit.fblink === null||this.submit.fblink === '')
+    {
+      this.submit.fblink = '';
+    }
+    this.$http.put('/api/users/submit', this.submit)
+    .then(resp => {
+      console.log(response.data);
+      if(resp.data.success == true) {
+        alert('Successfully Registered');
+        window.location='/';
+      }
     });
   }
 }

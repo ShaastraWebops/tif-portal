@@ -36,32 +36,25 @@ var UserSchema = new Schema({
       }
     }
   },
+  provider: String,
+  salt: String,
   dob: {
     month: String,
     day: Number,
     year: Number
   },
-  fbdob: {
-    type: String
-  },
-  files: [{
-    taskid: String,
-    name: String
-  }],
-  provider: String,
-  salt: String,
   phonenumber: Number,
   wnumber: Number,
+  education: {
+    degree: String,
+    branch: String,
+    year: String
+  },
   college: {
     name: String,
     address: String,
     city: String,
     state: String
-  },
-  education: {
-    degree: String,
-    branch: String,
-    year: String
   },
   postal: {
     address: String,
@@ -69,22 +62,23 @@ var UserSchema = new Schema({
     state: String,
     pin: String
   },
-  previous: Boolean,  //whether he had been a CA in a previous year
-  prevyear: {type: String, default: null},
-  social: String,
-  fblink: String,
+  teamname:String,
+  team:[{
+    name:String,
+    email:String,
+    phonenumber:Number,
+    wnumber:Number
+      }],
+  projname:{type:String, default:'__NAME__'},
+  vertical:String,
+  projdetails:String,
+  projlink:String,
   questions: {
-    why: String,
-    right: String,
+    what: String,
+    howbetter: String,
     past: String
   },
-  selected: {
-    type: Number,
-    default: 0
-  },
   points: {type: Number, default: 0},
-  facebook: {},
-  github: {},
   resetPasswordToken:{
     type:String,
     default:''},

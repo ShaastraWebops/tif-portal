@@ -41,20 +41,20 @@ export function list(req, res) {
     .catch(handleError(res));
 }
 
-export function exp(req, res) {
-  return User.find({}, '-_id -salt -password -provider -role').exec()
-    .then(users => {
-      var fields = ['name', 'email', 'college.address', 'college.city', 'college.name', 'college.state',
-      'education.branch', 'education.degree', 'education.year', 'phonenumber', 'previous', 'prevyear',
-      'postal.address', 'postal.city', 'postal.pin', 'postal.state', 'questions.past', 'questions.right',
-      'questions.why', 'social', 'wnumber', 'fblink'];
-      var csv = json2csv({ data: users, fields: fields});
-      res.setHeader('Content-disposition', 'attachment; filename=users.csv');
-      res.set('Content-Type', 'text/csv');
-      res.status(200).send(csv);
-    })
-    .catch(handleError(res));
-}
+// export function exp(req, res) {
+//   return User.find({}, '-_id -salt -password -provider -role').exec()
+//     .then(users => {
+//       var fields = ['name', 'email', 'college.address', 'college.city', 'college.name', 'college.state',
+//       'education.branch', 'education.degree', 'education.year', 'phonenumber', 'previous', 'prevyear',
+//       'postal.address', 'postal.city', 'postal.pin', 'postal.state', 'questions.past', 'questions.right',
+//       'questions.why', 'social', 'wnumber', 'fblink'];
+//       var csv = json2csv({ data: users, fields: fields});
+//       res.setHeader('Content-disposition', 'attachment; filename=users.csv');
+//       res.set('Content-Type', 'text/csv');
+//       res.status(200).send(csv);
+//     })
+//     .catch(handleError(res));
+// }
 
 /**
  * Creates a new user
@@ -75,14 +75,19 @@ export function create(req, res) {
            authorization: 'Bearer ' + process.env.CASITE },
         body:
         { personalizations:
-           [ { to: [ { email: user.email, name: 'Akshay' } ],
-               subject: 'Shaastra 2018 || Campus Ambassador' } ],
+           [ { to: [ { email: user.email, name: user.name } ],
+               subject: 'Shaastra 2018 || TIF' } ],
           from: { email: 'studentrelations@shaastra.org', name: 'Student Relations, Shaastra' },
           //reply_to: { email: 'sam.smith@example.com', name: 'Sam Smith' },
-          subject: 'Shaastra 2018 || Campus Ambassador',
+          subject: 'Shaastra 2018 || TIF',
           content:
            [ { type: 'text/html',
-               value: '<html><body><p>Hello '+user.name+ ',<br>Greetings from Shaastra 2018, IIT Madras! <br><br>Thank you for signing up for the Shaastra Campus Ambassador Program. Please complete the questionnaire on the portal by 25th August 2017.<br> You will be intimidated by mail if you are selected to become a Campus Ambassador. Meanwhile please like and follow our Facebook page: fb.com/Shaastra for updates.<br> If you have any queries contact us on studentrelations@shaastra.org <br><br><br>Regards, <br>Team Shaastra <br> IIT Madras</p></body></html>' } ] },
+               value: '<html><body><p>Hello '+user.name+ ',<br>Greetings from Shaastra 2018, IIT Madras! <br>' + 
+               '<br>Thank you for signing up for the Shaastra TIF Program. Please complete the questionnaire on the portal by soon.' + 
+               '<br> You will be intimidated by mail if you are selected.' + 
+               ' Meanwhile please like and follow our Facebook page: fb.com/Shaastra for updates.' + 
+               '<br> If you have any queries contact us on studentrelations@shaastra.org <br><br><br>Regards,' +
+               ' <br>Team Shaastra <br> IIT Madras</p></body></html>' } ] },
         json: true };
 
         request(options, function (error, response, body) {
@@ -117,9 +122,6 @@ export function submit(req, res) {
       user.phonenumber = req.body.phonenumber;
       user.wnumber = req.body.wnumber;
       user.previous = req.body.previous;
-      user.prevyear = req.body.prevyear;
-      user.social = req.body.social;
-      user.fblink = req.body.fblink;
       user.college.name = req.body.college.name;
       user.college.address = req.body.college.address;
       user.college.city = req.body.college.city;
@@ -131,8 +133,13 @@ export function submit(req, res) {
       user.postal.city = req.body.postal.city;
       user.postal.state = req.body.postal.state;
       user.postal.pin = req.body.postal.pin;
-      user.questions.why = req.body.questions.why;
-      user.questions.right = req.body.questions.right;
+      user.teamname = req.body.teamname;
+      user.projname = req.body.projname;
+      user.vertical = req.body.vertical;
+      user.projdetails = req.body.details;
+      user.projlink = req.body.projlink;
+      user.questions.what = req.body.questions.what;
+      user.questions.howbetter = req.body.questions.howbetter;
       user.questions.past = req.body.questions.past;
       user.submitted = true;
       return user.save()
@@ -173,14 +180,22 @@ export function select(req, res) {
                authorization: 'Bearer ' + process.env.CASITE },
             body:
             { personalizations:
-               [ { to: [ { email: user.email, name: 'Akshay' } ],
-                   subject: 'Shaastra 2018 || Campus Ambassador' } ],
+               [ { to: [ { email: user.email, name: user.name } ],
+                   subject: 'Shaastra 2018 || TIF' } ],
               from: { email: 'studentrelations@shaastra.org', name: 'Student Relations, Shaastra' },
               //reply_to: { email: 'sam.smith@example.com', name: 'Sam Smith' },
-              subject: 'Shaastra 2018 || Campus Ambassador',
+              subject: 'Shaastra 2018 || TIF',
               content:
                [ { type: 'text/html',
-                   value: '<html><body><p>Hello ' +user.name+ ',<br><br> Greetings from Shaastra 2018, IIT Madras! <br><br>First of all, congratulations on being selected as a Campus Ambassador for your college. We would like to welcome you to the team behind India’s largest completely student-run technical extravaganza - Shaastra 2018.<br>With a strong team of 500 students of IIT Madras and hundreds of Campus Ambassadors across India, Shaastra 2018 aims to give the best technical experience to everyone in the country ranging from school students to engineers of the future.<br>With this in mind, we hope you have an amazing journey working with us as you represent your college.<br>Further instructions and information would be communicated to you shortly. We request you to keep checking the CA Portal as well as your email.<br><br>Looking forward to work with you.<br><br>Regards,<br>Team Shaastra<br>IIT Madras</p></body></html>' } ] },
+                   value: '<html><body><p>Hello ' + user.name + ',<br><br> Greetings from Shaastra 2018, IIT Madras! <br>' + 
+                   '<br>First of all, congratulations on being selected in TIF. ' +
+                    'We would like to welcome you to the team behind India’s largest completely student-run technical extravaganza ' + 
+                    '- Shaastra 2018.<br>With a strong team of 500 students of IIT Madras and hundreds across India,' + 
+                    ' Shaastra 2018 aims to give the best technical experience to everyone in the country ranging from school students to engineers of the future.' + 
+                    '<br>With this in mind, we hope you have an amazing journey working with us as you represent your college.' + 
+                    '<br>Further instructions and information would be communicated to you shortly. ' + 
+                    'We request you to keep checking the your email.<br>' + 
+                    '<br>Looking forward to work with you.<br><br>Regards,<br>Team Shaastra<br>IIT Madras</p></body></html>' } ] },
             json: true };
 
             request(options, function (error, response, body) {
@@ -215,14 +230,19 @@ export function reject(req, res) {
                authorization: 'Bearer ' + process.env.CASITE },
             body:
             { personalizations:
-               [ { to: [ { email: user.email, name: 'Akshay' } ],
-                   subject: 'Shaastra 2018 || Campus Ambassador' } ],
+               [ { to: [ { email: user.email, name: user.name } ],
+                   subject: 'Shaastra 2018 || TIF' } ],
               from: { email: 'studentrelations@shaastra.org', name: 'Student Relations, Shaastra' },
               //reply_to: { email: 'sam.smith@example.com', name: 'Sam Smith' },
-              subject: 'Shaastra 2018 || Campus Ambassador',
+              subject: 'Shaastra 2018 || TIF',
               content:
                [ { type: 'text/html',
-                   value: '<html><body><p>Hello '+user.name+ ',<br><br> Greetings from Shaastra 2018, IIT Madras! <br><br>We regret to inform you that your application for being a Shaastra Campus Ambassador couldn’t be accommodated. However, lose hope not, for you can try again for next year - which will see a bigger CA Program.<br>Till then, get a feel of Shaastra - visit the IIT Madras campus in January and experience the largest student-run technical extravaganza. With a host of workshops, international competitions, lectures, exhibitions and shows, Shaastra is bound to amaze you.<br><br>We look forward to see you at Shaastra 2018, and as a Campus Ambassador next year!<br><br>Regards,<br>Team Shaastra<br>IIT Madras</p></body></html>' } ] },
+                   value: '<html><body><p>Hello '+user.name+ ',<br><br> Greetings from Shaastra 2018, IIT Madras! <br>' + 
+                   '<br>We regret to inform you that your application for being in Shaastra TIF couldn’t be accommodated. ' + 
+                   'However, lose hope not, for you can try again for next year - which will see a bigger CA Program.' + 
+                   '<br>Till then, get a feel of Shaastra - visit the IIT Madras campus in January and experience the largest student-run technical extravaganza.' + 
+                   ' With a host of workshops, international competitions, lectures, exhibitions and shows, Shaastra is bound to amaze you.<br>' + 
+                   '<br>We look forward to see you at Shaastra 2018, next year!<br><br>Regards,<br>Team Shaastra<br>IIT Madras</p></body></html>' } ] },
             json: true };
 
             request(options, function (error, response, body) {
@@ -278,6 +298,27 @@ export function me(req, res, next) {
     .catch(err => next(err));
 }
 
+
+// Upserts the given Thing in the DB at the specified ID
+export function upsert(req, res) {
+  if(req.body._id) {
+    Reflect.deleteProperty(req.body, '_id');
+  }  
+  if(req.body.password) {
+    Reflect.deleteProperty(req.body, 'password');
+  }  
+  if(req.body.salt) {
+    Reflect.deleteProperty(req.body, 'salt');
+  }
+  if(req.body.email) {
+    Reflect.deleteProperty(req.body, 'email');
+  }
+  return Thing.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, upsert: false, setDefaultsOnInsert: true, runValidators: true}).exec()
+
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 /**
  * Authentication callback
  */
@@ -312,10 +353,10 @@ export function forgotPassword (req, res, next) {
             body:
             { personalizations:
                [ { to: [ { email: user.email, name: user.name } ],
-                   subject: 'Shaastra 2018 || Campus Ambassador' } ],
+                   subject: 'Shaastra 2018 || Campus TIF' } ],
               from: { email: 'support@shaastra.org', name: 'Student Relations, Shaastra' },
               //reply_to: { email: 'sam.smith@example.com', name: 'Sam Smith' },
-              subject: 'Shaastra 2018 || Campus Ambassador',
+              subject: 'Shaastra 2018 || TIF',
               content:
                [ { type: 'text/html',
                    value: "<table style=\"background-color: #f3f3f3; font-family: verdana, tahoma, sans-serif; color: black; padding: 30px;\">" +
@@ -350,6 +391,7 @@ export function forgotPassword (req, res, next) {
  * @param  {[type]} req [description]
  * @param  {[type]} res [description]
  * @return {[type]}     [description]
+
  */
 export function resetPassword(req, res) {
   console.log("reset password\n\n",req.params);
@@ -380,10 +422,10 @@ export function resetPassword(req, res) {
             body:
             { personalizations:
                [ { to: [ { email: user.email, name: user.name } ],
-                   subject: 'Shaastra 2018 || Campus Ambassador' } ],
+                   subject: 'Shaastra 2018 || TIF' } ],
               from: { email: 'support@shaastra.org', name: 'Student Relations, Shaastra' },
               //reply_to: { email: 'sam.smith@example.com', name: 'Sam Smith' },
-              subject: 'Shaastra 2018 || Campus Ambassador',
+              subject: 'Shaastra 2018 || TIF',
               content:
                [ { type: 'text/html',
                    value: "<table style=\"background-color: #f3f3f3; font-family: verdana, tahoma, sans-serif; color: black; padding: 30px;\">" +

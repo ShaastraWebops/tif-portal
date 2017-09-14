@@ -4,10 +4,8 @@
  */
 
 'use strict';
-import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
 import config from './environment/';
-import Task from  '../api/task/task.model';
 export default function seedDatabaseIfNeeded() {
   if(config.seedDB) {
     // User.find({}).remove()
