@@ -1,3 +1,4 @@
+<div ng-show="false">
 <div style="padding-bottom: 10px;">
 
 <h1 style="margin-top: 50px;">{{submitCtrl.currpage}}</h1>
@@ -452,7 +453,69 @@
 		</div>
 </div>
 </div>
-
+</div>
+<div id="display bio " style="margin-top: 50px;">
+	<div class="container">
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Form Details</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                
+                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+                  <dl>
+                    <dt>DEPARTMENT:</dt>
+                    <dd>Administrator</dd>
+                    <dt>HIRE DATE</dt>
+                    <dd>11/12/2013</dd>
+                    <dt>DATE OF BIRTH</dt>
+                       <dd>11/12/2013</dd>
+                    <dt>GENDER</dt>
+                    <dd>Male</dd>
+                  </dl>
+                </div>-->
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Name:</td>
+                        <td>{{submitCtrl.submit.name}}</td>
+                      </tr>
+                      <tr>
+                        <td>Team</td>
+                        <td>
+                        	<span>{{submitCtrl.submit.teammates.mem2_name}}</span><br>
+                        	<span>{{submitCtrl.submit.teammates.mem3_name}}</span><br>
+                        	<span>{{submitCtrl.submit.teammates.mem4_name}}</span><br>
+                        	<span>{{submitCtrl.submit.teammates.mem5_name}}</span><br>
+                        	<span>{{submitCtrl.submit.teammates.mem6_name}}</span>
+                        </td>
+                      </tr>
+                      <tr>
+                      	<td>Team Name:</td>
+                      	<td>{{submitCtrl.submit.teamname}}</td>
+                      </tr> 
+                      <tr>
+                      	<td>Proj Name Name:</td>
+                      	<td>{{submitCtrl.submit.projname}}</td>
+                      </tr>
+                      <tr>
+                      	<td>Proj Link</td>
+                      	<td><a href="{{submitCtrl.submit.projlink}}">{{submitCtrl.submit.projlink}}</a></td>
+                      </tr>                
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
 <style type="text/css">
   input {
     width:100px;
