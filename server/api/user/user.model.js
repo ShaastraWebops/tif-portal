@@ -63,7 +63,7 @@ var UserSchema = new Schema({
     pin: String
   },
   teamname:String,
-  teammates:{
+  teammates: {
     mem2_name:String,
     mem2_email:String,
     mem2_phno:Number,
@@ -79,7 +79,7 @@ var UserSchema = new Schema({
     mem6_name:String,
     mem6_email:String,
     mem6_phno:Number
-     },
+  },
   projname:{type:String, default:'__NAME__'},
   vertical:String,
   projdetails:String,
