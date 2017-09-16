@@ -13,41 +13,44 @@ export class SubmitComponent {
     this.$http = $http;
     this.$timeout = $timeout;
     this.currpage=2;
+    this.vertical=true;
+    this.othervertical='';
   }
 
   $onInit() {
-    this.$http.get('/api/users/me').then(response => {
+    this.$http.get('/api/users/me').then( res => {
       this.success = false;
-      this.submit = response.data;
+      this.submit = res.data;
       console.log(this.submit);
-      this.previous;
-      if(this.submit.previous) {
-        this.previous = 'yes';
-      } else {
-        this.previous = 'no';
-      }
-      this.iagree = false;
-
-
+      this.iagree = true;
+    this.verticals=['Agriculture','Transportation','Robotics','Healthcare','Communication','Green Technology','Home Comfort'];
+    if((this.verticals.indexOf(res.data.vertical) == -1) && res.data.vertical!=null)
+      this.verticals.push(res.data.vertical);
+    // this.othervertical=res.data.vertical;
+    if (res.data.vertical == null) {this.vertical=false;}
     });
   }
   showpage(pgno){return pgno == this.currpage;}
   next() {this.currpage += 1;};
   back() { this.currpage -= 1;};
+  optionchoser(){
+    this.submit.vertical=this.othervertical;
+this.verticals.push(this.othervertical);
 
-  submitform() {
-    if(this.previous === 'yes') {
-      this.submit.previous = true;
-    } else {
-      this.submit.previous = false;
-    }
-    if(this.submit.fblink === null||this.submit.fblink === '')
-    {
-      this.submit.fblink = '';
-    }
+
+  }
+  saveform() {
     this.$http.put('/api/users/submit', this.submit)
     .then(resp => {
-      console.log(response.data);
+      if(resp.data.success == true) {
+        alert('Progres Saved');
+        window.location='/submit';
+      }
+    });
+  }
+submitform() {
+    this.$http.put('/api/users/submit', this.submit)
+    .then(resp => {
       if(resp.data.success == true) {
         alert('Successfully Registered');
         window.location='/';

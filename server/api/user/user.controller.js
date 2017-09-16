@@ -117,6 +117,7 @@ export function show(req, res, next) {
 }
 
 export function submit(req, res) {
+  console.log(req.body);
   return User.findById(req.user._id).exec()
     .then(user => {
       user.phonenumber = req.body.phonenumber;
@@ -134,9 +135,24 @@ export function submit(req, res) {
       user.postal.state = req.body.postal.state;
       user.postal.pin = req.body.postal.pin;
       user.teamname = req.body.teamname;
+      user.teammates.mem2_name = req.body.teammates.mem2_name;
+      user.teammates.mem2_email = req.body.teammates.mem2_email;
+      user.teammates.mem2_phno = req.body.teammates.mem2_phno;
+      user.teammates.mem3_name = req.body.teammates.mem3_name;
+      user.teammates.mem3_email = req.body.teammates.mem3_email;
+      user.teammates.mem3_phno = req.body.teammates.mem3_phno;
+      user.teammates.mem4_name = req.body.teammates.mem4_name;
+      user.teammates.mem4_email = req.body.teammates.mem4_email;
+      user.teammates.mem4_phno = req.body.teammates.mem4_phno;
+      user.teammates.mem5_name = req.body.teammates.mem5_name;
+      user.teammates.mem5_email = req.body.teammates.mem5_email;
+      user.teammates.mem5_phno = req.body.teammates.mem5_phno;
+      user.teammates.mem6_name = req.body.teammates.mem6_name;
+      user.teammates.mem6_email = req.body.teammates.mem6_email;
+      user.teammates.mem6_phno = req.body.teammates.mem6_phno;
       user.projname = req.body.projname;
       user.vertical = req.body.vertical;
-      user.projdetails = req.body.details;
+      user.projdetails = req.body.projdetails;
       user.projlink = req.body.projlink;
       user.questions.what = req.body.questions.what;
       user.questions.howbetter = req.body.questions.howbetter;
