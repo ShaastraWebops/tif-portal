@@ -158,7 +158,7 @@
         This field is required
       </p>
       </div>
-      <label>Team Members and their email IDs ( Maximum 5 members including you)</label><br/>
+      <label>Team Members </label><br/>
       <div class="form-group input-group" >
       <label class="control-label">Member 1</label><br/>
       <input type="text" name="mem1_name" size="100%" class="form-control  col-xs-12 col-lg-6 col-sm-8" placeholder="Name" ng-model="submitCtrl.submit.name" disabled="true"/></div>
@@ -361,10 +361,10 @@
 		</p>
 	</div>
 	<div  ng-class="{'has-success':!formp3.vertical.$error.required , 'has-error':formp3.vertical.$error.required }" >
-    <label for="vertical" class="control-label"> Single select with "not selected" option and dynamic option values: </label><br>
+    <label for="vertical" class="control-label">Vertical </label><br>
     <select name="vertical" style="color: black;" ng-options="option for option in submitCtrl.verticals" id="singleSelect"  ng-model="submitCtrl.submit.vertical" ng-value={{option}} ng-required="true" ng-change="submitCtrl.vertical=true;">
     </select>
-    Others: <input type="text" name="othervertical" style="color: black;" size="100%" ng-init="submitCtrl.othervertical" ng-model="submitCtrl.othervertical" ng-blur="submitCtrl.optionchoser()" placeholder="other vertical">
+    Others: <input type="text" name="othervertical" style="color: black;" size="40%" ng-init="submitCtrl.othervertical" ng-model="submitCtrl.othervertical" ng-blur="submitCtrl.optionchoser()" placeholder="other vertical">
 
     <p class="help-block" ng-show="!submitCtrl.vertical">
 			This field is required
@@ -373,7 +373,7 @@
 </div>
 	<br>
 		<div class="input-group" ng-class="{'has-error':!formp3.projdetails.$valid && !formp3.projdetails.$untouched,'has-success':formp3.projdetails.$valid}" >
-		<label for="projdetails" class="control-label">Describe your Project in brief</label>
+		<label for="projdetails" class="control-label">Describe your project and its working in detail*</label>
 		<textarea name="projdetails" id="projdesp" ng-model="submitCtrl.submit.projdetails"  rows="5"   ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12"/>
 		<p class="help-block" ng-show="formp3.projdetails.$error.required && formp3.projdetails.$touched">
 			This field is required
@@ -406,21 +406,22 @@
 	<h3 style="margin-top: -30px;">Questions</h3>
 		<div class="form-group">
 			<div class="input-group" ng-class="{'has-error':!formp4.WhyQues.$valid && !formp4.WhyQues.$untouched,'has-success':formp4.WhyQues.$valid}" >
-				<label for="WhyQues" class="control-label">What is your project about?</label>
+				<label for="WhyQues" class="control-label">Describe your project and its working in detail.*</label>
 				<textarea name="WhyQues" id="WhyQues" ng-model="submitCtrl.submit.questions.what"  rows="5"   ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12"/>
 				<p class="help-block" ng-show="formp4.WhyQues.$error.required && formp4.WhyQues.$touched">
 					This field is required
 				</p>
 			</div>
 			<div class="input-group" ng-class="{'has-error':!formp4.RightQues.$valid && !formp4.RightQues.$untouched,'has-success':formp4.RightQues.$valid}" >
-				<label for="RightQues" class="control-label">Why do you think your Idea Rocks </label>
+				<label for="RightQues" class="control-label">Indicate ways in which your solution is better than the existing solution, highlighting the unique advantages of your solution over the others.*</label>
 				<textarea name="RightQues" id="RightQues" ng-model="submitCtrl.submit.questions.howbetter" rows="5"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12" id="coll_add" />
 				<p class="help-block" ng-show="formp4.RightQues.$error.required && formp4.RightQues.$touched">
 					This field is required
 				</p>
 			</div>
 			<div class="input-group" ng-class="{'has-error':!formp4.PastQues.$valid && !formp4.PastQues.$untouched,'has-success':formp4.PastQues.$valid}" >
-				<label for="PastQues" class="control-label">Do you have any past experience?</label>
+				<label for="PastQues" class="control-label">Have you had any prior experience in the corporate world?*
+</label>
 				<textarea name="PastQues" id="PastQues" ng-model="submitCtrl.submit.questions.past" rows="5"   ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12" />
 				<p class="help-block" ng-show="formp4.PastQues.$error.required && formp4.PastQues.$touched">
 					This field is required
@@ -429,7 +430,7 @@
 		</div>
 		<div class="input-group " ng-class="{'has-error':!formp4.plinks.$valid && !formp4.plinks.$untouched,'has-success':formp4.plinks.$valid}">
 		
-		<label  for="plinks" class="control-label">Project Link</label>
+		<label  for="plinks" class="control-label">Please attach the link to the google drive containing the pictures/videos of your working model/project.*</label>
 		<input type="text" name="plinks" ng-model="submitCtrl.submit.projlink" ng-required='true' class="form-control" size="100%">
 		<p class="help-block" ng-show="formp4.plinks.$error.required && formp4.plinks.$touched">
 			This field is required
