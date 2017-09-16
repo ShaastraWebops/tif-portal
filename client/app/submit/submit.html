@@ -1,11 +1,6 @@
-<div ng-show="false">
+<div ng-show="true">
 <div style="padding-bottom: 10px;">
-
-<h1 style="margin-top: 50px;">{{submitCtrl.currpage}}</h1>
-
-
-
-<div class="container" ng-show="submitCtrl.showpage(1)" style="width: 100%;">
+<!-- <div class="container" ng-show="submitCtrl.showpage(1)" style="width: 100%;">
 	<h2 align="center" class="group">
 	<br><br>  Registration Form - Part A
 	</h2>
@@ -135,10 +130,11 @@
 				</p>
 			</div>
 		</div>
+		<div ng-click="submitCtrl.saveform()" class="btn btn-primary">Save Progress</div>
 		<div align="center"><button ng-click="submitCtrl.next();" class="btn btn-default">Next Page</button>
 		</div>
 	</form>
-</div>
+</div> -->
 
 <!-- ______________________________________________________________________________________________________________________________________- -->
 
@@ -154,7 +150,6 @@
 	<br><br>  Registration Form - Team Details
 </h2>
 <form  class="form" name="formp2" novalidate>
-<div align="left"><button ng-click="submitCtrl.back();" class="btn btn-default">Previous Page</button></div>
  
   <div class="form-group input-group" ng-class="{'has-error':!formp2.team_name.$valid && !formp2.team_name.$untouched,'has-success':formp2.team_name.$valid}" >
       <label class="control-label">Team Name *</label>
@@ -332,9 +327,14 @@
 
 
 <br>
-<div align="center"><button ng-click="submitCtrl.next();" class="btn btn-default">Next Page</button>
+<!-- <div style="float: left;"><button ng-click="submitCtrl.back();" class="btn btn-default">Previous Page</button></div> -->
+		<div ng-click="submitCtrl.saveform()" class="btn btn-primary" align="lefts">Save Progress</div>
+
+<div style="float: right;"><button ng-click="submitCtrl.next();" class="btn btn-default">Next Page</button>
 </div>
+<br>
 </form>
+<br><br>
 </div>
 
 
@@ -351,8 +351,6 @@
   <h2 align="center" class="group">
 	<br><br>  Registration Form - Project 
 </h2>
-<div align="left"><button ng-click="submitCtrl.back();" class="btn btn-default">Previous Page</button>
-</div>
 <form  class="form" name="formp3" novalidate>
 		<div class="input-group " ng-class="{'has-error':!formp3.projname.$valid && !formp3.projname.$untouched,'has-success':formp3.projname.$valid}">
 		
@@ -382,14 +380,18 @@
 		</p>
 	</div>
 	<br>
-<div align="center"><button ng-click="submitCtrl.next();" class="btn btn-default">Next Page</button></div>
-</form>
+<div style="float: left;"><button ng-click="submitCtrl.back();" class="btn btn-default">Previous Page</button></div>
+<div style="float: right;"><button ng-click="submitCtrl.next();" class="btn btn-default">Next Page</button>
+</div>
+<br><br>
+</form><br>
 </div>
 
 
 
 
-<!-- ______________________________________________________________________________________________________________________________________-
+<!-- ______________________________________________________________________________________________________________________________________-->
+
 
 
 <!-- ______________________________________________________________________________________________________________________________________- -->
@@ -400,12 +402,9 @@
   <h2 align="center" class="group">
 	<br><br>  Registration Form - Project Details
 </h2>
-<div align="left"><button ng-click="submitCtrl.back();" class="btn btn-default">Previous Page</button>
-</div>
 	<form class="form" name="formp4" novalidate>
-
+	<h3 style="margin-top: -30px;">Questions</h3>
 		<div class="form-group">
-			<h3>Questions</h3>
 			<div class="input-group" ng-class="{'has-error':!formp4.WhyQues.$valid && !formp4.WhyQues.$untouched,'has-success':formp4.WhyQues.$valid}" >
 				<label for="WhyQues" class="control-label">What is your project about?</label>
 				<textarea name="WhyQues" id="WhyQues" ng-model="submitCtrl.submit.questions.what"  rows="5"   ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12"/>
@@ -415,7 +414,7 @@
 			</div>
 			<div class="input-group" ng-class="{'has-error':!formp4.RightQues.$valid && !formp4.RightQues.$untouched,'has-success':formp4.RightQues.$valid}" >
 				<label for="RightQues" class="control-label">Why do you think your Idea Rocks </label>
-				<textarea name="RightQues" id="RightQues" ng-model="submitCtrl.submit.questions.howbetter"  rows="5"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12" id="coll_add" />
+				<textarea name="RightQues" id="RightQues" ng-model="submitCtrl.submit.questions.howbetter" rows="5"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12" id="coll_add" />
 				<p class="help-block" ng-show="formp4.RightQues.$error.required && formp4.RightQues.$touched">
 					This field is required
 				</p>
@@ -436,25 +435,22 @@
 			This field is required
 		</p>
 	</div>
-    <br><br><br>
-  </form>
-  <br><br>
-  <div class="form-group">
-    <input type="checkbox" ng-model="submitCtrl.iagree" ng-required="true" >
-  <h5> I wish to represent Shaastra 2018 for my institute and I have read and agree to all the Terms and Conditions stated by Shaastra on this website.
-  </h5>
-  <h5>You can edit your response any number of times before the deadline.</h5>
-  </div>
-		<div align="center"><button ng-click="submitCtrl.submitform(submit);" ng-disabled="!submitCtrl.iagree || formp1.$error.required || formp1.$error.pattern || formp4.$error.required || formp4.$error.pattern" class="btn btn-primary">Submit</button>
+    <br><br>
+    <div style="float: left;"><button ng-click="submitCtrl.back();" class="btn btn-default">Previous Page</button></div>
+    		<div style="float: right;"><button ng-click="submitCtrl.submitform(submit);" ng-disabled=" formp4.$error.required || formp4.$error.pattern  || formp2.$error.pattern || formp3.$error.required || formp2.team_name.$error.required " class="btn btn-primary">Submit</button>
 		</div>
 		<br>
 		<div class="row show-hide-message" ng-show="submitCtrl.success">
 		<div class="alert alert-success"> {{submitCtrl.success}} </div>
 		</div>
+<!-- <div style="float: right;"><button ng-click="submitCtrl.next();" class="btn btn-default">Next Page</button> -->
+<!-- </div> -->
+<br><br>
+  </form>
 </div>
 </div>
 </div>
-<div id="display bio " style="margin-top: 50px;">
+<!-- <div id="display bio " style="margin-top: 50px;" ng-show="false">
 	<div class="container">
       <div class="row">
       <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
@@ -466,19 +462,6 @@
             </div>
             <div class="panel-body">
               <div class="row">
-                
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                  <dl>
-                    <dt>DEPARTMENT:</dt>
-                    <dd>Administrator</dd>
-                    <dt>HIRE DATE</dt>
-                    <dd>11/12/2013</dd>
-                    <dt>DATE OF BIRTH</dt>
-                       <dd>11/12/2013</dd>
-                    <dt>GENDER</dt>
-                    <dd>Male</dd>
-                  </dl>
-                </div>-->
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
@@ -515,9 +498,4 @@
         </div>
       </div>
     </div>
-	</div>
-<style type="text/css">
-  input {
-    width:100px;
-  }
-</style>
+	</div> -->

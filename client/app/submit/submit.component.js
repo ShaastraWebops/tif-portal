@@ -12,7 +12,7 @@ export class SubmitComponent {
     this.submit = {};
     this.$http = $http;
     this.$timeout = $timeout;
-    this.currpage=3;
+    this.currpage=2;
     this.vertical=true;
     this.othervertical='';
   }
@@ -39,11 +39,18 @@ this.verticals.push(this.othervertical);
 
 
   }
-  submitform() {
-    console.log('bef',this.submit);
+  saveform() {
     this.$http.put('/api/users/submit', this.submit)
     .then(resp => {
-      console.log('after',resp.data);
+      if(resp.data.success == true) {
+        alert('Progres Saved');
+        window.location='/submit';
+      }
+    });
+  }
+submitform() {
+    this.$http.put('/api/users/submit', this.submit)
+    .then(resp => {
       if(resp.data.success == true) {
         alert('Successfully Registered');
         window.location='/';

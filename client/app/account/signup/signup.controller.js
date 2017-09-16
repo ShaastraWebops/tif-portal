@@ -18,28 +18,6 @@ export default class SignupController {
     this.$http = $http;
     this.$state = $state;
     this.$scope = $scope;
-    $scope.years = [1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010];
-    $scope.months = [
-     'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
-   ];
-   $scope.setday = function() {
-   if($scope.month === 'January' || $scope.month === 'March'|| $scope.month === 'May' || $scope.month === 'July'||$scope.month === 'August' || $scope.month === 'October' || $scope.month === 'December')
-   {
-     $scope.days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
-   }
-   else if($scope.month === 'February')
-   {
-     if($scope.year%4==0){
-       $scope.days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29];
-     }
-     else {
-       $scope.days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
-     }
-   }
-   else {
-     $scope.days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
-   }
- }
   }
 
   register(form) {
@@ -48,6 +26,7 @@ export default class SignupController {
       return this.Auth.createUser({
         name: this.user.name,
         email: this.user.email,
+        phonenumber: this.user.phonenumber,
         password: this.user.password,
         dob: {
           month: this.$scope.month || null,   //as date of birth is commented out in html file
