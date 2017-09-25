@@ -38,30 +38,11 @@ var UserSchema = new Schema({
   },
   provider: String,
   salt: String,
-  dob: {
-    month: String,
-    day: Number,
-    year: Number
-  },
   phonenumber: Number,
   wnumber: Number,
-  education: {
-    degree: String,
-    branch: String,
-    year: String
-  },
-  college: {
-    name: String,
-    address: String,
-    city: String,
-    state: String
-  },
-  postal: {
-    address: String,
-    city: String,
-    state: String,
-    pin: String
-  },
+  education:String,
+  college: String,
+  postal: String,
   teamname:String,
   teammates: {
     mem2_name:String,

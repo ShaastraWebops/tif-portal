@@ -9,9 +9,9 @@ module.exports = {
   DOMAIN: 'http://localhost:3000',
   SESSION_SECRET: 'caportal-secret',
 
-  FACEBOOK_ID: 'FACEBOOK_ID',
-  FACEBOOK_SECRET: 'FACEBOOK_SECRET',
-  callbackURL: 'http://localhost:3000/auth/facebook/callback',
+  GOOGLE_ID: '462796761885-esnmrkb4au8nldcs5fb7bo1ull7rskrt.apps.googleusercontent.com',
+  GOOGLE_SECRET: ' XM5Lh2a65yeDkKvBegc32rst ',
+ callbackURL: 'http://localhost:3001/auth/google/callback',
   // Control debug level for modules using visionmedia/debug
   DEBUG: '',
 };
