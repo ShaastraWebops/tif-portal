@@ -1,5 +1,7 @@
 # caportal
 
+#When deploying the site create a google cloud project sep for it and put in official credential along with domain ,callbackURL etc. For now works with localhost
+
 ### Prerequisites
 
 - [Git](https://git-scm.com/)
