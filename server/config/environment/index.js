@@ -45,10 +45,10 @@ var all = {
     }
   },
 
-  facebook: {
-    clientID: '1363769900374546',//process.env.FACEBOOK_ID || 'id',
-    clientSecret: 'c557453c8a4dd8ad7e4bff237d286069',//process.env.FACEBOOK_SECRET || 'secret',
-    callbackURL: 'http://localhost:3000/auth/facebook/callback'//`${process.env.DOMAIN || ''}/auth/facebook/callback`
+  google: {
+    clientID: '462796761885-esnmrkb4au8nldcs5fb7bo1ull7rskrt.apps.googleusercontent.com',
+    clientSecret: 'pyXaboGkUv8A90s5E9atH8dj',
+    callbackURL: 'http://localhost:3001/auth/google/callback'
   }
 };
 

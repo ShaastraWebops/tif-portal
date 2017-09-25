@@ -309,7 +309,7 @@ export function me(req, res, next) {
         return res.status(401).end();
       }
       res.json(user);
-      return ;
+      return null;
     })
     .catch(err => next(err));
 }
