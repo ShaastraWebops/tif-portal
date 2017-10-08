@@ -17,6 +17,7 @@ function validationError(res, statusCode) {
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
+    // console.log(err);
     return res.status(statusCode).send(err);
   };
 }
@@ -63,6 +64,8 @@ export function create(req, res) {
   var newUser = new User(req.body);
   newUser.provider = 'local';
   newUser.role = 'user';
+  newUser.questions = {};
+  newUser.teammates = {};
   return newUser.save()
     .then(function(user) {
       var token = jwt.sign({ _id: user._id }, config.secrets.session, {
@@ -118,52 +121,55 @@ export function show(req, res, next) {
 
 export function submit(req, res) {
   console.log(req.body);
-  return User.findById(req.user._id).exec()
+  User.findById(req.user._id)
     .then(user => {
-      user.phonenumber = req.body.phonenumber;
-      user.wnumber = req.body.wnumber;
-      user.previous = req.body.previous;
-      user.college.name = req.body.college.name;
-      user.college.address = req.body.college.address;
-      user.college.city = req.body.college.city;
-      user.college.state = req.body.college.state;
-      user.education.degree = req.body.education.degree;
-      user.education.branch = req.body.education.branch;
-      user.education.year = req.body.education.year;
-      user.postal.address = req.body.postal.address;
-      user.postal.city = req.body.postal.city;
-      user.postal.state = req.body.postal.state;
-      user.postal.pin = req.body.postal.pin;
-      user.teamname = req.body.teamname;
-      user.teammates.mem2_name = req.body.teammates.mem2_name;
-      user.teammates.mem2_email = req.body.teammates.mem2_email;
-      user.teammates.mem2_phno = req.body.teammates.mem2_phno;
-      user.teammates.mem3_name = req.body.teammates.mem3_name;
-      user.teammates.mem3_email = req.body.teammates.mem3_email;
-      user.teammates.mem3_phno = req.body.teammates.mem3_phno;
-      user.teammates.mem4_name = req.body.teammates.mem4_name;
-      user.teammates.mem4_email = req.body.teammates.mem4_email;
-      user.teammates.mem4_phno = req.body.teammates.mem4_phno;
-      user.teammates.mem5_name = req.body.teammates.mem5_name;
-      user.teammates.mem5_email = req.body.teammates.mem5_email;
-      user.teammates.mem5_phno = req.body.teammates.mem5_phno;
-      user.teammates.mem6_name = req.body.teammates.mem6_name;
-      user.teammates.mem6_email = req.body.teammates.mem6_email;
-      user.teammates.mem6_phno = req.body.teammates.mem6_phno;
-      user.projname = req.body.projname;
-      user.vertical = req.body.vertical;
-      user.projdetails = req.body.projdetails;
-      user.projlink = req.body.projlink;
-      user.questions.what = req.body.questions.what;
-      user.questions.howbetter = req.body.questions.howbetter;
-      user.questions.past = req.body.questions.past;
-      user.submitted = true;
-      return user.save()
-        .then(() => {
-          res.json({success: true});
+      // user.phonenumber = req.body.phonenumber;
+      // user.wnumber = req.body.wnumber;
+      // user.previous = req.body.previous;
+      // user.college.name = req.body.college.name;
+      // user.college.address = req.body.college.address;
+      // user.college.city = req.body.college.city;
+      // user.college.state = req.body.college.state;
+      // user.education.degree = req.body.education.degree;
+      // user.education.branch = req.body.education.branch;
+      // user.education.year = req.body.education.year;
+      // user.postal.address = req.body.postal.address;
+      // user.postal.city = req.body.postal.city;
+      // user.postal.state = req.body.postal.state;
+      // user.postal.pin = req.body.postal.pin;
+      user.teamname = req.body.teamname || null;
+      user.teammates.mem2_name = req.body.teammates.mem2_name  ||  null;
+      user.teammates.mem2_email = req.body.teammates.mem2_email  ||  null;
+      user.teammates.mem2_phno = req.body.teammates.mem2_phno  ||  null;
+      user.teammates.mem3_name = req.body.teammates.mem3_name  ||  null;
+      user.teammates.mem3_email = req.body.teammates.mem3_email  ||  null;
+      user.teammates.mem3_phno = req.body.teammates.mem3_phno  ||  null;
+      user.teammates.mem4_name = req.body.teammates.mem4_name  ||  null;
+      user.teammates.mem4_email = req.body.teammates.mem4_email  ||  null;
+      user.teammates.mem4_phno = req.body.teammates.mem4_phno  ||  null;
+      user.teammates.mem5_name = req.body.teammates.mem5_name  ||  null;
+      user.teammates.mem5_email = req.body.teammates.mem5_email  ||  null;
+      user.teammates.mem5_phno = req.body.teammates.mem5_phno  ||  null;
+      user.teammates.mem6_name = req.body.teammates.mem6_name  ||  null;
+      user.teammates.mem6_email = req.body.teammates.mem6_email  ||  null;
+      user.teammates.mem6_phno = req.body.teammates.mem6_phno  ||  null;
+      user.projname = req.body.projname || '';
+      user.vertical = req.body.vertical || '';
+      user.projdetails = req.body.projdetails || '';
+      user.projlink = req.body.projlink || '';
+      user.questions.what = req.body.questions.what || '';
+      user.questions.howbetter = req.body.questions.howbetter || '';
+      user.questions.past = req.body.questions.past || '';
+      user.submitted = req.params.state;
+      user.save()
+        .then( entity => {
+          console.log("saved/n/n/n/n/n/n")
+          res.status(200).json({success: true});
+          return null;
         })
         .catch(handleError(res));
     });
+    return null;
 }
 
 /**

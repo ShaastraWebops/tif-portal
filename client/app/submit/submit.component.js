@@ -13,8 +13,9 @@ export class SubmitComponent {
     this.$http = $http;
     this.$timeout = $timeout;
     this.currpage=2;
-    this.vertical=true;
     this.othervertical='';
+    this.verticals=['Agriculture','Transportation','Robotics','Healthcare','Communication','Green Technology','Home Comfort'];
+
   }
 
   $onInit() {
@@ -22,12 +23,16 @@ export class SubmitComponent {
       this.success = false;
       this.submit = res.data;
       console.log(this.submit);
-      this.iagree = true;
-    this.verticals=['Agriculture','Transportation','Robotics','Healthcare','Communication','Green Technology','Home Comfort'];
+      // this.iagree = true;
+      if(!res.data.teammates)
+        this.submit.teammates={};
+      if(!res.data.questions)
+        this.submit.questions={};
+    if (res.data.vertical == null) {this.vertical=false;}
+
     if((this.verticals.indexOf(res.data.vertical) == -1) && res.data.vertical!=null)
       this.verticals.push(res.data.vertical);
     // this.othervertical=res.data.vertical;
-    if (res.data.vertical == null) {this.vertical=false;}
     });
   }
   showpage(pgno){return pgno == this.currpage;}
@@ -40,7 +45,7 @@ this.verticals.push(this.othervertical);
 
   }
   saveform() {
-    this.$http.put('/api/users/submit', this.submit)
+    this.$http.put('/api/users/submit/false', this.submit)
     .then(resp => {
       if(resp.data.success == true) {
         alert('Progres Saved');
@@ -49,7 +54,7 @@ this.verticals.push(this.othervertical);
     });
   }
 submitform() {
-    this.$http.put('/api/users/submit', this.submit)
+    this.$http.put('/api/users/submit/true', this.submit)
     .then(resp => {
       if(resp.data.success == true) {
         alert('Successfully Registered');
