@@ -1,28 +1,13 @@
-
 <style>
-.dropdown{
-  display: none;
-  position: absolute;
-  z-index: 1;
-  background-color: #131540;
-}
 
-.super:hover .dropdown{
-  display: inline-block;
-}
-
-.dropdown a{
-  display: block;
-  text-align: left;
-  float: none;
-  padding: 15px;
-  color: white;
+.navbar-default .navbar-nav li a{
+  color: #ffffff;
 }
 </style>
 
 
-<div class="navbar navbar-inverse navbar-fixed-top"  style="background-color: #333333; padding-right: 5px;">
-  <div class="">
+<div class="navbar navbar-default navbar-fixed-top" style="background-color: #ab47bc; width: 100vw; height: 5vh; padding-right: 3vw;">
+  <div>
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">
         <span class="sr-only">Toggle navigation</span>
@@ -30,26 +15,24 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/#home" class="navbar-brand" style="color: white;">TIF Portal</a>
+      
+      <a href="/#home" class="navbar-brand" style="color: white;"><span class="glyphicon glyphicon-home"></span></a>
     </div>
+    
     <div uib-collapse="$ctrl.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav">
         <li><a href="/#one">About</a></li>
-          <li><a href="/#two">Why </a></li>
-          <li><a href="/#three">How </a></li>
-          <li><a href="/#four">What</a></li>
-          <li><a href="/#five">R&R</a></li>
-          <li><a href="/#six">Contact Us</a></li>
-        <!-- <li ng-show="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li> -->
+        <li><a href="/#two">Why </a></li>
+        <li><a href="/#three">How </a></li>
+        <li><a href="/#four">What</a></li>
+        <li><a href="/#five">Rules</a></li>
+        <li><a href="/#six">Contact Us</a></li>
         <li ng-show="$ctrl.isAdmin()"><a href="/list">Registered Users</a></li>
-      <!--  <li ng-show="$ctrl.isAdmin()"><a href="/admintasks">Tasks Page</a></li>
-        <li ng-show="!$ctrl.isAdmin()&&$ctrl.isLoggedIn()"><a href="/usertasks">Tasks</a></li> -->
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <li ng-show="$ctrl.isLoggedIn()&&!$ctrl.isAdmin()"><a href="/submit">Form</a></li>
-         <!-- <li ng-hide="$ctrl.isLoggedIn()"><oauth-buttons></oauth-buttons> </li> -->
-       <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
+        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
         <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
         <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="settings">Change Password</a></li>
         <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
