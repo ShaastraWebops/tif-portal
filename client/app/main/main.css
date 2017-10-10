@@ -1,5 +1,5 @@
 .main-section{
-	height: 100vh;
+	min-height: 100vh;
 	padding-top: 8vh;
 	margin-left: 5vw;
 	margin-right: 5vw;
@@ -47,7 +47,7 @@
 }
 
 .main-text{
-	font-size: 1em;
+	font-size: 16px;
 }
 
 .main-about-text{
