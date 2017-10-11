@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-12">
       <form class="form" name="form" ng-submit="vm.register(form)" novalidate>
-
+      <legend>SignUp Form</legend>
         <div class="form-group" ng-class="{ 'has-success': form.name.$valid && vm.submitted,
                                             'has-error': form.name.$invalid && vm.submitted }">
           <label>Name</label>
@@ -52,7 +52,7 @@
         <label class="control-label">
           Institution Name *
         </label>
-        <input type="text" name="insti" ng-required="true" placeholder="Institution you are studying in" size="100%" ng-model="vm.user.college" class="form-control"/>
+        <input type="text" name="insti" ng-required="true"  size="100%" ng-model="vm.user.college" class="form-control"/>
         <p class="help-block" ng-show="form.insti.$error.required && form.insti.$touched">
           This field is required
         </p>
@@ -61,7 +61,7 @@
       <div class="input-group" ng-class="{'has-error':!form.stream.$valid && !form.stream.$untouched,'has-success':form.stream.$valid}"  >
         <label class="control-label">Which stream are you pursuing? *
         </label>
-        <input type="text" class="form-control" name="stream" ng-required="true" placeholder="Stream" size="100%" ng-model="vm.user.education" />
+        <input type="text" class="form-control" name="stream" ng-required="true" size="100%" ng-model="vm.user.education" />
         <p class="help-block" ng-show="form.stream.$error.required && form.stream.$touched">
         This field is required
         </p>

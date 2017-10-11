@@ -61,7 +61,7 @@ var UserSchema = new Schema({
     mem6_email:String,
     mem6_phno:Number
   },
-  projname:{type:String, default:'__NAME__'},
+  projname:{type:String},
   vertical:String,
   projdetails:String,
   projlink:String,
