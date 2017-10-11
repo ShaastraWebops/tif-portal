@@ -12,7 +12,7 @@ export class SubmitComponent {
     this.submit = {};
     this.$http = $http;
     this.$timeout = $timeout;
-    this.currpage=2;
+    this.currpage=3;
     this.othervertical='';
     this.verticals=['Agriculture','Transportation','Robotics','Healthcare','Communication','Green Technology','Home Comfort'];
 
