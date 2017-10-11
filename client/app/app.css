@@ -45,12 +45,9 @@
 /* Component styles are injected through gulp */
 /* inject:css */
 @import 'admin/admin.css';
-@import 'fb/fb.css';
-@import 'leaderboard/leaderboard.css';
 @import 'list/list.css';
 @import 'main/main.css';
 @import 'submit/submit.css';
-@import 'tasks/task.css';
 @import '../components/footer/footer.css';
 @import '../components/modal/modal.css';
 @import '../components/oauth-buttons/oauth-buttons.css';
