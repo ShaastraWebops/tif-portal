@@ -120,9 +120,11 @@ export function show(req, res, next) {
 }
 
 export function submit(req, res) {
-  console.log(req.body);
-  User.findById(req.user._id)
+  // console.log(req.body);
+  User.findOne({'_id':req.user._id, 'submitted':false})
     .then(user => {
+      console.log("\n\nuser",user);
+      if(!user)return res.status(202).json({message:"already submitted"}).end();
       // user.phonenumber = req.body.phonenumber;
       // user.wnumber = req.body.wnumber;
       // user.previous = req.body.previous;
@@ -138,6 +140,8 @@ export function submit(req, res) {
       // user.postal.state = req.body.postal.state;
       // user.postal.pin = req.body.postal.pin;
       user.teamname = req.body.teamname || null;
+      // if(user.teammates==undefined)user.teammates={};
+      // if(user.questions==undefined)user.questions={};
       user.teammates.mem2_name = req.body.teammates.mem2_name  ||  null;
       user.teammates.mem2_email = req.body.teammates.mem2_email  ||  null;
       user.teammates.mem2_phno = req.body.teammates.mem2_phno  ||  null;

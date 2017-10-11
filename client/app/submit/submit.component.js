@@ -13,7 +13,7 @@ export class SubmitComponent {
     this.$http = $http;
     this.submitted=false;
     this.$timeout = $timeout;
-    this.currpage=2;
+    this.currpage=2;//First Page to add details for google sign in if included back
     this.othervertical='';
     this.verticals=['Agriculture','Transportation','Robotics','Healthcare','Communication','Green Technology','Home Comfort'];
     this.date=false;
@@ -80,7 +80,7 @@ this.verticals.push(this.othervertical);
   }
   saveform(state) {
     this.submitted=true;
-    if(state && !this.submit.submitted)
+    if(state && !this.submit.submitted )
     this.$http.put('/api/users/submit/false', this.submit)
     .then(resp => {
     this.submitted=false;
@@ -92,6 +92,7 @@ this.verticals.push(this.othervertical);
     });
   }
 submitform() {
+    if(!this.submit.submitted && confirm("Are you Sure? This is final"))
     this.$http.put('/api/users/submit/true', this.submit)
     .then(resp => {
       if(resp.data.success == true) {

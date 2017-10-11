@@ -184,7 +184,7 @@
 <br>
 
 
-  <div class="row" ng-show="submitCtrl.showpage(3)" style="height: 100vh;">
+  <div class="row" ng-show="submitCtrl.showpage(3)" style="min-height: 93vh;">
     <div class="col-sm-12">
   <h2 align="center" class="group">
 	<br><br>  Registration Form - Project 
@@ -200,13 +200,14 @@
 			This field is required
 		</p>
 	</div>
-	<div  ng-class="{'has-success':!formp3.vertical.$error.required , 'has-error':formp3.vertical.$error.required }" >
+	<div  ng-class="{'has-success':!formp3.vertical.$error.required , 'has-error':formp3.vertical.$error.required 
+  && formp3.vertical.$touched}" >
     <label for="vertical" class="control-label">Vertical </label><br>
     <select name="vertical" style="color: black;" ng-options="option for option in submitCtrl.verticals" id="singleSelect"  ng-model="submitCtrl.submit.vertical" ng-value={{option}} ng-required="true" ng-change="submitCtrl.vertical=true;">
     </select>
     Others: <input type="text" name="othervertical" style="color: black;" size="30%" ng-init="submitCtrl.othervertical" ng-model="submitCtrl.othervertical" ng-blur="submitCtrl.optionchoser()" placeholder="other vertical">
 
-    <p class="help-block" ng-show="!submitCtrl.vertical  &&  formp3.vertical.$error.required">
+    <p class="help-block" ng-show="!submitCtrl.vertical  &&  formp3.vertical.$error.required && formp3.vertical.$touched" >
 			This field is required
 	</p>
 <!-- <h1 ng-bind="submitCtrl.submit.vertical"></h1><h2 ng-bind="submitCtrl.othervertical"></h2> -->
