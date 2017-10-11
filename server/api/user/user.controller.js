@@ -123,7 +123,6 @@ export function submit(req, res) {
   // console.log(req.body);
   User.findOne({'_id':req.user._id, 'submitted':false})
     .then(user => {
-      console.log("\n\nuser",user);
       if(!user)return res.status(202).json({message:"already submitted"}).end();
       // user.phonenumber = req.body.phonenumber;
       // user.wnumber = req.body.wnumber;
@@ -167,7 +166,6 @@ export function submit(req, res) {
       user.submitted = req.params.state;
       user.save()
         .then( entity => {
-          console.log("saved/n/n/n/n/n/n")
           res.status(200).json({success: true});
           return null;
         })
