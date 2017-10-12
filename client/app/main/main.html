@@ -3,7 +3,8 @@
     <a href="http://shaastra.org" target="_blank"><img src="../../assets/images/logo.png" class="shaastra-logo"></a>
     <h2 class="main-presents">PRESENTS</h2>
     <h1>TECH AND INNOVATION FAIR</h1>
-    <div class="main-register" ng-click="$ctrl.redirectform()" style="text-decoration: none;">REGISTER</div>
+    <a ng-show="!$ctrl.isLoggedIn()" href="/signup" style="text-decoration: none;"><div class="main-register">REGISTER</div></a>
+    <a ng-show="$ctrl.isLoggedIn()" href="/submit" style="text-decoration: none;"><div class="main-register" >SUBMIT FORM</div></a>
   </section>
 
   <section class="main-section" id="one">

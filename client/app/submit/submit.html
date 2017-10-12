@@ -1,5 +1,5 @@
- <div style="background-color: white;">
- <div class="container " style="height: 100%;  min-width: 300px; max-width: 600px; padding-top: 5vh; background-color: #aa8cc5;">
+ <div>
+ <div style="min-height: 100vh;  width: 50vw; min-width: 300px; padding-top: 5vh; margin: auto;">
 <!-- 
   <div class="col-sm-4 col-md-3" style="margin-bottom: 5vh;">
     <oauth-buttons classes="btn-block"></oauth-buttons>
@@ -241,10 +241,9 @@
 	<form class="form" name="formp4" novalidate>
  <fieldset ng-disabled="submitCtrl.submit.submitted">
 
-	<h3 style="margin-top: -30px;">Questions</h3>
 		<div class="form-group">
 			<div class="input-group" ng-class="{'has-error':!formp4.WhyQues.$valid && !formp4.WhyQues.$untouched,'has-success':formp4.WhyQues.$valid}" >
-				<label for="WhyQues" class="control-label">Describe your project and its working in detail.*</label>
+				<label for="WhyQues" class="control-label">What problem does it address, if any? (Want to change the world?) *</label>
 				<textarea name="WhyQues" id="WhyQues" ng-model="submitCtrl.submit.questions.what"  rows="5"   ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12"/>
 				<p class="help-block" ng-show="formp4.WhyQues.$error.required && formp4.WhyQues.$touched">
 					This field is required

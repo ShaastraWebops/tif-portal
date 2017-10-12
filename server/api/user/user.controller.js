@@ -75,22 +75,22 @@ export function create(req, res) {
         url: 'https://api.sendgrid.com/v3/mail/send',
         headers:
          { 'content-type': 'application/json',
-           authorization: 'Bearer ' + process.env.CASITE },
+           authorization: 'Bearer ' + process.env.TIF },
         body:
         { personalizations:
            [ { to: [ { email: user.email, name: user.name } ],
                subject: 'Shaastra 2018 || TIF' } ],
-          from: { email: 'studentrelations@shaastra.org', name: 'Student Relations, Shaastra' },
-          //reply_to: { email: 'sam.smith@example.com', name: 'Sam Smith' },
+          from: { email: 'webops@shaastra.org', name: 'TIF, Shaastra IIT Madras' },
+          reply_to: { email: 'techninnovationfair@shaastra.org' },
           subject: 'Shaastra 2018 || TIF',
           content:
            [ { type: 'text/html',
                value: '<html><body><p>Hello '+user.name+ ',<br>Greetings from Shaastra 2018, IIT Madras! <br>' + 
-               '<br>Thank you for signing up for the Shaastra TIF Program. Please complete the questionnaire on the portal by soon.' + 
-               '<br> You will be intimidated by mail if you are selected.' + 
-               ' Meanwhile please like and follow our Facebook page: fb.com/Shaastra for updates.' + 
-               '<br> If you have any queries contact us on studentrelations@shaastra.org <br><br><br>Regards,' +
-               ' <br>Team Shaastra <br> IIT Madras</p></body></html>' } ] },
+               '<br>Thank you for signing up for the Techno Innovation Fair. Please complete the questionnaire on the portal soon.' + 
+               '<br> You will be intimated by mail if you are selected.' + 
+               ' Meanwhile, please like and follow our ,a href="https://www.facebook.com/Shaastra>Facebook</a> page for updates.' + 
+               '<br> If you have any queries, write to us on techninnovationfair@shaastra.org <br><br><br>Regards,' +
+               ' <br>Team Shaastra <br> IIT Madras. <br><br><br></p></body></html>' } ] },
         json: true };
 
         request(options, function (error, response, body) {

@@ -86,7 +86,7 @@ this.verticals.push(this.othervertical);
     this.submitted=false;
 
       if(resp.data.success == true) {
-        alert('Progres Saved');
+        alert('Progress Saved');
         // window.location='/submit';
       }
     });
