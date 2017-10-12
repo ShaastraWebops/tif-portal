@@ -9,10 +9,12 @@ export class MainController {
 
 
   /*@ngInject*/
-  constructor($http,$scope,Auth) {
+  constructor($http,$scope,Auth,$state) {
     this.$http = $http;
     this.Auth = Auth;
+    this.$state=$state;
     this.$scope = $scope;
+    this.isLoggedIn = Auth.isLoggedInSync;
     $scope.show=false;
     $scope.fbshow=false;
   }
@@ -42,24 +44,17 @@ export class MainController {
         });
       }
     });
-    this.$http.get('/api/things')
-      .then(response => {
-        this.awesomeThings = response.data;
-      });
+    // this.$http.get('/api/things')
+    //   .then(response => {
+    //     this.awesomeThings = response.data;
+    //   });
   }
-
-  addThing() {
-    if(this.newThing) {
-      this.$http.post('/api/things', {
-        name: this.newThing
-      });
-      this.newThing = '';
-    }
-  }
-
-  deleteThing(thing) {
-    this.$http.delete(`/api/things/${thing._id}`);
-  }
+ redirectform(){
+  if(this.isLoggedIn())
+    this.$state.go('submit');
+  else
+    this.$state.go('signup');
+ }
 }
 
 export default angular.module('caportalApp.main', [uiRouter])

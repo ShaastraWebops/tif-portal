@@ -28,11 +28,13 @@ export default class SignupController {
         email: this.user.email,
         phonenumber: this.user.phonenumber,
         password: this.user.password,
-        dob: {
-          month: this.$scope.month || null,   //as date of birth is commented out in html file
-          day: this.$scope.day || null,
-          year: this.$scope.year || null
-        }
+        college: this.user.college,
+        education: this.user.education,
+        // dob: {
+        //   month: this.$scope.month || null,   //as date of birth is commented out in html file
+        //   day: this.$scope.day || null,
+        //   year: this.$scope.year || null
+        // }
       })
         .then(() => {
           this.$state.go('main');
