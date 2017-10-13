@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 html{
 	background-color: #fafafa;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .main-section{
@@ -7,6 +10,7 @@ html{
 	padding-top: 8vh;
 	margin-left: 5vw;
 	margin-right: 5vw;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .main-presents{
@@ -23,6 +27,15 @@ html{
 	margin-top: 10vh;
 }
 
+.main-section h2{
+	font-size: 36px;
+}
+
+.main-section p, .main-section li{
+	font-size: 21px;
+	font-weight: normal;
+}
+
 .shaastra-logo{
 	width: 80vw;
 	margin: auto;
@@ -30,16 +43,28 @@ html{
 }
 
 .main-register{
-	background-color: #fbc02d;
-	border-radius: 2vh;
-	border: 0.5vh solid black;
+	background: #fbc02d;
+	background: -webkit-linear-gradient(120deg, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(120deg, #FFD200, #F7971E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	
+	border-radius: 5px;
+	/* border: 0.5vh solid black; */
+	box-shadow: 0 0 10px 3px gainsboro;
 	padding: 2vh;
 	width: 25vh;
 	text-align: center;
 	margin: auto;
 	margin-top: 5vh;
 	color: #000000;
+	transition: all 0.5s ease-out;
 }
+
+.main-register:hover{
+	transform: translateY(-5px);
+	box-shadow: 0 5px 10px 3px gainsboro;
+}
+
+
 
 .main-register a{
 	color: #000000;
@@ -57,7 +82,7 @@ html{
 }
 
 .main-text{
-	font-size: 15px;
+	/* font-size: 15px; */
 	min-width: 320px;
 }
 
@@ -68,16 +93,19 @@ html{
 .main-about-text{
 	flex: 1;
 	padding: 1vw;
+	padding-left: 0;
 }
 
 .main-about-img{
+	
 	flex: 1;
 }
 
+
 .main-about-container i{
-	font-size: 70vh;
+	font-size: 50vh;
 	align-content: center;
-	padding-left: 10vw;
+	padding: 10vh 10vw;
 }
 
 .fa{

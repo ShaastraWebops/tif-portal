@@ -1,15 +1,26 @@
 <style>
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.navbar{
+  font-family: 'Montserrat', sans-serif;
+  background: #fbc02d;
+	background: -webkit-linear-gradient(-45deg, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(-45deg, #FFD200, #F7971E);
+  box-shadow: 0 2px 8px 1px gainsboro;
+}
+
 .navbar-default .navbar-nav li a{
   color: #000000;
 }
 
 .navbar-default .navbar-nav li{
-  background-color: #fbc02d;
+  /* background-color: #fbc02d; */
 }
 
 .navbar-default .navbar-nav{
   margin: 0px;
+  
 }
 
 .glyphicon-home{
@@ -32,7 +43,7 @@
 </style>
 
 
-<div class="navbar navbar-default navbar-fixed-top" style="background-color: #fbc02d; width: 100vw; height: 5vh; padding-right: 3vw;">
+<div class="navbar navbar-default navbar-fixed-top" style="width: 100vw; height: 5vh; padding-right: 3vw;">
   <div>
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">
