@@ -97,7 +97,7 @@ export function create(req, res) {
                  value: '<html><body><p>Hello '+user.name+ ',<br>Greetings from Tech & Innovation Fair  team, Shaastra 2018! <br><br>' + 
                  '<br>Thank you for signing up for the event. Your TIF ID is: <b>' + req.body.tifID + '</b>.<br>' + 
                  'Please note your TIF ID and include it in all further communications.<br><br>' + 
-                 'For completing the application for this event, please fill the form that is available on the website by 10 November, 11.59 pm. Further instructions will be provided once you have successfully completed the application process. <br><br>' + 
+                 'For completing the application for this event, please fill the form that is available on the website by <b>10 November, 11.59 pm</b>. Further instructions will be provided once you have successfully completed the application process. <br><br>' + 
                  '<br>Tech and Innovation Fair is a month long event which includes extensive mentorship to the selected teams helping build their business model. If selected, the team will also get to showcase their project in the Fair during Shaastra (4-7 Jan) in front of thousands of people and network with experts from various fields.<br>' +
                  '<br> If you have any queries, write to us on tifregistrations@shaastra.org <br><br><br>Regards,' + 
                  '<br>TIF Team,<br>Shaastra 2018,<br> IIT Madras.<br><br>Please like and follow our <a href="https://www.facebook.com/Shaastra">Facebook</a> page for updates. <br><br><br></p></body></html>' } ] },

@@ -55,12 +55,6 @@ var UserSchema = new Schema({
     mem4_name:String,
     mem4_email:String,
     mem4_phno:Number,
-    mem5_name:String,
-    mem5_email:String,
-    mem5_phno:Number,
-    mem6_name:String,
-    mem6_email:String,
-    mem6_phno:Number
   },
   projname:{type:String},
   vertical:String,

@@ -51,16 +51,7 @@ this.verticals.push(this.othervertical);
   isrequired(index){
     if(!this.data)return true;
     // console.log("test",this.submit.teammates.mem6_name == '' || this.submit.teammates.mem6_name == null )
-    if(this.submit.teammates.mem6_name != '' && this.submit.teammates.mem6_name != null  || this.submit.teammates.mem6_email != '' && this.submit.teammates.mem6_email != null ||  this.submit.teammates.mem6_phno != '' && this.submit.teammates.mem6_phno != null){
-      // console.log("6",true);
-      if(index<=6)
-        return true;
-    }
-    if(this.submit.teammates.mem5_name != '' && this.submit.teammates.mem5_name != null  || this.submit.teammates.mem5_email != '' && this.submit.teammates.mem5_email != null ||  this.submit.teammates.mem5_phno != '' && this.submit.teammates.mem5_phno != null){
-      // console.log("5",true);
-      if(index<=5)
-        return true;
-    }
+
     if(this.submit.teammates.mem4_name != '' && this.submit.teammates.mem4_name != null  || this.submit.teammates.mem4_email != '' && this.submit.teammates.mem4_email != null ||  this.submit.teammates.mem4_phno != '' && this.submit.teammates.mem4_phno != null){
       // console.log("4",true);
       if(index<=4)

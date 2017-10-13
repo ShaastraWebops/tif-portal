@@ -115,61 +115,7 @@
     </small>
 </div>
 </div>
-  <div class="form-group" ng-class="{'has-error':(formp2.mem5_name.$invalid || formp2.mem5_email.$invalid || formp2.mem5_phno.$invalid ) &&  (formp2.mem5_name.$touched || formp2.mem5_email.$touched || formp2.mem5_phno.$touched ||  submitCtrl.submitted) , 'has-success':formp2.mem5_name.$valid && formp2.mem5_email.$valid && formp2.mem5_phno.$valid && submitCtrl.submit.teammates.mem5_name}" >
-  <label class="control-label">Member 5</label>
- <div class="input-group">
-      <input type="text" name="mem5_name" size="100%" class="form-control  col-xs-12 col-lg-6 col-sm-8" placeholder="Name " ng-required="submitCtrl.isrequired(5)" ng-model="submitCtrl.submit.teammates.mem5_name" />
-       <small class="help-block" ng-show=" formp2.mem5_name.$error.required && (formp2.mem5_email.$touched ||  submitCtrl.submitted)">
-        The Email of the member is required
-      </small>
-  </div><br>
-  <div class="input-group">
-      <input type="email" name="mem5_email" size="100%" class="form-control  col-xs-12 col-lg-6 col-sm-8" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" ng-required="submitCtrl.isrequired(5)" placeholder="Enter the Email-id " ng-model="submitCtrl.submit.teammates.mem5_email" />
-      <small class="help-block" ng-show=" formp2.mem5_email.$error.required && (formp2.mem5_email.$touched ||  submitCtrl.submitted)">
-        The Email of the member is required
-      </small>
-      <small class="help-block" ng-show="(formp2.mem5_email.$touched ||  submitCtrl.submitted) && formp2.mem5_email.$error.pattern">
-          Please Enter a valid Email ID
-      </small>
-</div><br>
-<div class="input-group">
-    <input type="text" name="mem5_phno" ng-model="submitCtrl.submit.teammates.mem5_phno" size="100%" ng-pattern="/^[0-9]{10}$/" ng-required="submitCtrl.isrequired(5)" class="form-control " id="coll_add1" placeholder="Enter phonenumber" />
-    <small class="help-block" ng-show="formp2.mem5_phno.$error.required && (formp2.mem5_phno.$touched ||  submitCtrl.submitted)">
-      This field is required
-    </small>
-    <small class="help-block" ng-show="formp2.mem5_phno.$invalid && formp2.mem5_phno.$error.pattern">
-        The Contact No. must be 10 digits long
-    </small>
-</div>
-</div>
 
-  <div class="form-group" ng-class="{'has-error':(formp2.mem6_name.$invalid || formp2.mem6_email.$invalid || formp2.mem6_phno.$invalid ) &&  (formp2.mem6_name.$touched || formp2.mem6_email.$touched || formp2.mem6_phno.$touched ||  submitCtrl.submitted) , 'has-success':formp2.mem6_name.$valid && formp2.mem6_email.$valid && formp2.mem6_phno.$valid && submitCtrl.submit.teammates.mem6_name}" >
-  <label class="control-label">Member 6</label>
- <div class="input-group">
-      <input type="text" name="mem6_name" size="100%" class="form-control  col-xs-12 col-lg-6 col-sm-8" placeholder="Name " ng-required="submitCtrl.isrequired(6)" ng-model="submitCtrl.submit.teammates.mem6_name" />
-       <small class="help-block" ng-show=" formp2.mem6_name.$error.required && (formp2.mem6_email.$touched ||  submitCtrl.submitted)">
-        The Email of the member is required
-      </small>
-  </div><br>
-  <div class="input-group">
-      <input type="email" name="mem6_email" size="100%" class="form-control  col-xs-12 col-lg-6 col-sm-8" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" ng-required="submitCtrl.isrequired(6)" placeholder="Enter the Email-id " ng-model="submitCtrl.submit.teammates.mem6_email" />
-      <small class="help-block" ng-show=" formp2.mem6_email.$error.required && (formp2.mem6_email.$touched ||  submitCtrl.submitted)">
-        The Email of the member is required
-      </small>
-      <small class="help-block" ng-show="(formp2.mem6_email.$touched ||  submitCtrl.submitted) && formp2.mem6_email.$error.pattern">
-          Please Enter a valid Email ID
-      </small>
-</div><br>
-<div class="input-group">
-    <input type="text" name="mem6_phno" ng-model="submitCtrl.submit.teammates.mem6_phno" size="100%" ng-pattern="/^[0-9]{10}$/" ng-required="submitCtrl.isrequired(6)" class="form-control " id="coll_add1" placeholder="Enter phonenumber" />
-    <small class="help-block" ng-show="formp2.mem6_phno.$error.required && (formp2.mem6_phno.$touched ||  submitCtrl.submitted)">
-      This field is required
-    </small>
-    <small class="help-block" ng-show="formp2.mem6_phno.$invalid && formp2.mem6_phno.$error.pattern">
-        The Contact No. must be 10 digits long
-    </small>
-</div>
-</div>
 <br>
 <!-- <div style="float: left;"><button ng-click="submitCtrl.back();" class="btn btn-default">Previous Page</button></div> -->
 </fieldset>
