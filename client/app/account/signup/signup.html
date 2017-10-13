@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-12">
       <form class="form" name="form" ng-submit="vm.register(form)" novalidate>
-      <legend>SignUp Form</legend>
+      <h3>Signup</h3>
         <div class="form-group" ng-class="{'has-error': form.name.$invalid && form.name.$touched}">
           <label>Name</label>
 
@@ -24,9 +24,9 @@
       
       <div class="form-group" ng-class="{'has-error':!form.insti.$valid && form.insti.$touched}" >
 
-        <label>Institution Name *
+        <label>Institution Name
         </label>
-        <input type="text" name="insti" ng-required="true"  size="100%" ng-model="vm.user.college" class="form-control"/>
+        <input type="text" name="insti" size="100%" ng-model="vm.user.college" class="form-control"/>
         <p class="help-block" ng-show="form.insti.$error.required && form.insti.$touched">
           This field is required
         </p>

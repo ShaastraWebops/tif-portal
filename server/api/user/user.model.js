@@ -9,6 +9,7 @@ const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
   name: String,
+  tifID: String,
   email: {
     type: String,
     lowercase: true,
@@ -41,7 +42,7 @@ var UserSchema = new Schema({
   phonenumber: Number,
   wnumber: Number,
   education:String,
-  college: String,
+  college: { type: String, required: false, default: "Not Provided"},
   postal: String,
   teamname:String,
   teammates: {

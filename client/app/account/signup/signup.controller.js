@@ -27,6 +27,7 @@ export default class SignupController {
         name: this.user.name,
         email: this.user.email,
         phonenumber: this.user.phonenumber,
+        tifID: '',
         password: this.user.password,
         college: this.user.college,
         education: this.user.education,

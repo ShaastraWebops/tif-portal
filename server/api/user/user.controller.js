@@ -61,46 +61,57 @@ export function list(req, res) {
  * Creates a new user
  */
 export function create(req, res) {
-  var newUser = new User(req.body);
-  newUser.provider = 'local';
-  newUser.role = 'user';
-  newUser.questions = {};
-  newUser.teammates = {};
-  return newUser.save()
-    .then(function(user) {
-      var token = jwt.sign({ _id: user._id }, config.secrets.session, {
-        expiresIn: 60 * 60 * 5
-      });
-      var options = { method: 'POST',
-        url: 'https://api.sendgrid.com/v3/mail/send',
-        headers:
-         { 'content-type': 'application/json',
-           authorization: 'Bearer ' + process.env.TIF },
-        body:
-        { personalizations:
-           [ { to: [ { email: user.email, name: user.name } ],
-               subject: 'Shaastra 2018 || TIF' } ],
-          from: { email: 'webops@shaastra.org', name: 'TIF, Shaastra IIT Madras' },
-          reply_to: { email: 'techninnovationfair@shaastra.org' },
-          subject: 'Shaastra 2018 || TIF',
-          content:
-           [ { type: 'text/html',
-               value: '<html><body><p>Hello '+user.name+ ',<br>Greetings from Shaastra 2018, IIT Madras! <br>' + 
-               '<br>Thank you for signing up for the Techno Innovation Fair. Please complete the questionnaire on the portal soon.' + 
-               '<br> You will be intimated by mail if you are selected.' + 
-               ' Meanwhile, please like and follow our ,a href="https://www.facebook.com/Shaastra>Facebook</a> page for updates.' + 
-               '<br> If you have any queries, write to us on techninnovationfair@shaastra.org <br><br><br>Regards,' +
-               ' <br>Team Shaastra <br> IIT Madras. <br><br><br></p></body></html>' } ] },
-        json: true };
+  User.find().exec().then(res1 => {
+    var count = res1.length+1;
+    if(count<10)
+      req.body.tifID = 'TIF18000'+count;
+    else if(count<100)
+      req.body.tifID = 'TIF1800'+count;
+    else if(count<1000)
+      req.body.tifID = 'TIF180'+count;
 
-        request(options, function (error, response, body) {
-    if (error) throw new Error(error);
+    var newUser = new User(req.body);
+    newUser.provider = 'local';
+    newUser.role = 'user';
+    newUser.questions = {};
+    newUser.teammates = {};
+    return newUser.save()
+      .then(function(user) {
+        var token = jwt.sign({ _id: user._id }, config.secrets.session, {
+          expiresIn: 60 * 60 * 5
+        });
+        var options = { method: 'POST',
+          url: 'https://api.sendgrid.com/v3/mail/send',
+          headers:
+           { 'content-type': 'application/json',
+             authorization: 'Bearer ' + process.env.TIF },
+          body:
+          { personalizations:
+             [ { to: [ { email: user.email, name: user.name } ],
+                 subject: 'Shaastra 2018 || TIF' } ],
+            from: { email: 'webops@shaastra.org', name: 'TIF, Shaastra IIT Madras' },
+            cc: { email: 'tifregistrations@shaastra.org', name: "TIF, Shaastra IIT Madras" },
+            subject: 'Shaastra 2018 || TIF',
+            content:
+             [ { type: 'text/html',
+                 value: '<html><body><p>Hello '+user.name+ ',<br>Greetings from Tech & Innovation Fair  team, Shaastra 2018! <br><br>' + 
+                 '<br>Thank you for signing up for the event. Your TIF ID is: <b>' + req.body.tifID + '</b>.<br>' + 
+                 'Please note your TIF ID and include it in all further communications.<br><br>' + 
+                 'For completing the application for this event, please fill the form that is available on the website by 10 November, 11.59 pm. Further instructions will be provided once you have successfully completed the application process. <br><br>' + 
+                 '<br>Tech and Innovation Fair is a month long event which includes extensive mentorship to the selected teams helping build their business model. If selected, the team will also get to showcase their project in the Fair during Shaastra (4-7 Jan) in front of thousands of people and network with experts from various fields.<br>' +
+                 '<br> If you have any queries, write to us on tifregistrations@shaastra.org <br><br><br>Regards,' + 
+                 '<br>TIF Team,<br>Shaastra 2018,<br> IIT Madras.<br><br>Please like and follow our <a href="https://www.facebook.com/Shaastra">Facebook</a> page for updates. <br><br><br></p></body></html>' } ] },
+          json: true };
 
-    //console.log(response);
+          request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+
+      //console.log(response);
+    });
+      res.json({ token });
+      })
+      .catch(validationError(res));
   });
-    res.json({ token });
-    })
-    .catch(validationError(res));
 }
 
 /**

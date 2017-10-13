@@ -1,3 +1,7 @@
+html{
+	background-color: #fafafa;
+}
+
 .main-section{
 	min-height: 100vh;
 	padding-top: 8vh;
@@ -26,6 +30,7 @@
 }
 
 .main-register{
+	background-color: #fbc02d;
 	border-radius: 2vh;
 	border: 0.5vh solid black;
 	padding: 2vh;
@@ -46,8 +51,18 @@
 	flex-direction: row;
 }
 
+.main-last-container{
+	display: flex;
+	flex-direction: row;
+}
+
 .main-text{
 	font-size: 15px;
+	min-width: 320px;
+}
+
+.main-about-text li{
+	padding: 1vh;
 }
 
 .main-about-text{
@@ -63,4 +78,18 @@
 	font-size: 70vh;
 	align-content: center;
 	padding-left: 10vw;
+}
+
+.fa{
+	color: #fbc02d;
+}
+
+@media screen and (max-width: 719px){
+	.main-about-img {
+		display: none;
+	}
+
+	.main-last-container{
+		display: block;
+	}
 }
