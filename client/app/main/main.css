@@ -96,16 +96,39 @@ html{
 	padding-left: 0;
 }
 
-.main-about-img{
-	
+.main-about-img{	
 	flex: 1;
 }
-
 
 .main-about-container i{
 	font-size: 50vh;
 	align-content: center;
 	padding: 10vh 10vw;
+}
+
+.main-partner-container{
+	display: flex;
+	flex-direction: column;
+}
+
+.main-partner{
+	flex: 1;
+}
+
+.partner-container{
+	display: flex;
+	flex-direction: row;
+}
+
+.main-partner-img{
+	width: 25vw;
+	min-width: 320px;
+}
+
+.main-partner-text{
+	flex: 3;
+	min-width: 320px;
+	padding: 4vw;
 }
 
 .fa{
