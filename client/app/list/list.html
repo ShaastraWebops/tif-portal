@@ -1,50 +1,60 @@
-<div class="container" style="padding-top: 100px; width: 100%;">
-<div class="page-header" >
-  <h1>All Users who have submitted the form </h1>
-</div>
-<button class="btn btn-default" ng-click="listCtrl.export();"> Export as .csv file </button>
-<br><br>
-<table class="table table-hover">
-<thead class="thead-inverse">
-<tr>
-  <th> Name</th>
-  <th> Email</th>
-  <th> Phone Number</th>
-  <th> Facebook profile link </th>
-  <th align="center"> Education Details</th>
-  <th align="center"> College Details</th>
-  <th>Previous Experience</th>
-  <th>Why right candidate?</th>
-  <th>Why CA</th>
-  <th>Selection</th>
-</tr>
+<div style="padding-top: 7vh; width: 100vw; min-height: 100vh;">
+  <h1>Registrations</h1>
+  <button class="btn btn-success" ng-click="listCtrl.export()">Export to .csv</button>
+  <p>
+    <input type="number" ng-model="listCtrl.index" min="1" max="{{listCtrl.users.length}}" ng-change="listCtrl.changed()" style="font-size: 24px;"> of <b style="margin-left: 2vh; font-size: 24px;">{{listCtrl.users.length}}</b>
+    <button ng-click="listCtrl.index = listCtrl.index-1; listCtrl.changed();"> <- </button>
+    <button ng-click="listCtrl.index = listCtrl.index+1; listCtrl.changed();"> -> </button>
+  </p>
 
-</thead>
-<tbody>
-  <tr ng-repeat="user in listCtrl.users">
-    <td>{{ user.name }}</td>
-    <td>{{ user.email }}</td>
-    <td>{{ user.phonenumber }}</td>
-    <td><a href="{{user.fblink}}">{{ user.fblink }}</a></td>
-    <td>{{ user.education.year }}<br/>{{ user.education.branch }}<br/>{{ user.education.degree }}</td>
-    <td>{{ user.college.name }}<br/>
-    <td>{{ user.questions.past }}</td>
-    <td>{{ user.questions.right }}</td>
-    <td>{{ user.questions.why }}</td>
-    <td>
-      <div ng-show="user.selected==0 && !listCtrl.grapevine">
-        <div class="btn btn-success" ng-click="listCtrl.selected(user._id)">Selected</div>
-        <div class="btn btn-danger"  ng-click="listCtrl.rejected(user._id)">Rejected</div>
-      </div>
-      <div ng-show="user.selected==0 && listCtrl.grapevine">
-        <p style="color: blue;">Pending</p>
-      </div>
-      <div ng-show="user.selected!=0">
-        <p ng-show='user.selected==1' style="color: green;">Selected</p>
-        <p ng-show='user.selected==2' style="color: red;">Rejected</p>
-      </div>
-    </td>
-  </tr>
-</tbody>
-</table>
-</div
+  <div class="list-container" ng-init="listCtrl.changed()">
+    <div class="list-object">
+      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>TIF ID</b></p>
+      <p class="col-xs-12 col-md-6" style="font-size: 24px;">{{listCtrl.user.tifID }}</p>
+    </div>
+    <div class="list-object">
+      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Team Name</b></p>
+      <p class="col-xs-12 col-md-6">{{listCtrl.user.teamname}}</p>
+    </div>
+    <div class="list-object">
+      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Institution</b></p>
+      <p class="col-xs-12 col-md-6">{{listCtrl.user.college}}</p>
+    </div>
+    <div class="list-object">
+      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Project</b></p>
+      <p class="col-xs-12 col-md-6">{{listCtrl.user.projname}}</p>
+    </div>
+    <div class="list-object">
+      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>People</b></p>
+      <p class="col-xs-12 col-md-6"><b>{{listCtrl.user.name}} - {{listCtrl.user.email}} - {{listCtrl.user.phonenumber}}</b><br>
+      {{listCtrl.user.teammates.mem2_name}} - {{listCtrl.user.teammates.mem2_email}} - {{listCtrl.user.teammates.mem2_phno}}<br>
+      {{listCtrl.user.teammates.mem3_name}} - {{listCtrl.user.teammates.mem3_email}} - {{listCtrl.user.teammates.mem3_phno}}<br>
+      {{listCtrl.user.teammates.mem4_name}} - {{listCtrl.user.teammates.mem4_email}} - {{listCtrl.user.teammates.mem4_phno}}<br>
+      </p>
+    </div>
+    <div class="list-object">
+      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Stream/Project Vertical</b></p>
+      <p class="col-xs-12 col-md-6">{{listCtrl.user.education}} / {{listCtrl.user.vertical}}</p>
+    </div>
+    <div class="list-object">
+      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Project Details</b></p>
+      <p class="col-xs-12 col-md-6">{{listCtrl.user.projdetails}}</p>
+    </div>
+    <div class="list-object">
+      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Project Link</b></p>
+      <p class="col-xs-12 col-md-6"><a href="{{listCtrl.user.projlink}}">{{listCtrl.user.projlink}}</a></p>
+    </div>
+    <div class="list-object">
+      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Problem it addresses</b></p>
+      <p class="col-xs-12 col-md-6">{{listCtrl.user.questions.what}}</p>
+    </div>
+    <div class="list-object">
+      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>How better</b></p>
+      <p class="col-xs-12 col-md-6">{{listCtrl.user.questions.howbetter}}</p>
+    </div>
+    <div class="list-object">
+      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Prior Experience</b></p>
+      <p class="col-xs-12 col-md-6">{{listCtrl.user.questions.past}}</p>
+    </div>
+  </div>
+</div>

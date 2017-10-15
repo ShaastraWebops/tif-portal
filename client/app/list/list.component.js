@@ -12,6 +12,8 @@ export class ListComponent {
   constructor($http, FileSaver) {
     this.$http = $http;
     this.FileSaver = FileSaver;
+    this.index = 1;
+    this.user = {}
   }
 
   $onInit() {
@@ -26,6 +28,8 @@ export class ListComponent {
     this.$http.get('/api/users/list').then(response => {
       if(response.status === 200) {
         this.users = response.data;
+        this.user = this.users[0];
+        console.log(this.user);
       }
     });
     this.export = function() {
@@ -34,6 +38,10 @@ export class ListComponent {
         this.FileSaver.saveAs(data, 'users.csv');
       });
     };
+
+    this.changed = function(){
+      this.user = this.users[this.index-1];
+    }
   }
 
   selected(id){
