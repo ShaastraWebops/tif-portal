@@ -1,4 +1,4 @@
-<div style="padding-top: 7vh; width: 100vw; min-height: 100vh;">
+<div style="padding-top: 7vh; width: 90vw; min-height: 100vh; overflow-x: hidden; margin: auto; ">
   <h1>Registrations</h1>
   <button class="btn btn-success" ng-click="listCtrl.export()">Export to .csv</button>
   <p>
@@ -9,52 +9,52 @@
 
   <div class="list-container" ng-init="listCtrl.changed()">
     <div class="list-object">
-      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>TIF ID</b></p>
-      <p class="col-xs-12 col-md-6" style="font-size: 24px;">{{listCtrl.user.tifID }}</p>
+      <p class="col-xs-12 col-md-3" style="text-align: center;"><b>TIF ID</b></p>
+      <p class="col-xs-12 col-md-9" style="font-size: 24px;">{{listCtrl.user.tifID }}</p>
     </div>
     <div class="list-object">
-      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Team Name</b></p>
-      <p class="col-xs-12 col-md-6">{{listCtrl.user.teamname}}</p>
+      <p class="col-xs-12 col-md-3" style="text-align: center;"><b>Team Name</b></p>
+      <p class="col-xs-12 col-md-9">{{listCtrl.user.teamname}}</p>
     </div>
     <div class="list-object">
-      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Institution</b></p>
-      <p class="col-xs-12 col-md-6">{{listCtrl.user.college}}</p>
+      <p class="col-xs-12 col-md-3" style="text-align: center;"><b>Institution</b></p>
+      <p class="col-xs-12 col-md-9">{{listCtrl.user.college}}</p>
     </div>
     <div class="list-object">
-      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Project</b></p>
-      <p class="col-xs-12 col-md-6">{{listCtrl.user.projname}}</p>
+      <p class="col-xs-12 col-md-3" style="text-align: center;"><b>Project</b></p>
+      <p class="col-xs-12 col-md-9">{{listCtrl.user.projname}}</p>
     </div>
     <div class="list-object">
-      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>People</b></p>
-      <p class="col-xs-12 col-md-6"><b>{{listCtrl.user.name}} - {{listCtrl.user.email}} - {{listCtrl.user.phonenumber}}</b><br>
+      <p class="col-xs-12 col-md-3" style="text-align: center;"><b>People</b></p>
+      <p class="col-xs-12 col-md-9"><b>{{listCtrl.user.name}} - {{listCtrl.user.email}} - {{listCtrl.user.phonenumber}}</b><br>
       {{listCtrl.user.teammates.mem2_name}} - {{listCtrl.user.teammates.mem2_email}} - {{listCtrl.user.teammates.mem2_phno}}<br>
       {{listCtrl.user.teammates.mem3_name}} - {{listCtrl.user.teammates.mem3_email}} - {{listCtrl.user.teammates.mem3_phno}}<br>
       {{listCtrl.user.teammates.mem4_name}} - {{listCtrl.user.teammates.mem4_email}} - {{listCtrl.user.teammates.mem4_phno}}<br>
       </p>
     </div>
     <div class="list-object">
-      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Stream/Project Vertical</b></p>
-      <p class="col-xs-12 col-md-6">{{listCtrl.user.education}} / {{listCtrl.user.vertical}}</p>
+      <p class="col-xs-12 col-md-3" style="text-align: center;"><b>Stream/Project Vertical</b></p>
+      <p class="col-xs-12 col-md-9">{{listCtrl.user.education}} / {{listCtrl.user.vertical}}</p>
     </div>
     <div class="list-object">
-      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Project Details</b></p>
-      <p class="col-xs-12 col-md-6">{{listCtrl.user.projdetails}}</p>
+      <p class="col-xs-12 col-md-3" style="text-align: center;"><b>Project Details</b></p>
+      <p class="col-xs-12 col-md-9">{{listCtrl.user.projdetails}}</p>
     </div>
     <div class="list-object">
-      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Project Link</b></p>
-      <p class="col-xs-12 col-md-6"><a href="{{listCtrl.user.projlink}}">{{listCtrl.user.projlink}}</a></p>
+      <p class="col-xs-12 col-md-3" style="text-align: center;"><b>Project Link</b></p>
+      <p class="col-xs-12 col-md-9"><a href="{{listCtrl.user.projlink}}">{{listCtrl.user.projlink}}</a></p>
     </div>
     <div class="list-object">
-      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Problem it addresses</b></p>
-      <p class="col-xs-12 col-md-6">{{listCtrl.user.questions.what}}</p>
+      <p class="col-xs-12 col-md-3" style="text-align: center;"><b>Problem it addresses</b></p>
+      <p class="col-xs-12 col-md-9">{{listCtrl.user.questions.what}}</p>
     </div>
     <div class="list-object">
-      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>How better</b></p>
-      <p class="col-xs-12 col-md-6">{{listCtrl.user.questions.howbetter}}</p>
+      <p class="col-xs-12 col-md-3" style="text-align: center;"><b>How better</b></p>
+      <p class="col-xs-12 col-md-9">{{listCtrl.user.questions.howbetter}}</p>
     </div>
     <div class="list-object">
-      <p class="col-xs-12 col-md-6" style="text-align: center;"><b>Prior Experience</b></p>
-      <p class="col-xs-12 col-md-6">{{listCtrl.user.questions.past}}</p>
+      <p class="col-xs-12 col-md-3" style="text-align: center;"><b>Prior Experience</b></p>
+      <p class="col-xs-12 col-md-9">{{listCtrl.user.questions.past}}</p>
     </div>
   </div>
 </div>
