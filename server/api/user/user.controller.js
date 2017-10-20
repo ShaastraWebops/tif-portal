@@ -384,12 +384,12 @@ export function forgotPassword (req, res, next) {
             url: 'https://api.sendgrid.com/v3/mail/send',
             headers:
              { 'content-type': 'application/json',
-               authorization: 'Bearer ' + process.env.CASITE },
+               authorization: 'Bearer ' + process.env.TIF },
             body:
             { personalizations:
                [ { to: [ { email: user.email, name: user.name } ],
-                   subject: 'Shaastra 2018 || Campus TIF' } ],
-              from: { email: 'support@shaastra.org', name: 'Student Relations, Shaastra' },
+                   subject: 'Shaastra 2018 || TIF' } ],
+              from: { email: 'tifregistrations@shaastra.org', name: 'TIF Registrations, Shaastra' },
               //reply_to: { email: 'sam.smith@example.com', name: 'Sam Smith' },
               subject: 'Shaastra 2018 || TIF',
               content:
@@ -397,13 +397,13 @@ export function forgotPassword (req, res, next) {
                    value: "<table style=\"background-color: #f3f3f3; font-family: verdana, tahoma, sans-serif; color: black; padding: 30px;\">" +
                     "<tr> <td>" +
                     "<h2>Hello " + user.name + ",</h2>" +
-                    "<p>Greetings from Shaastra-2017 team.</p>" +
-                    "<p>You have received this email since you have requested for password change for your Shaastra account.</p>" +
+                    "<p>Greetings from Shaastra-2018 team.</p>" +
+                    "<p>You have received this email since you have requested for password change for your TIF account.</p>" +
                     "<p>Please click on the following link, or paste this into your browser to complete the process:" +
-                    "<p> ca.shaastra.org/resetpassword/" + user.email + "/" + token + "</p>" +
+                    "<p> http://shaastra.org:8002/resetpassword/" + user.email + "/" + token + "</p>" +
                     // "<p>http://shaastra.org/#/reset-password/" + token + "</p>" +
                     "<p>If you did not request this, please ignore this email and your password will remain unchanged.</p>" +
-                    "Best,<br/> Shaastra 2017 team</p> </td> </tr> </table>" } ] },
+                    "Best,<br/> Shaastra 2018 team</p> </td> </tr> </table>" } ] },
             json: true };
 
           request(options, function (error, response, body) {
