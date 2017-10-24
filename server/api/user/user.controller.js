@@ -83,35 +83,45 @@ export function create(req, res) {
         var token = jwt.sign({ _id: user._id }, config.secrets.session, {
           expiresIn: 60 * 60 * 5
         });
-        var options = { method: 'POST',
-          url: 'https://api.sendgrid.com/v3/mail/send',
-          headers:
-           { 'content-type': 'application/json',
-             authorization: 'Bearer ' + process.env.TIF },
-          body:
-          { personalizations:
-             [ { to: [ { email: user.email, name: user.name } ],
-                 subject: 'Shaastra 2018 || TIF' } ],
-            from: { email: 'webops@shaastra.org', name: 'TIF, Shaastra IIT Madras' },
-            cc: { email: 'tifregistrations@shaastra.org', name: "TIF, Shaastra IIT Madras" },
-            subject: 'Shaastra 2018 || TIF',
-            content:
-             [ { type: 'text/html',
-                 value: '<html><body><p>Hello '+user.name+ ',<br>Greetings from Tech & Innovation Fair  team, Shaastra 2018! <br><br>' + 
+          var requests = sg.emptyRequest({
+            method: 'POST',
+            path: '/v3/mail/send',
+            body: {
+              personalizations: [
+                {
+                  to: [
+                   { email: user.email, name: user.name } 
+                  ],
+                  subject: 'Shaastra 2018 || TIF' 
+                }
+              ],
+              from: {
+                email: 'TIF@shaastra.com',name:'Student Relations Shaastra'
+              },
+              content: [
+                { type: 'text/html',
+                   value: '<html><body><p>Hello '+user.name+ ',<br>Greetings from Tech & Innovation Fair  team, Shaastra 2018! <br><br>' + 
                  '<br>Thank you for signing up for the event. Your TIF ID is: <b>' + req.body.tifID + '</b>.<br>' + 
                  'Please note your TIF ID and include it in all further communications.<br><br>' + 
                  'For completing the application for this event, please fill the form that is available on the website by <b>10 November, 11.59 pm</b>. Further instructions will be provided once you have successfully completed the application process. <br><br>' + 
                  '<br>Tech and Innovation Fair is a month long event which includes extensive mentorship to the selected teams helping build their business model. If selected, the team will also get to showcase their project in the Fair during Shaastra (4-7 Jan) in front of thousands of people and network with experts from various fields.<br>' +
                  '<br> If you have any queries, write to us on tifregistrations@shaastra.org <br><br><br>Regards,' + 
-                 '<br>TIF Team,<br>Shaastra 2018,<br> IIT Madras.<br><br>Please like and follow our <a href="https://www.facebook.com/Shaastra">Facebook</a> page for updates. <br><br><br></p></body></html>' } ] },
-          json: true };
-
-          request(options, function (error, response, body) {
-      if (error) throw new Error(error);
-
-      //console.log(response);
-    });
-      res.json({ token });
+                 '<br>TIF Team,<br>Shaastra 2018,<br> IIT Madras.<br><br>Please like and follow our <a href="https://www.facebook.com/Shaastra">Facebook</a> page for updates. <br><br><br></p></body></html>' }]
+            },
+            json:true
+          });
+          sg.API(requests)
+          .then(function (response) {
+            //console.log(response.statusCode);
+            //console.log(response.body);
+            //console.log(response.headers);
+            return res.json({success: true, message: 'mail sent to ' + req.body.email,token:token});
+          })
+          .catch(function (error) {
+            // error is an instance of SendGridError
+            // The full response is attached to error.response
+            console.log(error.response.statusCode);
+          }); 
       })
       .catch(validationError(res));
   });
@@ -211,20 +221,23 @@ export function select(req, res) {
       user.selected=1;
       return user.save()
         .then(() => {
-          var options = { method: 'POST',
-            url: 'https://api.sendgrid.com/v3/mail/send',
-            headers:
-             { 'content-type': 'application/json',
-               authorization: 'Bearer ' + process.env.CASITE },
-            body:
-            { personalizations:
-               [ { to: [ { email: user.email, name: user.name } ],
-                   subject: 'Shaastra 2018 || TIF' } ],
-              from: { email: 'studentrelations@shaastra.org', name: 'Student Relations, Shaastra' },
-              //reply_to: { email: 'sam.smith@example.com', name: 'Sam Smith' },
-              subject: 'Shaastra 2018 || TIF',
-              content:
-               [ { type: 'text/html',
+          var requests = sg.emptyRequest({
+            method: 'POST',
+            path: '/v3/mail/send',
+            body: {
+              personalizations: [
+                {
+                  to: [
+                   { email: user.email, name: user.name } 
+                  ],
+                  subject: 'Shaastra 2018 || TIF' 
+                }
+              ],
+              from: {
+                email: 'TIF@shaastra.com',name:'Student Relations Shaastra'
+              },
+              content: [
+                { type: 'text/html',
                    value: '<html><body><p>Hello ' + user.name + ',<br><br> Greetings from Shaastra 2018, IIT Madras! <br>' + 
                    '<br>First of all, congratulations on being selected in TIF. ' +
                     'We would like to welcome you to the team behind India’s largest completely student-run technical extravaganza ' + 
@@ -233,18 +246,25 @@ export function select(req, res) {
                     '<br>With this in mind, we hope you have an amazing journey working with us as you represent your college.' + 
                     '<br>Further instructions and information would be communicated to you shortly. ' + 
                     'We request you to keep checking the your email.<br>' + 
-                    '<br>Looking forward to work with you.<br><br>Regards,<br>Team Shaastra<br>IIT Madras</p></body></html>' } ] },
-            json: true };
+                    '<br>Looking forward to work with you.<br><br>Regards,<br>Team Shaastra<br>IIT Madras</p></body></html>' }]
+            },
+            json:true
+          });
+          sg.API(requests)
+          .then(function (response) {
+            //console.log(response.statusCode);
+            //console.log(response.body);
+            //console.log(response.headers);
+            return res.json({success: true, message: 'selected mail sent to ' + req.body.email});
+          })
+          .catch(function (error) {
+            // error is an instance of SendGridError
+            // The full response is attached to error.response
+            console.log(error.response.statusCode);
+          });
 
-            request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-
-        //console.log(response);
-      });
-          res.json({success: true, message: "User updated"});
-        })
-        .catch(handleError(res));
-     }
+      }).catch(handleError(res));
+         } 
     })
     .catch(handleError(res));
 }
@@ -261,36 +281,47 @@ export function reject(req, res) {
       var name=user.name,email=user.email;
       return user.save()
         .then(() => {
-          var options = { method: 'POST',
-            url: 'https://api.sendgrid.com/v3/mail/send',
-            headers:
-             { 'content-type': 'application/json',
-               authorization: 'Bearer ' + process.env.CASITE },
-            body:
-            { personalizations:
-               [ { to: [ { email: user.email, name: user.name } ],
-                   subject: 'Shaastra 2018 || TIF' } ],
-              from: { email: 'studentrelations@shaastra.org', name: 'Student Relations, Shaastra' },
-              //reply_to: { email: 'sam.smith@example.com', name: 'Sam Smith' },
-              subject: 'Shaastra 2018 || TIF',
-              content:
-               [ { type: 'text/html',
+          var requests = sg.emptyRequest({
+            method: 'POST',
+            path: '/v3/mail/send',
+            body: {
+              personalizations: [
+                {
+                  to: [
+                   { email: user.email, name: user.name } 
+                  ],
+                  subject: 'Shaastra 2018 || TIF' 
+                }
+              ],
+              from: {
+                email: 'TIF@shaastra.com',name:'Student Relations Shaastra'
+              },
+              content: [
+                { type: 'text/html',
                    value: '<html><body><p>Hello '+user.name+ ',<br><br> Greetings from Shaastra 2018, IIT Madras! <br>' + 
                    '<br>We regret to inform you that your application for being in Shaastra TIF couldn’t be accommodated. ' + 
                    'However, lose hope not, for you can try again for next year - which will see a bigger CA Program.' + 
                    '<br>Till then, get a feel of Shaastra - visit the IIT Madras campus in January and experience the largest student-run technical extravaganza.' + 
                    ' With a host of workshops, international competitions, lectures, exhibitions and shows, Shaastra is bound to amaze you.<br>' + 
-                   '<br>We look forward to see you at Shaastra 2018, next year!<br><br>Regards,<br>Team Shaastra<br>IIT Madras</p></body></html>' } ] },
-            json: true };
-
-            request(options, function (error, response, body) {
-        if (error) throw new Error(error);
+                   '<br>We look forward to see you at Shaastra 2018, next year!<br><br>Regards,<br>Team Shaastra<br>IIT Madras</p></body></html>'  }]
+            },
+            json:true
+          });
+          sg.API(requests)
+          .then(function (response) {
+            //console.log(response.statusCode);
+            //console.log(response.body);
+            //console.log(response.headers);
+            return res.json({success: true, message: 'Rejected mail sent to ' + req.body.email});
+          })
+          .catch(function (error) {
+            // error is an instance of SendGridError
+            // The full response is attached to error.response
+            console.log(error.response.statusCode);
+          });
 
         //console.log(response);
-      });
-          res.status(200).json({message: "User updated"});
-        })
-        .catch(handleError(res));
+      }).catch(handleError(res));
      }
     })
     .catch(handleError(res));
@@ -382,41 +413,7 @@ export function forgotPassword (req, res, next) {
       user.save()
         .then(user => { 
   console.log("Came here user.save",user.name);
-
-          // var options = { method: 'POST',
-          //   url: 'https://api.sendgrid.com/v3/mail/send',
-          //   headers:
-          //    { 'content-type': 'application/json',
-          //      authorization: 'Bearer ' + process.env.TIF },
-          //   body:
-          //   { personalizations:
-          //      [ { to: [ { email: user.email, name: user.name } ],
-          //          subject: 'Shaastra 2018 || TIF' } ],
-          //     from: { email: 'tifregistrations@shaastra.org', name: 'TIF Registrations, Shaastra' },
-          //     //reply_to: { email: 'sam.smith@example.com', name: 'Sam Smith' },
-          //     subject: 'Shaastra 2018 || TIF',
-          //     content:
-          //      [ { type: 'text/html',
-          //          value: "<table style=\"background-color: #f3f3f3; font-family: verdana, tahoma, sans-serif; color: black; padding: 30px;\">" +
-          //           "<tr> <td>" +
-          //           "<h2>Hello " + user.name + ",</h2>" +
-          //           "<p>Greetings from Shaastra-2018 team.</p>" +
-          //           "<p>You have received this email since you have requested for password change for your TIF account.</p>" +
-          //           "<p>Please click on the following link, or paste this into your browser to complete the process:" +
-          //           "<p> http://shaastra.org:8002/resetpassword/" + user.email + "/" + token + "</p>" +
-          //           // "<p>http://shaastra.org/#/reset-password/" + token + "</p>" +
-          //           "<p>If you did not request this, please ignore this email and your password will remain unchanged.</p>" +
-          //           "Best,<br/> Shaastra 2018 team</p> </td> </tr> </table>" } ] },
-          //   json: true };
-
-          // request(options, function (error, response, body) {
-          //   if (error) throw new Error(error);
-          // console.log("Came here req body");
-          // return res.json({success: true, message: 'Password Reset Mail Sent to' + req.body.email});
-
-          // //console.log(response);
-          // });
-          var requests = sg.emptyRequest({
+         var requests = sg.emptyRequest({
             method: 'POST',
             path: '/v3/mail/send',
             body: {
@@ -425,7 +422,7 @@ export function forgotPassword (req, res, next) {
                   to: [
                    { email: user.email, name: user.name } 
                   ],
-                  subject: 'Shaastra 2018 || TIF' 
+                  subject: 'Password Reset || TIF-Shaastra 2018' 
                 }
               ],
               from: {
@@ -440,7 +437,7 @@ export function forgotPassword (req, res, next) {
                     "<p>You have received this email since you have requested for password change for your TIF account.</p>" +
                     "<p>Please click on the following link, or paste this into your browser to complete the process:" +
                     "<p> http://shaastra.org:8002/resetpassword/" + user.email + "/" + token + "</p>" +
-                    "<p>http://shaastra.org/#/reset-password/" + token + "</p>" +
+                    // "<p>http://shaastra.org/#/reset-password/" + token + "</p>" +
                     "<p>If you did not request this, please ignore this email and your password will remain unchanged.</p>" +
                     "Best,<br/> Shaastra 2018 team</p> </td> </tr> </table>" } 
               ]
@@ -496,37 +493,46 @@ export function resetPassword(req, res) {
       user.save().then((user)=>{
         console.log("save pass err",err,"user,",user);
         if(err) { return handleError(res, err); }
-          // var options = { method: 'POST',
-          //   url: 'https://api.sendgrid.com/v3/mail/send',
-          //   headers:
-          //    { 'content-type': 'application/json',
-          //      authorization: 'Bearer ' + process.env.CASITE },
-          //   body:
-          //   { personalizations:
-          //      [ { to: [ { email: user.email, name: user.name } ],
-          //          subject: 'Shaastra 2018 || TIF' } ],
-          //     from: { email: 'support@shaastra.org', name: 'Student Relations, Shaastra' },
-          //     //reply_to: { email: 'sam.smith@example.com', name: 'Sam Smith' },
-          //     subject: 'Shaastra 2018 || TIF',
-          //     content:
-          //      [ { type: 'text/html',
-          //          value: "<table style=\"background-color: #f3f3f3; font-family: verdana, tahoma, sans-serif; color: black; padding: 30px;\">" +
-          //           "<tr> <td>" +
-          //           "<h2>Hello " + user.name + ",</h2>" +
-          //           "<p>Greetings from Shaastra-2017 team.</p>" +
-          //           "<p>This is a confirmation that the password for your account <b>" + user.email + "</b> has just been changed</p>" +
-          //           "Best,<br/> Shaastra 2017 team</p> </td> </tr> </table>" } ] },
-          //   json: true };
+          var requests = sg.emptyRequest({
+            method: 'POST',
+            path: '/v3/mail/send',
+            body: {
+              personalizations: [
+                {
+                  to: [
+                   { email: user.email, name: user.name } 
+                  ],
+                  subject: 'Shaastra 2018 || TIF' 
+                }
+              ],
+              from: {
+                email: 'TIF@shaastra.com',name:'Student Relations Shaastra'
+              },
+              content: [
+                { type: 'text/html',
+                   value:  "<table style=\"background-color: #f3f3f3; font-family: verdana, tahoma, sans-serif; color: black; padding: 30px;\">" +
+                    "<tr> <td>" +
+                    "<h2>Hello " + user.name + ",</h2>" +
+                    "<p>Greetings from Shaastra-2017 team.</p>" +
+                    "<p>This is a confirmation that the password for your account <b>" + user.email + "</b> has just been changed</p>" +
+                    "Best,<br/> Shaastra 2017 team</p> </td> </tr> </table>"  } 
+              ]
+            },
+            json:true
+          });
 
-          // request(options, function (error, response, body) {
-          //   if (error) throw new Error(error);
-          //   console.log("\n\nEnd of reset");
-          //   return res.json({success: true, message: 'successfully changed Password'});
-
-          // //console.log(response);
-          // });
-
-
+          sg.API(requests)
+          .then(function (response) {
+            //console.log(response.statusCode);
+            //console.log(response.body);
+            //console.log(response.headers);
+            return res.json({success: true, message: 'Password Reset success for' + req.body.email});
+          })
+          .catch(function (error) {
+            // error is an instance of SendGridError
+            // The full response is attached to error.response
+            console.log(error.response.statusCode);
+          });
       }); //User.save();
 
   });
