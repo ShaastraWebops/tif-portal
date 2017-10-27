@@ -7,7 +7,7 @@ var json2csv = require('json2csv');
 var request = require("request");
 var crypto = require('crypto');
 
-var sg = require('sendgrid')('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');
+var sg = require('sendgrid')(process.env.TIF);
 
 
 function validationError(res, statusCode) {
@@ -215,7 +215,7 @@ export function select(req, res) {
             url: 'https://api.sendgrid.com/v3/mail/send',
             headers:
              { 'content-type': 'application/json',
-               authorization: 'Bearer ' + process.env.CASITE },
+               authorization: 'Bearer ' + process.env.TIF },
             body:
             { personalizations:
                [ { to: [ { email: user.email, name: user.name } ],
@@ -265,7 +265,7 @@ export function reject(req, res) {
             url: 'https://api.sendgrid.com/v3/mail/send',
             headers:
              { 'content-type': 'application/json',
-               authorization: 'Bearer ' + process.env.CASITE },
+               authorization: 'Bearer ' + process.env.TIF },
             body:
             { personalizations:
                [ { to: [ { email: user.email, name: user.name } ],
