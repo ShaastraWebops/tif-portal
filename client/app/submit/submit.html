@@ -15,7 +15,7 @@
   <div class="form-group input-group" ng-class="{'has-error':!formp2.team_name.$valid && !formp2.team_name.$untouched,'has-success':formp2.team_name.$valid}" >
       <label class="control-label">Team Name *</label>
       <input type="text" name="team_name" size="100%" class="form-control" ng-required="true" placeholder="Team Name" ng-model="submitCtrl.submit.teamname" />
-      <p class="help-block" ng-show="formp2.team_name.$error.required && formp2.team_name.$touched">
+      <p style="font-family: 'Open sans', sans-serif;margin: 15px 0px 2px 0px;" class="help-block" ng-show="formp2.team_name.$error.required && formp2.team_name.$touched">
         This field is required
       </p>
       </div>
@@ -142,7 +142,7 @@
 		
 		<label  for="projname" class="control-label">Project Name</label>
 		<input type="text" name="projname" ng-model="submitCtrl.submit.projname" ng-required='true' class="form-control" size="100%">
-		<p class="help-block" ng-show="formp3.projname.$error.required && formp3.projname.$touched">
+		<p style="font-family: 'Open sans', sans-serif;margin: 15px 0px 2px 0px;" class="help-block" ng-show="formp3.projname.$error.required && formp3.projname.$touched">
 			This field is required
 		</p>
 	</div>
@@ -153,7 +153,7 @@
     </select>
     Others: <input type="text" name="othervertical" style="color: black;" size="30%" ng-init="submitCtrl.othervertical" ng-model="submitCtrl.othervertical" ng-blur="submitCtrl.optionchoser()" placeholder="other vertical">
 
-    <p class="help-block" ng-show="!submitCtrl.vertical  &&  formp3.vertical.$error.required && formp3.vertical.$touched" >
+    <p style="font-family: 'Open sans', sans-serif;margin: 15px 0px 2px 0px;" class="help-block" ng-show="!submitCtrl.vertical  &&  formp3.vertical.$error.required && formp3.vertical.$touched" >
 			This field is required
 	</p>
 <!-- <h1 ng-bind="submitCtrl.submit.vertical"></h1><h2 ng-bind="submitCtrl.othervertical"></h2> -->
@@ -162,7 +162,7 @@
 		<div class="input-group" ng-class="{'has-error':!formp3.projdetails.$valid && !formp3.projdetails.$untouched,'has-success':formp3.projdetails.$valid}" >
 		<label for="projdetails" class="control-label">Describe your project and its working in detail*</label>
 		<textarea name="projdetails" id="projdesp" ng-model="submitCtrl.submit.projdetails"  rows="5"   ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12"/>
-		<p class="help-block" ng-show="formp3.projdetails.$error.required && formp3.projdetails.$touched">
+		<p style="font-family: 'Open sans', sans-serif;margin: 15px 0px 2px 0px;" class="help-block" ng-show="formp3.projdetails.$error.required && formp3.projdetails.$touched">
 			This field is required
 		</p>
 	</div>
@@ -191,14 +191,14 @@
 			<div class="input-group" ng-class="{'has-error':!formp4.WhyQues.$valid && !formp4.WhyQues.$untouched,'has-success':formp4.WhyQues.$valid}" >
 				<label for="WhyQues" class="control-label">What problem does it address, if any? (Want to change the world?) *</label>
 				<textarea name="WhyQues" id="WhyQues" ng-model="submitCtrl.submit.questions.what"  rows="5"   ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12"/>
-				<p class="help-block" ng-show="formp4.WhyQues.$error.required && formp4.WhyQues.$touched">
+				<p style="font-family: 'Open sans', sans-serif;margin: 15px 0px 2px 0px;" class="help-block" ng-show="formp4.WhyQues.$error.required && formp4.WhyQues.$touched">
 					This field is required
 				</p>
 			</div>
 			<div class="input-group" ng-class="{'has-error':!formp4.RightQues.$valid && !formp4.RightQues.$untouched,'has-success':formp4.RightQues.$valid}" >
 				<label for="RightQues" class="control-label">Indicate ways in which your solution is better than the existing solution, highlighting the unique advantages of your solution over the others.*</label>
 				<textarea name="RightQues" id="RightQues" ng-model="submitCtrl.submit.questions.howbetter" rows="5"  ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12" id="coll_add" />
-				<p class="help-block" ng-show="formp4.RightQues.$error.required && formp4.RightQues.$touched">
+				<p style="font-family: 'Open sans', sans-serif;margin: 15px 0px 2px 0px;" class="help-block" ng-show="formp4.RightQues.$error.required && formp4.RightQues.$touched">
 					This field is required
 				</p>
 			</div>
@@ -206,7 +206,7 @@
 				<label for="PastQues" class="control-label">Have you had any prior experience in the corporate world?*
 </label>
 				<textarea name="PastQues" id="PastQues" ng-model="submitCtrl.submit.questions.past" rows="5"   ng-required="true" class="form-control col-xs-12 col-lg-12 col-sm-12" />
-				<p class="help-block" ng-show="formp4.PastQues.$error.required && formp4.PastQues.$touched">
+				<p style="font-family: 'Open sans', sans-serif;margin: 15px 0px 2px 0px;" class="help-block" ng-show="formp4.PastQues.$error.required && formp4.PastQues.$touched">
 					This field is required
 				</p>
 			</div>
@@ -215,7 +215,7 @@
 		
 		<label  for="plinks" class="control-label">Please attach the link to the google drive containing the pictures/videos of your working model/project.*</label>
 		<input type="text" name="plinks" ng-model="submitCtrl.submit.projlink" ng-required='true' class="form-control" size="100%">
-		<p class="help-block" ng-show="formp4.plinks.$error.required && formp4.plinks.$touched">
+		<p style="font-family: 'Open sans', sans-serif;margin: 15px 0px 2px 0px;" class="help-block" ng-show="formp4.plinks.$error.required && formp4.plinks.$touched">
 			This field is required
 		</p>
 	</div>

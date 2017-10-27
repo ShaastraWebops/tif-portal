@@ -21,7 +21,7 @@ export default class rpController {
 
       this.$http.post('/api/users/resetpass/' + this.$stateParams.email + '/' + this.$stateParams.token, { newPassword: this.newPassword })
         .then((message)=>{
-          this.message = '';
+          this.message = message;
           this.$window.alert('Successfully changed');
           this.$location.url('/login');
         })

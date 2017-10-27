@@ -118,6 +118,7 @@ html{
 .partner-container{
 	display: flex;
 	flex-direction: row;
+	padding-top: 3vh;
 }
 
 .main-partner-img{
@@ -128,7 +129,7 @@ html{
 .main-partner-text{
 	flex: 3;
 	min-width: 320px;
-	padding: 4vw;
+	padding: 2vw;
 }
 
 .fa{
