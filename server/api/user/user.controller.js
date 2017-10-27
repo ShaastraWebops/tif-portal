@@ -7,7 +7,7 @@ var json2csv = require('json2csv');
 var request = require("request");
 var crypto = require('crypto');
 
-var sg = require('sendgrid')(process.env.CASITE);
+var sg = require('sendgrid')('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');
 
 
 function validationError(res, statusCode) {
@@ -425,11 +425,11 @@ export function forgotPassword (req, res, next) {
                   to: [
                    { email: user.email, name: user.name } 
                   ],
-                  subject: 'Shaastra 2018 || TIF' 
+                  subject: 'Shaastra 2018 || TIF - Password Reset' 
                 }
               ],
               from: {
-                email: 'TIF@shaastra.com'
+                email: 'webops@shaastra.org', name: 'Shaastra Webops'
               },
               content: [
                 { type: 'text/html',
@@ -440,7 +440,7 @@ export function forgotPassword (req, res, next) {
                     "<p>You have received this email since you have requested for password change for your TIF account.</p>" +
                     "<p>Please click on the following link, or paste this into your browser to complete the process:" +
                     "<p> http://shaastra.org:8002/resetpassword/" + user.email + "/" + token + "</p>" +
-                    "<p>http://shaastra.org/#/reset-password/" + token + "</p>" +
+                    "<p>http://shaastra.org:8002/reset-password/" + token + "</p>" +
                     "<p>If you did not request this, please ignore this email and your password will remain unchanged.</p>" +
                     "Best,<br/> Shaastra 2018 team</p> </td> </tr> </table>" } 
               ]
