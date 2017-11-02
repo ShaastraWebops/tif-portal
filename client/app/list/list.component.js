@@ -29,10 +29,10 @@ export class ListComponent {
       if(response.status === 200) {
         this.users = response.data;
         this.user = this.users[0];
-        console.log(this.user);
       }
     });
     this.export = function() {
+      console.log('comes here');
       this.$http.get('/api/users/export').then(response => {
         var data = new Blob([response.data], { type: 'text/csv;charset=utf-8' });
         this.FileSaver.saveAs(data, 'users.csv');

@@ -45,20 +45,22 @@ export function list(req, res) {
     .catch(handleError(res));
 }
 
-// export function exp(req, res) {
-//   return User.find({}, '-_id -salt -password -provider -role').exec()
-//     .then(users => {
-//       var fields = ['name', 'email', 'college.address', 'college.city', 'college.name', 'college.state',
-//       'education.branch', 'education.degree', 'education.year', 'phonenumber', 'previous', 'prevyear',
-//       'postal.address', 'postal.city', 'postal.pin', 'postal.state', 'questions.past', 'questions.right',
-//       'questions.why', 'social', 'wnumber', 'fblink'];
-//       var csv = json2csv({ data: users, fields: fields});
-//       res.setHeader('Content-disposition', 'attachment; filename=users.csv');
-//       res.set('Content-Type', 'text/csv');
-//       res.status(200).send(csv);
-//     })
-//     .catch(handleError(res));
-// }
+export function exp(req, res) {
+  return User.find({}, '-_id -salt -password -provider -role').exec()
+    .then(users => {
+      var fields = ['tifID', 'name', 'email', 'phonenumber', 'education', 'college',
+      'teammates.mem2_name', 'teammates.mem2_email', 'teammates.mem2_phno',
+      'teammates.mem3_name', 'teammates.mem3_email', 'teammates.mem3_phno',
+      'teammates.mem4_name', 'teammates.mem4_email', 'teammates.mem4_phno',
+       'projname', 'vertical', 'projdetails', 'projlink', 'questions.what', 'questions.howbetter', 
+       'questions.past'];
+      var csv = json2csv({ data: users, fields: fields});
+      res.setHeader('Content-disposition', 'attachment; filename=users.csv');
+      res.set('Content-Type', 'text/csv');
+      res.status(200).send(csv);
+    })
+    .catch(handleError(res));
+}
 
 /**
  * Creates a new user
