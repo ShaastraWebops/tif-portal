@@ -64,8 +64,6 @@ html{
 	box-shadow: 0 5px 10px 3px gainsboro;
 }
 
-
-
 .main-register a{
 	color: #000000;
 	text-decoration: none;
@@ -115,6 +113,9 @@ html{
 	flex: 1;
 }
 
+.main-partner-text b{
+	font-size: 18px;
+}
 .partner-container{
 	display: flex;
 	flex-direction: row;
