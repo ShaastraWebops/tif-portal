@@ -17,7 +17,8 @@ html{
 	color: #000000;
 	text-align: center;
 	margin-top: -5vw;
-	font-weight: 400;
+	margin-bottom: -0.1vw;
+	
 }
 
 .main-section h1{
@@ -40,6 +41,13 @@ html{
 	width: 80vw;
 	margin: auto;
 	margin-top: -5vw;
+}
+
+.tif-logo{
+	width: 45vw;
+	margin: auto;
+	height: 22vw;
+	margin-bottom: -4em;
 }
 
 .main-register{
