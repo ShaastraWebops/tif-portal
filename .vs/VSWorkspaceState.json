@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\client\\assets\\js",
+    "\\server\\auth\\google",
+    "\\server\\auth\\local",
+    "\\server\\components\\errors"
+  ],
+  "SelectedNode": "\\client",
+  "PreviewInSolutionExplorer": false
+}
