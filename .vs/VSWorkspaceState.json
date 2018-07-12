@@ -1,11 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\client\\assets\\js",
-    "\\server\\auth\\google",
-    "\\server\\auth\\local",
-    "\\server\\components\\errors"
+    "\\client",
+    "\\client\\app",
+    "\\client\\app\\submit",
+    "\\client\\components",
+    "\\client\\components\\auth",
+    "\\server",
+    "\\server\\api",
+    "\\server\\api\\team",
+    "\\server\\api\\user"
   ],
-  "SelectedNode": "\\client",
+  "SelectedNode": "\\client\\app\\submit\\submit.component.js",
   "PreviewInSolutionExplorer": false
 }

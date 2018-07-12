@@ -1,13 +1,16 @@
 'use strict';
 
 import Team from './team.model';
+import User from '../user/user.model'
 import config from '../../config/environment';
-var request = require("request");
 
-var sg = require('sendgrid')(process.env.TIF);
-
-export function submit(req, res) {
+export function teamsubmit(req, res) {
   // console.log(req.body);
+  User.findOne({ 'email': req.body.email })
+    .then(user => {
+      user.teamname = req.body.teamname;
+      user.save();
+    })
   var team = new Team();
       // user.phonenumber = req.body.phonenumber;
       // user.wnumber = req.body.wnumber;
@@ -23,6 +26,9 @@ export function submit(req, res) {
       // user.postal.city = req.body.postal.city;
       // user.postal.state = req.body.postal.state;
       // user.postal.pin = req.body.postal.pin;
+      team.teammates.mem1_name = req.body.name|| null;
+      team.teammates.mem1_email = req.body.email || null;
+      team.teammates.mem1_phno = req.body.phonenumber || null;
       team.teamname = req.body.teamname || null;
       // if(user.teammates==undefined)user.teammates={};
       // if(user.questions==undefined)user.questions={};
