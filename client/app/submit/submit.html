@@ -1,6 +1,6 @@
  <div>
  <div style="min-height: 100vh;  width: 50vw; min-width: 300px; padding-top: 5vh; margin: auto;">
-<!-- 
+<!--
   <div class="col-sm-4 col-md-3" style="margin-bottom: 5vh;">
     <oauth-buttons classes="btn-block"></oauth-buttons>
   </div>
@@ -37,7 +37,7 @@
  <div class="input-group">
       <input type="text" name="mem2_name" size="100%" class="form-control  col-xs-12 col-lg-6 col-sm-8" placeholder="Name " ng-required="submitCtrl.isrequired(2)" ng-model="submitCtrl.submit.teammates.mem2_name" />
        <small class="help-block" ng-show=" formp2.mem2_name.$error.required && (formp2.mem2_email.$touched || submitCtrl.submitted)">
-        The Email of the member is required
+        The name of the member is required
       </small>
   </div><br>
   <div class="input-group">
@@ -65,7 +65,7 @@
  <div class="input-group">
       <input type="text" name="mem3_name" size="100%" class="form-control  col-xs-12 col-lg-6 col-sm-8" placeholder="Name " ng-required="submitCtrl.isrequired(3)" ng-model="submitCtrl.submit.teammates.mem3_name" />
        <small class="help-block" ng-show=" formp2.mem3_name.$error.required && (formp2.mem3_email.$touched ||  submitCtrl.submitted)">
-        The Email of the member is required
+        The name of the member is required
       </small>
   </div><br>
   <div class="input-group">
@@ -93,7 +93,7 @@
  <div class="input-group">
       <input type="text" name="mem4_name" size="100%" class="form-control  col-xs-12 col-lg-6 col-sm-8" placeholder="Name " ng-required="submitCtrl.isrequired(4)" ng-model="submitCtrl.submit.teammates.mem4_name" />
        <small class="help-block" ng-show=" formp2.mem4_name.$error.required && (formp2.mem4_email.$touched ||  submitCtrl.submitted)">
-        The Email of the member is required
+        The name of the member is required
       </small>
   </div><br>
   <div class="input-group">
@@ -119,7 +119,7 @@
 <br>
 <!-- <div style="float: left;"><button ng-click="submitCtrl.back();" class="btn btn-default">Previous Page</button></div> -->
 </fieldset>
-		<div ng-click="submitCtrl.saveform(formp2.$valid)" ng-disabled="!formp2.$valid"  class="btn btn-primary" >Save Progress</div>
+
 
 <div style="float: right;"><button ng-click="submitCtrl.next();" class="btn btn-default">Next Page</button>
 </div>
@@ -133,20 +133,20 @@
   <div class="row" ng-show="submitCtrl.showpage(3)" style="min-height: 93vh;">
     <div class="col-sm-12">
   <h2 align="center" class="group">
-	<br><br>  Registration Form - Project 
+	<br><br>  Registration Form - Project
 </h2>
 <form  class="form" name="formp3" novalidate>
  <fieldset ng-disabled="submitCtrl.submit.submitted">
 
 		<div class="input-group " ng-class="{'has-error':!formp3.projname.$valid && !formp3.projname.$untouched,'has-success':formp3.projname.$valid}">
-		
+
 		<label  for="projname" class="control-label">Project Name</label>
 		<input type="text" name="projname" ng-model="submitCtrl.submit.projname" ng-required='true' class="form-control" size="100%">
 		<p style="font-family: 'Open sans', sans-serif;margin: 15px 0px 2px 0px;" class="help-block" ng-show="formp3.projname.$error.required && formp3.projname.$touched">
 			This field is required
 		</p>
 	</div>
-	<div  ng-class="{'has-success':!formp3.vertical.$error.required , 'has-error':formp3.vertical.$error.required 
+	<div  ng-class="{'has-success':!formp3.vertical.$error.required , 'has-error':formp3.vertical.$error.required
   && formp3.vertical.$touched}" >
     <label for="vertical" class="control-label">Vertical </label><br>
     <select name="vertical" style="color: black;" ng-options="option for option in submitCtrl.verticals" id="singleSelect"  ng-model="submitCtrl.submit.vertical" ng-value={{option}} ng-required="true" ng-change="submitCtrl.vertical=true;">
@@ -212,7 +212,7 @@
 			</div>
 		</div>
 		<div class="input-group " ng-class="{'has-error':!formp4.plinks.$valid && !formp4.plinks.$untouched,'has-success':formp4.plinks.$valid}">
-		
+
 		<label  for="plinks" class="control-label">Please attach the link to the google drive containing the pictures/videos of your working model/project.*</label>
 		<input type="text" name="plinks" ng-model="submitCtrl.submit.projlink" ng-required='true' class="form-control" size="100%">
 		<p style="font-family: 'Open sans', sans-serif;margin: 15px 0px 2px 0px;" class="help-block" ng-show="formp4.plinks.$error.required && formp4.plinks.$touched">
@@ -374,4 +374,3 @@
 		</div>
 	</form>
 </div> -->
-

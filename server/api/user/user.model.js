@@ -45,26 +45,6 @@ var UserSchema = new Schema({
   college: { type: String, required: false, default: "Not Provided"},
   postal: String,
   teamname:String,
-  teammates: {
-    mem2_name:String,
-    mem2_email:String,
-    mem2_phno:Number,
-    mem3_name:String,
-    mem3_email:String,
-    mem3_phno:Number,
-    mem4_name:String,
-    mem4_email:String,
-    mem4_phno:Number,
-  },
-  projname:{type:String},
-  vertical:String,
-  projdetails:String,
-  projlink:String,
-  questions: {
-    what: String,
-    howbetter: String,
-    past: String
-  },
   points: {type: Number, default: 0},
   resetPasswordToken:{
     type:String,
