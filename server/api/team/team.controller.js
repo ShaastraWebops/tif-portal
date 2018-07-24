@@ -12,10 +12,13 @@ export function getTeam(req, res) {
 
 export function teamsubmit(req, res) {
   // console.log(req.body);
+  User.findOne({ 'email': req.body.email })
+    .then(user => {
+      user.teamname = req.body.teamname;
+      user.save();
+    });
   Team.findOne({ 'teamname': req.body.teamname }).then(team => {
     if (team) {
-      console.log(req.body);
-      console.log(team);
       if (team.teammates.mem1_email === req.body.email || team.teammates.mem2_email === req.body.email || team.teammates.mem3_email === req.body.email || team.teammates.mem4_email === req.body.email) {
         team.teammates.mem1_name = req.body.name|| null;
         team.teammates.mem1_email = req.body.email || null;
@@ -48,11 +51,6 @@ export function teamsubmit(req, res) {
         team.submitted = req.params.state;
         team.save(function(err) {
           if (err) throw err;
-          User.findOne({ 'email': req.body.email })
-            .then(user => {
-              user.teamname = req.body.teamname;
-              user.save();
-            });
           if (req.body.teammates.mem2_email) {
             User.findOne({ 'email': req.body.teammates.mem2_email })
               .then(user => {
@@ -124,13 +122,31 @@ export function teamsubmit(req, res) {
           team.questions.howbetter = req.body.questions.howbetter || '';
           team.questions.past = req.body.questions.past || '';
           team.submitted = req.params.state;
-          team.save();
-          User.findOne({ 'email': req.body.email })
-            .then(user => {
-              user.teamname = req.body.teamname;
-              user.save();
-              res.json({success: true});
-            });
+          team.save(function(err) {
+            if (err) throw err;
+            if (req.body.teammates.mem2_email) {
+              User.findOne({ 'email': req.body.teammates.mem2_email })
+                .then(user => {
+                  user.teamname = req.body.teamname;
+                  user.save();
+                });
+            }
+            if (req.body.teammates.mem3_email) {
+              User.findOne({ 'email': req.body.teammates.mem3_email })
+                .then(user => {
+                  user.teamname = req.body.teamname;
+                  user.save();
+                });
+            }
+            if (req.body.teammates.mem4_email) {
+              User.findOne({ 'email': req.body.teammates.mem4_email })
+                .then(user => {
+                  user.teamname = req.body.teamname;
+                  user.save();
+                });
+            }
+            res.json({success: true});
+          });
     }
   });
 }

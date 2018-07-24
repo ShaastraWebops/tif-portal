@@ -20,11 +20,17 @@ export class SubmitComponent {
   }
 
   $onInit() {
+    var app = this;
     this.$http.get('/api/users/me').then(res => {
       this.success = false;
       this.submit = res.data;
       this.$http.get('/api/users/getTeam/' + res.data.teamname).then(res => {
+        console.log(res.data);
         this.submit.teammates = res.data.teammates;
+        this.submit.projname = res.data.projname;
+        this.submit.projdetails = res.data.projdetails;
+        this.submit.vertical = res.data.vertical;
+        app.othervertical = res.data.vertical;
         if (this.submit.teammates.mem2_email) {
           if (this.submit.teammates.mem1_email !== this.submit.email) {
             this.submit.teammates.mem2_email = this.submit.teammates.mem1_email;
@@ -44,8 +50,6 @@ export class SubmitComponent {
       if ((this.verticals.indexOf(res.data.vertical) == -1) && res.data.vertical != null)
         this.verticals.push(res.data.vertical);
       // this.othervertical=res.data.vertical;
-      console.log(this.submit);
-      console.log(res.body);
 
     });
   }
