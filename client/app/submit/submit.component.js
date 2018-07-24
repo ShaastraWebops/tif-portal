@@ -25,11 +25,11 @@ export class SubmitComponent {
       this.success = false;
       this.submit = res.data;
       this.$http.get('/api/users/getTeam/' + res.data.teamname).then(res => {
-        console.log(res.data);
         this.submit.teammates = res.data.teammates;
         this.submit.projname = res.data.projname;
         this.submit.projdetails = res.data.projdetails;
         this.submit.vertical = res.data.vertical;
+        this.submit.questions = res.data.questions;
         app.othervertical = res.data.vertical;
         if (this.submit.teammates.mem2_email) {
           if (this.submit.teammates.mem1_email !== this.submit.email) {
@@ -73,13 +73,13 @@ export class SubmitComponent {
     var submit = this.submit;
     var app = this;
     if (submit.teammates.mem2_email != '' && submit.teammates.mem2_email != null) {
-      this.$http.get('/api/users/checkUser/' + submit.teammates.mem2_email).then(function(res) {
+      app.$http.get('/api/users/checkUser/' + submit.teammates.mem2_email).then(function(res) {
         if (res.data.success) {
           if (submit.teammates.mem3_email != '' && submit.teammates.mem3_email != null) {
-            this.$http.get('/api/users/checkUser/' + submit.teammates.mem3_email).then(function(res) {
+            app.$http.get('/api/users/checkUser/' + submit.teammates.mem3_email).then(function(res) {
               if (res.data.success) {
                 if (submit.teammates.mem4_email != '' && submit.teammates.mem4_email != null) {
-                  this.$http.get('/api/users/checkUser/' + submit.teammates.mem4_email).then(function(res) {
+                  app.$http.get('/api/users/checkUser/' + submit.teammates.mem4_email).then(function(res) {
                     if (res.data.success) {
                       app.saveform(true, 1);
                     } else {
