@@ -8,6 +8,8 @@ import * as teamCtrl from '../team/team.controller.js';
 var router = new Router();
 
 router.get('/', controller.index);
+router.get('/checkUser/:email', controller.checkUser);
+router.get('/getTeam/:teamName', teamCtrl.getTeam);
 router.get('/list', auth.hasRole('admin'), controller.list);
 router.get('/export', auth.hasRole('admin'), controller.exp);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);

@@ -23,6 +23,16 @@ export class SubmitComponent {
     this.$http.get('/api/users/me').then(res => {
       this.success = false;
       this.submit = res.data;
+      this.$http.get('/api/users/getTeam/' + res.data.teamname).then(res => {
+        this.submit.teammates = res.data.teammates;
+        if (this.submit.teammates.mem2_email) {
+          if (this.submit.teammates.mem1_email !== this.submit.email) {
+            this.submit.teammates.mem2_email = this.submit.teammates.mem1_email;
+            this.submit.teammates.mem2_name = this.submit.teammates.mem1_name;
+            this.submit.teammates.mem2_phno = this.submit.teammates.mem1_phno;
+          }
+        }
+      });
       this.data = true;
       // this.iagree = true;
       if (!res.data.teammates)
@@ -40,8 +50,62 @@ export class SubmitComponent {
     });
   }
   showpage(pgno) { return pgno == this.currpage; }
-  next() { this.currpage += 1; };
-  back() { this.currpage -= 1; };
+  saveform(state, ind) {
+    this.$http.put('/api/users/submit/false', this.submit)
+      .then(resp => {
+        this.submitted = false;
+        if (resp.data.success == true) {
+          alert('Progress Saved');
+          this.currpage += ind;
+          // window.location='/submit';
+        } else {
+          alert('Team name taken');
+        }
+      });
+    this.submitted = true;
+
+  }
+  validateTeamMembers() {
+    var submit = this.submit;
+    var app = this;
+    if (submit.teammates.mem2_email != '' && submit.teammates.mem2_email != null) {
+      this.$http.get('/api/users/checkUser/' + submit.teammates.mem2_email).then(function(res) {
+        if (res.data.success) {
+          if (submit.teammates.mem3_email != '' && submit.teammates.mem3_email != null) {
+            this.$http.get('/api/users/checkUser/' + submit.teammates.mem3_email).then(function(res) {
+              if (res.data.success) {
+                if (submit.teammates.mem4_email != '' && submit.teammates.mem4_email != null) {
+                  this.$http.get('/api/users/checkUser/' + submit.teammates.mem4_email).then(function(res) {
+                    if (res.data.success) {
+                      app.saveform(true, 1);
+                    } else {
+                      alert('User not registered');
+                    }
+                  });
+                } else {
+                  app.saveform(true, 1);
+                }
+              } else {
+                alert('User not registered');
+              }
+            });
+          } else {
+            app.saveform(true, 1);
+          }
+        } else {
+          alert('User not registered');
+        }
+      });
+    } else {
+      app.saveform(true, 1);
+    }
+  };
+  next() {
+    this.validateTeamMembers();
+  };
+  back() {
+    this.currpage -= 1;
+  };
   optionchoser() {
     this.submit.vertical = this.othervertical;
     this.verticals.push(this.othervertical);
@@ -70,19 +134,6 @@ export class SubmitComponent {
     }
     return false;
   }
-  saveform(state) {
-    this.submitted = true;
-    if (state && !this.submit.submitted)
-      this.$http.put('/api/users/submit/false', this.submit)
-        .then(resp => {
-          this.submitted = false;
-
-          if (resp.data.success == true) {
-            alert('Progress Saved');
-            // window.location='/submit';
-          }
-        });
-  }
 
   submitform() {
     if (!this.submit.submitted && confirm("Are you Sure? This is final")) {
@@ -106,6 +157,3 @@ export default angular.module('caportalApp.submit', [uiRouter])
     controllerAs: 'submitCtrl'
   })
 .name;
-
-
-

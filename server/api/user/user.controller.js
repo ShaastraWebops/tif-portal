@@ -37,6 +37,18 @@ export function index(req, res) {
     .catch(handleError(res));
 }
 
+export function checkUser(req, res) {
+  return User.findOne({email: req.params.email}, '-salt -password').exec()
+    .then(user => {
+      if (user) {
+        res.json({success: true});
+      } else {
+        res.json({success: false});
+      }
+    })
+    .catch(handleError(res));
+}
+
 export function list(req, res) {
   return User.find({}, '-salt -password -provider -role').exec()
     .then(users => {
@@ -52,7 +64,7 @@ export function exp(req, res) {
       'teammates.mem2_name', 'teammates.mem2_email', 'teammates.mem2_phno',
       'teammates.mem3_name', 'teammates.mem3_email', 'teammates.mem3_phno',
       'teammates.mem4_name', 'teammates.mem4_email', 'teammates.mem4_phno',
-       'projname', 'vertical', 'projdetails', 'projlink', 'questions.what', 'questions.howbetter', 
+       'projname', 'vertical', 'projdetails', 'projlink', 'questions.what', 'questions.howbetter',
        'questions.past'];
       var csv = json2csv({ data: users, fields: fields});
       res.setHeader('Content-disposition', 'attachment; filename=users.csv');
@@ -100,12 +112,12 @@ export function create(req, res) {
             subject: 'Shaastra 2018 || TIF',
             content:
              [ { type: 'text/html',
-                 value: '<html><body><p>Hello '+user.name+ ',<br>Greetings from Tech & Innovation Fair  team, Shaastra 2018! <br><br>' + 
-                 '<br>Thank you for signing up for the event. Your TIF ID is: <b>' + req.body.tifID + '</b>.<br>' + 
-                 'Please note your TIF ID and include it in all further communications.<br><br>' + 
-                 'For completing the application for this event, please fill the form that is available on the website by <b>10 November, 11.59 pm</b>. Further instructions will be provided once you have successfully completed the application process. <br><br>' + 
+                 value: '<html><body><p>Hello '+user.name+ ',<br>Greetings from Tech & Innovation Fair  team, Shaastra 2018! <br><br>' +
+                 '<br>Thank you for signing up for the event. Your TIF ID is: <b>' + req.body.tifID + '</b>.<br>' +
+                 'Please note your TIF ID and include it in all further communications.<br><br>' +
+                 'For completing the application for this event, please fill the form that is available on the website by <b>10 November, 11.59 pm</b>. Further instructions will be provided once you have successfully completed the application process. <br><br>' +
                  '<br>Tech and Innovation Fair is a month long event which includes extensive mentorship to the selected teams helping build their business model. If selected, the team will also get to showcase their project in the Fair during Shaastra (4-7 Jan) in front of thousands of people and network with experts from various fields.<br>' +
-                 '<br> If you have any queries, write to us on tifregistrations@shaastra.org <br><br><br>Regards,' + 
+                 '<br> If you have any queries, write to us on tifregistrations@shaastra.org <br><br><br>Regards,' +
                  '<br>TIF Team,<br>Shaastra 2018,<br> IIT Madras.<br><br>Please like and follow our <a href="https://www.facebook.com/Shaastra">Facebook</a> page for updates. <br><br><br></p></body></html>' } ] },
           json: true };
 
@@ -175,14 +187,14 @@ export function select(req, res) {
               subject: 'Shaastra 2018 || TIF',
               content:
                [ { type: 'text/html',
-                   value: '<html><body><p>Hello ' + user.name + ',<br><br> Greetings from Shaastra 2018, IIT Madras! <br>' + 
+                   value: '<html><body><p>Hello ' + user.name + ',<br><br> Greetings from Shaastra 2018, IIT Madras! <br>' +
                    '<br>First of all, congratulations on being selected in TIF. ' +
-                    'We would like to welcome you to the team behind India’s largest completely student-run technical extravaganza ' + 
-                    '- Shaastra 2018.<br>With a strong team of 500 students of IIT Madras and hundreds across India,' + 
-                    ' Shaastra 2018 aims to give the best technical experience to everyone in the country ranging from school students to engineers of the future.' + 
-                    '<br>With this in mind, we hope you have an amazing journey working with us as you represent your college.' + 
-                    '<br>Further instructions and information would be communicated to you shortly. ' + 
-                    'We request you to keep checking the your email.<br>' + 
+                    'We would like to welcome you to the team behind India’s largest completely student-run technical extravaganza ' +
+                    '- Shaastra 2018.<br>With a strong team of 500 students of IIT Madras and hundreds across India,' +
+                    ' Shaastra 2018 aims to give the best technical experience to everyone in the country ranging from school students to engineers of the future.' +
+                    '<br>With this in mind, we hope you have an amazing journey working with us as you represent your college.' +
+                    '<br>Further instructions and information would be communicated to you shortly. ' +
+                    'We request you to keep checking the your email.<br>' +
                     '<br>Looking forward to work with you.<br><br>Regards,<br>Team Shaastra<br>IIT Madras</p></body></html>' } ] },
             json: true };
 
@@ -225,11 +237,11 @@ export function reject(req, res) {
               subject: 'Shaastra 2018 || TIF',
               content:
                [ { type: 'text/html',
-                   value: '<html><body><p>Hello '+user.name+ ',<br><br> Greetings from Shaastra 2018, IIT Madras! <br>' + 
-                   '<br>We regret to inform you that your application for being in Shaastra TIF couldn’t be accommodated. ' + 
-                   'However, lose hope not, for you can try again for next year - which will see a bigger CA Program.' + 
-                   '<br>Till then, get a feel of Shaastra - visit the IIT Madras campus in January and experience the largest student-run technical extravaganza.' + 
-                   ' With a host of workshops, international competitions, lectures, exhibitions and shows, Shaastra is bound to amaze you.<br>' + 
+                   value: '<html><body><p>Hello '+user.name+ ',<br><br> Greetings from Shaastra 2018, IIT Madras! <br>' +
+                   '<br>We regret to inform you that your application for being in Shaastra TIF couldn’t be accommodated. ' +
+                   'However, lose hope not, for you can try again for next year - which will see a bigger CA Program.' +
+                   '<br>Till then, get a feel of Shaastra - visit the IIT Madras campus in January and experience the largest student-run technical extravaganza.' +
+                   ' With a host of workshops, international competitions, lectures, exhibitions and shows, Shaastra is bound to amaze you.<br>' +
                    '<br>We look forward to see you at Shaastra 2018, next year!<br><br>Regards,<br>Team Shaastra<br>IIT Madras</p></body></html>' } ] },
             json: true };
 
@@ -291,10 +303,10 @@ export function me(req, res, next) {
 export function upsert(req, res) {
   if(req.body._id) {
     Reflect.deleteProperty(req.body, '_id');
-  }  
+  }
   if(req.body.password) {
     Reflect.deleteProperty(req.body, 'password');
-  }  
+  }
   if(req.body.salt) {
     Reflect.deleteProperty(req.body, 'salt');
   }
@@ -321,16 +333,16 @@ export function forgotPassword (req, res, next) {
     var token = buf.toString('hex');
     // console.log("token : ",token, " \n mail", req.body.email);
     User.findOne({ email: req.body.email }).then( (user, err)=> {
-      if(err) { 
+      if(err) {
         return handleError(res, err); }
-      if(!user) { 
+      if(!user) {
         return res.status(404).end(); }
   console.log("Came here user find", user.name);
 
       user.resetPasswordToken = token;
       user.resetPasswordExpires = Date.now() + 1800000; // half an hour to reset
       user.save()
-        .then(user => { 
+        .then(user => {
   console.log("Came here user.save",user.name);
 
           // var options = { method: 'POST',
@@ -373,9 +385,9 @@ export function forgotPassword (req, res, next) {
               personalizations: [
                 {
                   to: [
-                   { email: user.email, name: user.name } 
+                   { email: user.email, name: user.name }
                   ],
-                  subject: 'Shaastra 2018 || TIF - Password Reset' 
+                  subject: 'Shaastra 2018 || TIF - Password Reset'
                 }
               ],
               from: {
@@ -392,7 +404,7 @@ export function forgotPassword (req, res, next) {
                     "<p> http://shaastra.org:8002/resetpassword/" + user.email + "/" + token + "</p>" +
                     "<p>http://shaastra.org:8002/reset-password/" + token + "</p>" +
                     "<p>If you did not request this, please ignore this email and your password will remain unchanged.</p>" +
-                    "Best,<br/> Shaastra 2018 team</p> </td> </tr> </table>" } 
+                    "Best,<br/> Shaastra 2018 team</p> </td> </tr> </table>" }
               ]
             },
             json:true
