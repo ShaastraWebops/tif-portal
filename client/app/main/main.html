@@ -1,136 +1,586 @@
-<div style="overflow-x: hidden;">
-  <section class="main-section" id="home">
-    <!-- <a href="http://shaastra.org" target="_blank"><img src="../../assets/images/logo.png" class="shaastra-logo"></a>
-    <h3 class="main-presents">AND</h3>
-    <!-- <h1>TECH AND INNOVATION FAIR</h1> -->
-    <div align="center">
-    <img src="../../assets/images/Asset 4.png"  class="tif-logo">
-    </div>
-    <a ng-show="!$ctrl.isLoggedIn()" href="/signup" style="text-decoration: none;"><div class="main-register">Sign Up</div></a>
-    <br>
-    <a ng-show="!$ctrl.isLoggedIn()" href="/login" style="text-decoration: none; padding-left: 37vw;">or Log In if you have already signed up</a>
-    <a ng-show="$ctrl.isLoggedIn()" href="/submit" style="text-decoration: none;"><div class="main-register" >APPLY NOW !</div></a>
-  </section>
+    <div>
 
-  <section class="main-section" id="one">
-    <h2 class="main-subtitle">ABOUT TIF</h2>
-    <div class="main-about-container">
-      <p class="main-text main-about-text">Have you ever built something for a competition but don’t know what to do with it now? Do you have a working prototype of an idea which you think has the potential to go big but don’t have the means or the knowledge to take it forward? Are you looking to connect to Incubators or VCs for your project?<br><br><br>Don’t worry! We have exactly what you are looking for!<br><br><br><b>Tech and Innovation Fair (TIF)</b> is one of the Flagship events of Shaastra 2018  which provides a platform to bring forward a hard core tech project or prototype and convert it into a minimum-viable product (MVP) with well-structured business mentoring that would ultimately ensure its success as a market-shelf product with a suitable target consumer pool.
-      </p>
-      <img src="http://shaastra.org/images/tif-01.png" class="main-about-img" style="height: 80vh;">
-    </div>
-  </section>
+    <div id="main" class="main">
 
-  <!-- About: why -->
-  <section class="main-section" id="two">
-    <h2 class="main-subtitle">WHY TIF</h2>
-    <div class="main-about-container">
-      <i class="fa fa-question-circle-o main-about-img" aria-hidden="true" style="color: #fbc02d;"></i>
-      <p class="main-text main-about-text">IIT Madras is slowly becoming a startup hub. Many noted startups have come out of the institute with the help of our Incubation Cell and other ample opportunities that IITM provides to its students.<b>4 out of the Top 5</b> upcoming startups listed in the<b> Economic Times Startup Awards 2017</b> were initially IIT Madras student projects that were successfully incubated into startups. This speaks volumes of the on-campus startup environment. Some of these student based startups are Detect, Hyperverge Inc., Ather Energy and Urban Ladder. <br><br><br>Our aim is to extend these opportunities to everyone out there looking to achieve something big. Through Tech and Innovation Fair, you are sure to get a glimpse of the startup environment of IIT Madras and also gain from it. So what are you waiting for? Go ahead and register!
-    </p>
-  </section>
+      <section class="main-section work" id="home">
+      <div align="center">
+        <img src="../../assets/images/Blue Wide.png" class="shaastra-logo">
+        <h2>PRESENTS</h2>
+        <img src="../../assets/images/tifflogo.png" class="tiff-logo">
+      </div><br>
+        <a ng-show="!$ctrl.isLoggedIn()" href="/signup" style="text-decoration: none;"><div class="main-register">Sign Up</div></a>
+        <br>
+        <a ng-show="!$ctrl.isLoggedIn()" href="/login" style="text-decoration: none; padding-left: 37vw;">or Log In if you have already signed up</a>
+        <a ng-show="$ctrl.isLoggedIn()" href="/submit" style="text-decoration: none;"><div class="main-register" >APPLY NOW !</div></a>
+      </section>
+      <!-- /intro -->
 
-  <section class="main-section" id="three">
-    <h2 class="main-subtitle">HOW IT WORKS</h2>
-    <div class="main-about-container">
-      <p class="main-text main-about-text">
-      The fair is conducted as a part of a competition which will have two online rounds and a finale at Shaastra 2018. <br><br>
-        <b style="font-size:20px;">Stage 1</b> : Submission of project abstract, video and other required documents. This requires you to fill a simple form as part of the registration for the event.
-        <b style="font-size:15px;">[DEADLINE: 10 NOVEMBER 2017, 11.59PM]</b>
-        <br><br><b style="font-size:20px;">Stage 2 </b>: Top 20 teams will be selected based on their respective submissions by a panel of experts in their respective fields. These teams will be provided full-fledged mentorship which will span an entire month including everything that you need to know about starting up. This will be followed by tasks and submissions which we are sure will help you learn a lot about what you can achieve through your project idea.
-        <br><br><b style="font-size:20px;">Stage 3</b> : A chance to showcase your project during Shaastra in front of thousands of people. This includes networking opportunities with various experts in the field during the event. The top 3 projects will be chosen by a panel.
-        <br><br>
-        Its a fair, so its going to be lot of fun.
-      </p>
-      <i class="fa fa-calendar main-about-img" aria-hidden="true" style="color: #fbc02d"></i>
-    </div>
-  </section>
-
-  <section class="main-section" id="four">
-    <h2 class="main-subtitle">WHAT'S IN STORE FOR YOU</h2>
-    <div class="main-about-container">
-      <i class="fa fa-trophy main-about-img" aria-hidden="true" style="color: #fbc02d;"></i>
-
-      <ul class="main-text main-about-text">
-          <p>Our main goal is to provide opportunities to those who haven’t got the means to take their ideas forward. We hope to give exposure to all the budding business men/women out there looking to prove themselves. This is not just another ‘closed-room pitching’ event; it is bigger than that!</p>
-        <li>Prizes worth<b> 1L </b></li>
-        <li>Mentorship to the top teams helping them understand more about the potential of their projects and an insight into how markets work</li>
-        <li>Possible incubation opportunity by our very own Incubation Cell of IIT Madras</li>
-        <li>Possible funding opportunities through VC’s and other investors</li>
-        <li>Networking sessions with experts in various fields, professors and other relevant people as part of the event</li>
-        <li>A chance to showcase your projects and ideas in front of thousands of people during Shaastra</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="main-section" id="partners">
-    <h2 class="main-subtitle">PARTNERS</h2>
-    <div class="main-partner-container">
-      <div class="main-partner partner-container">
-        <a href="http://www.shell.in/energy-and-innovation/innovating-together/shell-e4-2017.html" target="_blank">
-          <img src="../../assets/images/E4-color.png"  class="main-partner-img">
-        </a>
-        <p class="main-partner-text">Shell E4 (Energizing and Enabling Energy Entrepreneurs) programme aims to impact the future of energy by promoting businesses with innovative technology ideas, business models, products or services.  With a rich history of working with entrepreneurs across the global energy value chain, we have developed Shell E4 as a world class program for energy and related technology startups.  A selected cohort will be mentored for six months at the Shell Technology Centre in Bengaluru and will be provided with infrastructural, financial, technical and commercial support.  Our purpose at Shell India is "Powering more and cleaner energy solutions - through our people, partnerships and innovations - for India and the world". E4 is a natural extension of this core purpose, and envisions to create shared value for society by nurturing the entrepreneurial ecosystem in the country.</p>
-      </div>
-      <div class="main-partner partner-container">
-        <a href="http://www.incubation.iitm.ac.in/" target="_blank">
-          <img src="../../assets/images/iitm_ic_logo"  class="main-partner-img">
-        </a>
-        <p class="main-partner-text"><b>IITM Incubation Cell</b> is the nodal body for all entrepreneurial activities arising from the wider IIT Madras community. Home to 120+ tech startups across sectors, many addressing national challenges through successful, self-sustaining businesses. One of <b>India's leading</b> incubators, IC aims to <b>build and share resources</b> including space and infrastructure, access to business support services, mentoring, training programmes to enhance the skills of entrepreneurs and seed funds. </p>
-      </div>
-      <div class="main-partner partner-container">
-        <a href="http://www.incubation.iitm.ac.in/" target="_blank">
-          <img src="../../assets/images/e_cell_logo.png" class="main-partner-img" style="margin: auto;">
-        </a>
-        <p class="main-partner-text"><b>E-CELL IITM</b> is a student run non-profit organization that helps connect startups and entrepreneurs. It provides innovators with networking, mentorship support and incubation. </p>
-      </div>
-      <div class="main-partner partner-container">
-        <a href="https://startupsuccessstories.in/" target="_blank">
-          <img src="../../assets/images/startup_logo.png" class="main-partner-img" style="margin: auto; height: 30vh; ">
-        </a>
-        <p class="main-partner-text"><b>StartupSuccessStories</b> is an initiative by Nurturinno Consulting Pvt. Ltd. to bridge the gap between the entrepreneurs and the contemporary market trends. StartupSuccessStories is the OUTREACH PARTNER for Tech and Innovation Fair. </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Parallax: rules&regulation -->
-  <section class="main-section">
-    <div class="main-last-container">
-      <div class="main-text main-about-text" id="five">
-        <h2>RULES AND REGULATIONS</h2>
-        <p>
-          <li>The team should  have a working hard core tech project or prototype that is, we are not looking for application or software based projects.</li>
-          <li>If your team has more than 4 members then please register (or send during Shaastra), a maximum of 4 people as representatives for the event</li>
-          <li>Every stage will have an evaluation procedure decided by experts and judges. Any decision by them will be final</li>
-          <li>All official communication will be done via email. It is the responsibility of the teams to check his/her email for any tasks assigned to them, if selected.</li>
-          <li>Should there be any discrepancies or issues, the decision taken by Shaastra shall be final and binding.</li>
+      <!-- About: why -->
+      <section class="main-section work" id="aboutus">
+        <h2 class="main-subtitle">ABOUT US</h2>
+        <div class="main-about-container">
+          <i class="fa fa-question-circle-o main-about-img" aria-hidden="true" style="color: #fbc02d;"></i>
+          <p class="main-text main-about-text">Tech and Innovation Fair (TIF) provides a platform to bring forward a hard core tech project or prototype and convert it into a minimum-viable product (MVP) with well-structured business mentoring that would ultimately ensure its success as a market-shelf product with a suitable target consumer pool. The fair is conducted as a part of competition which will have an online round and a finale at IIT Madras during Shaastra 2019.<br><br>A selected number of applying teams will be screened forward to undergo mentorship from experts in the field of tech and business, which will assist them in building their project into a startup. With TIF, you will be networking with some of the top accelerators and incubators in India who will guide you through the right decisions and emerge successful in this highly competitive ecosystem.<br><br>At the final round you will be showcasing your product to the consumers and taking live feedback from them during Shaastra exhibition which witnesses a staggering footfall of 30,000 every year. The winners will receive a cash prize as well a chance to get incubated by some of India’s top firms.
         </p>
-      </div>
-      <div class="main-text main-about-text" style="text-align: center;" id="six">
-        <h2 >CONTACT US</h2>
-        <p>
-          <span class="glyphicon glyphicon-envelope" style="color: #fbc02d"></span>
-          <a href="mailto:techninnovationfair@shaastra.org">tifregistrations@shaastra.org</a><br><br>
-          Tanya Agrawal : +91 9790465021<br>
-          Hitesh Malla : +91 9087863969<br>
-          <br><br>Follow us on<br><br>
-          <div>
+      </section>
 
-            <a href="https://www.facebook.com/Shaastra" target="_blank">
-              <i class="fa fa-facebook-official" style="font-size: 8vh; padding: 3vh;" aria-hidden="true"></i>
-            </a>
-            <a href="https://twitter.com/ShaastraIITM" target="_blank">
-              <i class="fa fa-twitter"  style="font-size: 8vh; padding: 3vh;" aria-hidden="true"></i>
-            </a>
-            <a href="https://www.instagram.com/shaastra_iitm/" target="_blank">
-              <i class="fa fa-instagram" style="font-size: 8vh; padding: 3vh;" aria-hidden="true"></i>
-            </a>
-            <a href="https://www.youtube.com/user/iitmshaastra" target="_blank">
-              <i class="fa fa-youtube" style="font-size: 8vh; padding: 3vh;" aria-hidden="true"></i>
-            </a>
+      <!-- Parallax: rules&regulation -->
+      <section class="main-section work" id="rules">
+        <div class="main-last-container">
+          <div class="main-text main-about-text" >
+            <h2>RULES AND REGULATIONS</h2>
+            <!-- <p> -->
+              <ol>
+                <li><b>Eligibility :</b></li>
+                <br>
+                <p>The Competition is open to all currently enrolled students and early stage startups. Teams may include graduated students and the teams should have a hardware prototype while they are registering for the event. App based startups and services are not eligible to apply for the event. There is no limit to team size and interdisciplinary teams involving students from multiple colleges are strongly encouraged. The competition accepts as qualified teams new ventures or significant expansion of an existing business but only if the technology solution being proposed takes the venture in significantly different directions and promises major innovation and expansion.  All team members should be present and participate in all webinars and workshops conducted online as well as during Shaastra. All plans, pitches, and presentations must be accurate and represent the venture in an honest manner. Misrepresentation will result in disqualification.</p>
+                <li><b>Mentors :</b></li>
+                <br>
+                <p>Mentors can be a valuable resource for startups and teams are encouraged to seek faculty, business, and technical mentors assigned to the them during the event. Feedbacks from their respective mentors shall be included in final evaluation of teams. You are strongly encouraged to develop solid business plan as well as an idea of your market b the end of online mentoring sessions with the help of our workshops and mentors.</p>
+                <li><b>Judging :</b></li>
+                <br>
+                <p>Each business plan and solutions developed during the course of event will be judged by a group of entrepreneurs, venture capitalists, and business professionals at the culmination of event. Ultimate ranking and awards are solely up to the discretion of the judging panel and your performance during mentoring sessions.</p>
+                <li><b>Evaluation criteria :</b></li>
+                <br>
+                <p>Shaastra Tech and Innovation Fair tries to simulate the process of entrepreneurship.
+                  Student entrepreneur teams should approach the competition as any new venture team would approach the marketplace. You are competing to solicit feedback from experienced entrepreneurs and business professionals and to gain start-up support and funding from potential investors. The judges will evaluate your business plans and technology as they would any business opportunity and then decide on the ventures they would most likely fund. Build your plan, pitch, and presentation with accordingly. The decisions of the judging panel are final and they are free to determine  winners.</p>
+                <li><b>Modification of Rules and Regulations :</b></li>
+                <br>
+                <p>These guidelines cannot anticipate every circumstance. Consequently, the organizers reserves the right to modify these rules in any manner for the good of the competition. Any team that violates not only the rules and regulations but the spirit of the competition may be disqualified resulting in forfeiture of awards and prize money. Any questions regarding eligibility should be sent to the contact details provided in the website. We also reserve the right to use any information gathered during the course of this event for our future promotions and academic purpose. All affiliates and the organizers of the Competition retain the rights to use all competition materials to promote the events and for general academic purposes. Startups with no-disclosure clauses may please take note of this. </p>
+              </ol>
+            <!-- </p> -->
           </div>
-        </p>
+        </div>
+      </section>
+      <section class="main-section work" id="contact">
+        <div class="main-last-container">
+          <div class="main-text main-about-text work" style="text-align: center;">
+            <h2 >CONTACT US</h2>
+            <p>
+              <span class="glyphicon glyphicon-envelope" style="color: #fbc02d"></span>
+              <a href="mailto:techninnovationfair@shaastra.org">tifregistrations@shaastra.org</a><br><br>
+              Tanya Agrawal : +91 9790465021<br>
+              Hitesh Malla : +91 9087863969<br>
+              <br><br>Follow us on<br><br>
+              <div>
+
+                <a href="https://www.facebook.com/Shaastra" target="_blank">
+                  <i class="fa fa-facebook-official" style="font-size: 8vh; padding: 3vh;" aria-hidden="true"></i>
+                </a>
+                <a href="https://twitter.com/ShaastraIITM" target="_blank">
+                  <i class="fa fa-twitter"  style="font-size: 8vh; padding: 3vh;" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.instagram.com/shaastra_iitm/" target="_blank">
+                  <i class="fa fa-instagram" style="font-size: 8vh; padding: 3vh;" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.youtube.com/user/iitmshaastra" target="_blank">
+                  <i class="fa fa-youtube" style="font-size: 8vh; padding: 3vh;" aria-hidden="true"></i>
+                </a>
+              </div>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+
+      <div class="container">
+        <hr>
+        <article class="foot-content-left">
+          <ul>&copy;2016 by Pixel Strecher</ul>
+        </article>
+
+        <article class="foot-content">
+          <ul>
+            <li><a href="pixelstrecher@gmail.com">pixelstrecher@gmail.com</a></li>
+            <li class="social"><a href="https://www.facebook.com/">Facebook</a></li>
+            <li class="social"><a href="https://twitter.com/">Twitter</a></li>
+            <li class="social"><a href="https://www.linkedin.com/company/">LinkedIn</a></li>
+          </ul>
+        </article>
+
       </div>
+
+    </footer>
+    <!-- /footer -->
+
+
     </div>
-  </section>
-</div>
+
+
+  </div>
+  <!-- end div container -->
+
+
+  <style media="screen">
+  @import 'https://fonts.googleapis.com/css?family=Montserrat';
+* {
+font-family: Montserrat;
+}
+
+html {
+color: #222;
+font-size: 1em;
+line-height: 1.5;
+box-sizing: border-box
+}
+
+body {
+margin: 0;
+}
+
+a {
+color: #777;
+text-decoration: none;
+}
+
+p {
+margin: 0 0 45px 0;
+text-align: justify;
+}
+
+.header {
+width: 80%;
+}
+
+h1,h2,h3,h4,h5,h6 {
+font-family: Montserrat;
+font-weight: 600;
+color: #484848;
+margin: 30px 0 25px 0;
+line-height: 1.3
+}
+
+.container {
+padding: 0 20px;
+margin: 0 auto
+}
+
+.container:after,
+.container:before {
+content: " ";
+display: table
+}
+
+.container:after {
+clear: both
+}
+
+.intro h1 {
+color: #000;
+}
+
+.intro h1 strong {
+color: #ffd300
+}
+
+
+/* - link under - */
+
+.link-arrow:after {
+content: '';
+background-size: 100% 100%;
+width: 16px;
+height: 12px;
+position: absolute;
+top: 5px;
+right: -28px;
+-webkit-transition: all .4s cubic-bezier(.35, 1, .33, 1);
+transition: all .4s cubic-bezier(.35, 1, .33, 1)
+}
+
+.link-arrow:hover:after {
+right: -35px
+}
+
+.link-arrow.link-arrow-white:after {
+background-size: 100% 100%
+}
+
+.link-arrow-hover:after {
+right: -35px
+}
+
+.link {
+display: inline-block;
+position: relative;
+border: none;
+padding-bottom: 4px;
+text-transform: uppercase;
+font-family: Montserrat, helvetica, arial, sans-serif;
+font-weight: 700
+}
+
+.link:active,
+.link:focus,
+.link:hover {
+outline: 0
+}
+
+.link:before {
+content: '';
+position: absolute;
+left: 0;
+bottom: 0;
+background: #000;
+width: 0;
+height: 2px;
+-webkit-transition: all .4s cubic-bezier(.35, 1, .33, 1);
+transition: all .4s cubic-bezier(.35, 1, .33, 1)
+}
+
+.link:hover {
+color: #000
+}
+
+.link:hover:before {
+width: 100%
+}
+
+.link-theme:before {
+background: #ffd300
+}
+
+@media only screen and (min-width:250px) {
+.main {
+  padding-top: 150px;
+}
+.container {
+  width: 80%;
+}
+h1 {
+  font-size: 30px;
+}
+h2 {
+  font-size: 20px;
+}
+
+@media only screen and (min-width:768px) {
+.main {
+  padding-top: 150px;
+}
+.container {
+  width: 80%;
+}
+h1 {
+  font-size: 48px;
+}
+h2 {
+  font-size: 28px;
+}
+.footer {
+  padding: 70px 0
+}
+.footer ul {
+  margin-top: 15px
+}
+.footer ul li {
+  display: inline-block;
+  margin: 0 0 0 10px
+}
+
+.footer .foot-content-left {
+  float: left
+}
+.footer .foot-content {
+  float: right
+}
+}
+
+@media only screen and (min-width:992px) {
+.container {
+  width: 80%;
+}
+h1 {
+  font-size: 60px;
+}
+h2 {
+  font-size: 28px;
+}
+
+}
+
+@media only screen and (min-width:1200px) {
+.container {
+  width: 1160px;
+  width: 80%;
+}
+h1 {
+  font-size: 80px;
+}
+h2 {
+  font-size: 30px;
+}
+
+}
+
+/* header   box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1); */
+
+.header {
+background-color: #fff;
+position: fixed;
+width: 80%;
+z-index: 3;
+margin-left: 10%;
+margin-right: 10%;
+padding: 20px 0;
+}
+
+.header ul {
+margin: 0;
+padding: 0;
+list-style: none;
+overflow: hidden;
+background-color: #fff;
+}
+
+.header li a {
+display: block;
+padding: 20px 20px 4px 20px;
+text-decoration: none;
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+background-color: #fff;
+}
+
+.header .logo {
+color: #ffd300;
+display: block;
+float: left;
+font-size: 2em;
+padding: 2px 0px;
+text-decoration: none;
+}
+
+/* menu */
+
+.header .menu {
+clear: both;
+max-height: 0;
+transition: max-height .2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+cursor: pointer;
+display: inline-block;
+float: right;
+padding: 28px 20px;
+position: relative;
+user-select: none;
+}
+
+.header .menu-icon .navicon {
+background: #333;
+display: block;
+height: 2px;
+position: relative;
+transition: background .2s ease-out;
+width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+background: #333;
+content: '';
+display: block;
+height: 100%;
+position: absolute;
+transition: all .2s ease-out;
+width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+top: 0;
+}
+
+/* section */
+
+.section {
+overflow: hidden;
+margin: auto;
+max-width: 1400px;
+}
+
+.section a {
+position: relative;
+float: left;
+width: 100%;
+}
+
+.section a img {
+width: 100%;
+display: block;
+}
+
+.section a span {
+color: #fff;
+position: absolute;
+left: 5%;
+bottom: 5%;
+font-size: 2em;
+text-shadow: 1px 1px 0 #000;
+}
+
+.section-split a span {
+display: none;
+}
+
+.section-split a:hover span {
+display: block;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 875px) {
+.header li {
+  float: left;
+}
+.header li a {
+  padding: 20px 0px 0px 0px;
+  margin-left: 30px;
+}
+.header .menu {
+  clear: none;
+  float: right;
+  max-height: none;
+}
+.header .menu-icon {
+  display: none;
+}
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+.section-split a {
+  width: 50%;
+}
+}
+
+
+.footer {
+font-size: 14px;
+padding: 40px 0;
+background: #fff;
+color: #888
+}
+
+.footer .container {
+position: relative
+}
+
+.footer ul {
+margin: 0;
+padding: 0;
+list-style-type: none;
+margin-top: 35px
+}
+
+.footer ul li {
+margin-bottom: 10px
+}
+
+.footer ul a {
+display: inline-block;
+position: relative;
+border: none;
+padding-bottom: 4px;
+text-transform: uppercase;
+color: #000;
+font-family: Montserrat, helvetica, arial, sans-serif;
+font-weight: 700;
+font-family: Montserrat, helvetica, arial, sans-serif;
+font-weight: 400;
+color: #888;
+text-transform: none
+}
+
+.footer ul a:active,
+.footer ul a:focus,
+.footer ul a:hover {
+outline: 0
+}
+
+.footer ul a:before {
+content: '';
+position: absolute;
+left: 0;
+bottom: 0;
+background: #000;
+width: 0;
+height: 2px;
+-webkit-transition: all .4s cubic-bezier(.35, 1, .33, 1);
+transition: all .4s cubic-bezier(.35, 1, .33, 1)
+}
+
+.footer ul a:hover {
+color: #000
+}
+
+.footer ul a:hover:before {
+width: 100%
+}
+
+.footer ul a:before {
+background: #ffd300
+}
+
+.footer .col-logo .path-letter {
+-webkit-transition: all .3s cubic-bezier(.35, 1, .33, 1);
+transition: all .3s cubic-bezier(.35, 1, .33, 1);
+opacity: 0;
+-webkit-transform: translate3d(-10px, 0, 0);
+transform: translate3d(-10px, 0, 0)
+}
+
+.footer .col-logo:hover .path-letter {
+-webkit-transform: translate3d(0, 0, 0);
+transform: translate3d(0, 0, 0);
+opacity: 1
+}
+  </style>
+
+  <script type="text/javascript">
+
+    $('a').click(function(e){
+      e.preventDefault();
+      $('body, html').animate({
+          scrollTop: $( $(this).attr('href') ).offset().top - 120
+      }, 1000);
+    });
+  </script>
