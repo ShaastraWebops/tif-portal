@@ -81,33 +81,8 @@
           </div>
         </div>
       </section>
-
-      <footer class="footer">
-
-      <div class="container">
-        <hr>
-        <article class="foot-content-left">
-          <ul>&copy;2016 by Pixel Strecher</ul>
-        </article>
-
-        <article class="foot-content">
-          <ul>
-            <li><a href="pixelstrecher@gmail.com">pixelstrecher@gmail.com</a></li>
-            <li class="social"><a href="https://www.facebook.com/">Facebook</a></li>
-            <li class="social"><a href="https://twitter.com/">Twitter</a></li>
-            <li class="social"><a href="https://www.linkedin.com/company/">LinkedIn</a></li>
-          </ul>
-        </article>
-
-      </div>
-
-    </footer>
-    <!-- /footer -->
-
-
     </div>
-
-
+  </div>
   </div>
   <!-- end div container -->
 
@@ -319,11 +294,11 @@ h2 {
 .header {
 background-color: #fff;
 position: fixed;
-width: 80%;
+width: 100%;
 z-index: 3;
-margin-left: 10%;
-margin-right: 10%;
-padding: 20px 0;
+/* padding-left: 10%;
+padding-right: 10%; */
+padding: 20px 20px;
 }
 
 .header ul {
@@ -574,13 +549,3 @@ transform: translate3d(0, 0, 0);
 opacity: 1
 }
   </style>
-
-  <script type="text/javascript">
-
-    $('a').click(function(e){
-      e.preventDefault();
-      $('body, html').animate({
-          scrollTop: $( $(this).attr('href') ).offset().top - 120
-      }, 1000);
-    });
-  </script>

@@ -7,7 +7,7 @@ html{
 
 .main-section{
 	min-height: 100vh;
-	/*padding-top: 8vh;*/
+	padding-top: 8vh;
 	margin-left: 5vw;
 	margin-right: 5vw;
 	font-family: 'Montserrat', sans-serif;

@@ -81,18 +81,18 @@
 </div> -->
 
 <header class="header">
-  <a class="logo" href=".page-top">SHAASTRA</a>
+  <a class="logo" href="/#home">SHAASTRA</a>
   <input class="menu-btn" type="checkbox" id="menu-btn" />
   <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
   <ul class="menu">
     <li><a href="/#aboutus" class="link link-theme link-arrow">About</a></li>
     <li><a href="/#rules" class="link link-theme link-arrow">Rules</a></li>
     <li><a href="/#contact" class="link link-theme link-arrow">Contact Us</a></li>
-     <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed" ng-show="$ctrl.isLoggedIn()&&!$ctrl.isAdmin()"><a href="/submit" class="link link-theme link-arrow">Form</a></li>
-    <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed" ng-hide="$ctrl.isLoggedIn()"><a href="/signup" class="link link-theme link-arrow">Sign up</a></li>
-    <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed" ng-hide="$ctrl.isLoggedIn()"><a href="/login" class="link link-theme link-arrow">Login</a></li>
-    <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed" ng-show="$ctrl.isLoggedIn()"><a href="/settings" class="link link-theme link-arrow">Change Password</a></li>
-    <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed" ng-show="$ctrl.isLoggedIn()"><a href="/logout" class="link link-theme link-arrow">Logout</a></li>
+    <li ng-show="$ctrl.isLoggedIn()&& (!$ctrl.isAdmin())"><a href="/submit" class="link link-theme link-arrow">Form</a></li>
+    <li ng-hide="$ctrl.isLoggedIn()"><a href="/signup" class="link link-theme link-arrow">Sign up</a></li>
+    <li ng-hide="$ctrl.isLoggedIn()"><a href="/login" class="link link-theme link-arrow">Login</a></li>
+    <li ng-show="$ctrl.isLoggedIn()"><a href="/settings" class="link link-theme link-arrow">Change Password</a></li>
+    <li ng-show="$ctrl.isLoggedIn()"><a href="/logout" class="link link-theme link-arrow">Logout</a></li>
   </ul>
 </header>
 
@@ -304,11 +304,11 @@ font-size: 30px;
 .header {
 background-color: #fff;
 position: fixed;
-width: 80%;
+width: 100%;
 z-index: 3;
-margin-left: 10%;
-margin-right: 10%;
-padding: 20px 0;
+/* padding-left: 10%;
+padding-right: 10%; */
+padding: 20px 20px;
 }
 
 .header ul {
@@ -482,22 +482,22 @@ width: 50%;
 font-size: 14px;
 padding: 40px 0;
 background: #fff;
-color: #888
+color: #888;
 }
 
 .footer .container {
-position: relative
+position: relative;
 }
 
 .footer ul {
 margin: 0;
 padding: 0;
 list-style-type: none;
-margin-top: 35px
+margin-top: 35px;
 }
 
 .footer ul li {
-margin-bottom: 10px
+margin-bottom: 10px;
 }
 
 .footer ul a {
@@ -512,13 +512,13 @@ font-weight: 700;
 font-family: Montserrat, helvetica, arial, sans-serif;
 font-weight: 400;
 color: #888;
-text-transform: none
+text-transform: none;
 }
 
 .footer ul a:active,
 .footer ul a:focus,
 .footer ul a:hover {
-outline: 0
+outline: 0;
 }
 
 .footer ul a:before {
@@ -530,19 +530,19 @@ background: #000;
 width: 0;
 height: 2px;
 -webkit-transition: all .4s cubic-bezier(.35, 1, .33, 1);
-transition: all .4s cubic-bezier(.35, 1, .33, 1)
+transition: all .4s cubic-bezier(.35, 1, .33, 1);
 }
 
 .footer ul a:hover {
-color: #000
+color: #000;
 }
 
 .footer ul a:hover:before {
-width: 100%
+width: 100%;
 }
 
 .footer ul a:before {
-background: #ffd300
+background: #ffd300;
 }
 
 .footer .col-logo .path-letter {
@@ -556,6 +556,6 @@ transform: translate3d(-10px, 0, 0)
 .footer .col-logo:hover .path-letter {
 -webkit-transform: translate3d(0, 0, 0);
 transform: translate3d(0, 0, 0);
-opacity: 1
+opacity: 1;
 }
 </style>
