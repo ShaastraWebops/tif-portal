@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken';
 var json2csv = require('json2csv');
 var request = require("request");
 var crypto = require('crypto');
+const Json2csvParser = require('json2csv').Parser;
 
 var sg = require('sendgrid')(process.env.TIF);
 
@@ -60,12 +61,8 @@ export function list(req, res) {
 export function exp(req, res) {
   return User.find({}, '-_id -salt -password -provider -role').exec()
     .then(users => {
-      var fields = ['tifID', 'name', 'email', 'phonenumber', 'education', 'college',
-      'teammates.mem2_name', 'teammates.mem2_email', 'teammates.mem2_phno',
-      'teammates.mem3_name', 'teammates.mem3_email', 'teammates.mem3_phno',
-      'teammates.mem4_name', 'teammates.mem4_email', 'teammates.mem4_phno',
-       'projname', 'vertical', 'projdetails', 'projlink', 'questions.what', 'questions.howbetter',
-       'questions.past'];
+      var fields = ['tifID', 'name', 'email', 'phonenumber', 'wnumber', 'education', 'college',
+       'postal', 'teamname', 'points'];
       var csv = json2csv({ data: users, fields: fields});
       res.setHeader('Content-disposition', 'attachment; filename=users.csv');
       res.set('Content-Type', 'text/csv');

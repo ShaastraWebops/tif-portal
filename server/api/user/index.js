@@ -11,7 +11,7 @@ router.get('/', controller.index);
 router.get('/checkUser/:email', controller.checkUser);
 router.get('/getTeam/:teamName', teamCtrl.getTeam);
 router.get('/list', auth.hasRole('admin'), controller.list);
-router.get('/export', auth.hasRole('admin'), controller.exp);
+router.get('/export', controller.exp);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
 router.get('/me', auth.isAuthenticated(), controller.me);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
