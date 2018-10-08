@@ -105,7 +105,8 @@ export class SubmitComponent {
     }
   };
   next() {
-    this.validateTeamMembers();
+    this.saveform(true, 1);
+   // this.validateTeamMembers();
   };
   back() {
     this.currpage -= 1;
