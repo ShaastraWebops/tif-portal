@@ -32,12 +32,15 @@
 
 <div class="overlay-menu">
   <ul id="menu">
-      <li><a href="#home" style="color:orange;">Home</a></li>
-      <li><a href="#services" style="color:orange;">About</a></li>
-      <li><a href="#about" style="color:orange;">Rules</a></li>
-      <li><a href="#contact" style="color:orange;">Contact</a></li>
-      <li><a href="#contact" style="color:orange;">Sign Up</a></li>
-      <li><a href="#contact" style="color:orange;">Login</a></li>
+    <li><a href="/#home" style="color:orange;font-weight:900;font-size:1.2em;">Home</a></li><!--
+ --><li><a href="/#aboutus" style="color:orange;font-weight:900;font-size:1.2em;">About</a></li><!--
+ --><li><a href="/#rules" style="color:orange;font-weight:900;font-size:1.2em;">Rules</a></li><!--
+ --><li><a href="/#contactus" style="color:orange;font-weight:900;font-size:1.2em;">Contact</a></li>
+    <li ng-hide="$ctrl.isLoggedIn()"><a href="/signup" style="color:orange;font-weight:900;font-size:1.2em;">Sign Up</a></li>
+    <li ng-hide="$ctrl.isLoggedIn()"><a href="/login" style="color:orange;font-weight:900;font-size:1.2em;">Login</a></li>
+    <li ng-show="$ctrl.isLoggedIn()&& (!$ctrl.isAdmin())"><a href="/submit" style="color:orange;font-weight:900;font-size:1.2em;">Form</a></li>
+    <li ng-show="$ctrl.isLoggedIn()"><a href="/settings" style="color:orange;font-weight:900;font-size:1.2em;">Change Password</a></li>
+    <li ng-show="$ctrl.isLoggedIn()"><a href="/logout" style="color:orange;font-weight:900;font-size:1.2em;">Logout</a></li>
     </ul>
 </div>
 
