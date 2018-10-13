@@ -3,11 +3,34 @@
 import Team from './team.model';
 import User from '../user/user.model'
 import config from '../../config/environment';
+var json2csv = require('json2csv');
+
+function handleError(res, statusCode) {
+  statusCode = statusCode || 500;
+  return function(err) {
+    // console.log(err);
+    return res.status(statusCode).send(err);
+  };
+}
 
 export function getTeam(req, res) {
   Team.findOne({ 'teamname': req.params.teamName }).then(team => {
     res.json(team);
   });
+}
+
+export function exp(req, res) {
+  return Team.find({}, '-_id').exec()
+    .then(teams => {
+      var fields = ['projlink', 'projdetails', 'vertical', 'projname',
+      'points', 'questions.what', 'questions.howbetter', 'questions.past', 'teammates.mem1_name', 'teammates.mem1_email', 'teammates.mem1_phno',
+      'teammates.mem2_name', 'teammates.mem2_email', 'teammates.mem2_phno', 'teammates.mem3_name', 'teammates.mem3_email', 'teammates.mem3_phno'];
+      var csv = json2csv({ data: teams, fields: fields});
+      res.setHeader('Content-disposition', 'attachment; filename=teams.csv');
+      res.set('Content-Type', 'text/csv');
+      res.status(200).send(csv);
+    })
+    .catch(handleError(res));
 }
 
 export function teamsubmit(req, res) {
