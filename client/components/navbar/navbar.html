@@ -30,17 +30,17 @@
 </div>
 
 
-<div class="overlay-menu" style="z-index:9999999;">
+<div class="overlay-menu" style="z-index:9999999;" ng-show"false">
   <ul id="menu">
-    <li><a href="/#home" style="color:orange;font-weight:900;font-size:1.2em;">Home</a></li><!--
- --><li><a href="/#aboutus" style="color:orange;font-weight:900;font-size:1.2em;">About</a></li><!--
- --><li><a href="/#rules" style="color:orange;font-weight:900;font-size:1.2em;">Rules</a></li><!--
- --><li><a href="/#contactus" style="color:orange;font-weight:900;font-size:1.2em;">Contact</a></li>
-    <li ng-hide="$ctrl.isLoggedIn()"><a href="/signup" style="color:orange;font-weight:900;font-size:1.2em;">Sign Up</a></li>
-    <li ng-hide="$ctrl.isLoggedIn()"><a href="/login" style="color:orange;font-weight:900;font-size:1.2em;">Login</a></li>
-    <li ng-show="$ctrl.isLoggedIn()&& (!$ctrl.isAdmin())"><a href="/submit" style="color:orange;font-weight:900;font-size:1.2em;">Form</a></li>
-    <li ng-show="$ctrl.isLoggedIn()"><a href="/settings" style="color:orange;font-weight:900;font-size:1.2em;">Change Password</a></li>
-    <li ng-show="$ctrl.isLoggedIn()"><a href="/logout" style="color:orange;font-weight:900;font-size:1.2em;">Logout</a></li>
+    <li><a class="l1" href="/#home" style="color:orange;font-weight:900;font-size:1.2em;">Home</a></li><!--
+ --><li><a class="l2" href="/#aboutus" style="color:orange;font-weight:900;font-size:1.2em;">About</a></li><!--
+ --><li><a class="l3" href="/#rules" style="color:orange;font-weight:900;font-size:1.2em;">Rules</a></li><!--
+ --><li><a class="l4" href="/#contactus" style="color:orange;font-weight:900;font-size:1.2em;">Contact</a></li>
+    <li ng-hide="$ctrl.isLoggedIn()"><a class="l5" href="/signup" style="color:orange;font-weight:900;font-size:1.2em;">Sign Up</a></li>
+    <li ng-hide="$ctrl.isLoggedIn()"><a class="l6" href="/login" style="color:orange;font-weight:900;font-size:1.2em;">Login</a></li>
+    <li ng-show="$ctrl.isLoggedIn()&& (!$ctrl.isAdmin())"><a class="l7" href="/submit" style="color:orange;font-weight:900;font-size:1.2em;">Form</a></li>
+    <li ng-show="$ctrl.isLoggedIn()"><a class="l8" href="/settings" style="color:orange;font-weight:900;font-size:1.2em;">Change Password</a></li>
+    <li ng-show="$ctrl.isLoggedIn()"><a class="l9" href="/logout" style="color:orange;font-weight:900;font-size:1.2em;">Logout</a></li>
     </ul>
 </div>
 
@@ -409,5 +409,77 @@ transition: color 0.3s ease;
           } else {
               toggleIcon.className = 'menuIcon';
           }
+      });
+
+      // Toggle Menu Icon ========================================
+      let toggleIcon1 = document.querySelector('.l1');
+
+      toggleIcon1.addEventListener('click', () => {
+        nav.style.transform = 'translateX(-100%)';
+        nav.style.transition = 'transform 0.2s ease-out';
+      });
+
+      // Toggle Menu Icon ========================================
+      let toggleIcon2 = document.querySelector('.l2');
+
+      toggleIcon2.addEventListener('click', () => {
+        nav.style.transform = 'translateX(-100%)';
+        nav.style.transition = 'transform 0.2s ease-out';
+      });
+
+      // Toggle Menu Icon ========================================
+      let toggleIcon3 = document.querySelector('.l3');
+
+      toggleIcon3.addEventListener('click', () => {
+        nav.style.transform = 'translateX(-100%)';
+        nav.style.transition = 'transform 0.2s ease-out';
+      });
+
+      // Toggle Menu Icon ========================================
+      let toggleIcon4 = document.querySelector('.l4');
+
+      toggleIcon4.addEventListener('click', () => {
+        nav.style.transform = 'translateX(-100%)';
+        nav.style.transition = 'transform 0.2s ease-out';
+      });
+
+      // Toggle Menu Icon ========================================
+      let toggleIcon5 = document.querySelector('.l5');
+
+      toggleIcon5.addEventListener('click', () => {
+        nav.style.transform = 'translateX(-100%)';
+        nav.style.transition = 'transform 0.2s ease-out';
+      });
+
+      // Toggle Menu Icon ========================================
+      let toggleIcon6 = document.querySelector('.l6');
+
+      toggleIcon6.addEventListener('click', () => {
+        nav.style.transform = 'translateX(-100%)';
+        nav.style.transition = 'transform 0.2s ease-out';
+      });
+
+      // Toggle Menu Icon ========================================
+      let toggleIcon7 = document.querySelector('.l7');
+
+      toggleIcon7.addEventListener('click', () => {
+        nav.style.transform = 'translateX(-100%)';
+        nav.style.transition = 'transform 0.2s ease-out';
+      });
+
+      // Toggle Menu Icon ========================================
+      let toggleIcon8 = document.querySelector('.l8');
+
+      toggleIcon8.addEventListener('click', () => {
+        nav.style.transform = 'translateX(-100%)';
+        nav.style.transition = 'transform 0.2s ease-out';
+      });
+
+      // Toggle Menu Icon ========================================
+      let toggleIcon9 = document.querySelector('.l9');
+
+      toggleIcon9.addEventListener('click', () => {
+        nav.style.transform = 'translateX(-100%)';
+        nav.style.transition = 'transform 0.2s ease-out';
       });
 </script>
