@@ -1,561 +1,410 @@
-<!-- <style>
+<nav id="navbar" class="">
+  <div class="nav-wrapper">
+    <!-- Navbar Logo -->
+    <!-- <div class="logo">
+      <a href="#home"><i class="fas fa-chess-knight"></i> Logo</a>
+    </div> -->
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-
-.navbar{
-  font-family: 'Montserrat', sans-serif;
-  background: #fbc02d;
-	background: -webkit-linear-gradient(-45deg, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(-45deg, #FFD200, #F7971E);
-  box-shadow: 0 2px 8px 1px gainsboro;
-}
-
-.navbar-default .navbar-nav li a{
-  color: #000000;
-}
-
-.navbar-default .navbar-nav li{
-}
-
-.navbar-default .navbar-nav{
-  margin: 0px;
-
-}
-
-.glyphicon-home{
-  display: block;
-}
-
-.tif-title{
-  display: none;
-}
-
-@media screen and (max-width: 719px){
-  .glyphicon-home{
-    display: none;
-  }
-
-  .tif-title{
-    display: block;
-  }
-}
-</style>
+    <!-- Navbar Links -->
+    <ul id="menu">
+      <li><a href="/#home" style="color:orange;font-weight:900;font-size:1.2em;">Home</a></li><!--
+   --><li><a href="/#aboutus" style="color:orange;font-weight:900;font-size:1.2em;">About</a></li><!--
+   --><li><a href="/#rules" style="color:orange;font-weight:900;font-size:1.2em;">Rules</a></li><!--
+   --><li><a href="/#contactus" style="color:orange;font-weight:900;font-size:1.2em;">Contact</a></li>
+      <li ng-hide="$ctrl.isLoggedIn()"><a href="/signup" style="color:orange;font-weight:900;font-size:1.2em;">Sign Up</a></li>
+      <li ng-hide="$ctrl.isLoggedIn()"><a href="/login" style="color:orange;font-weight:900;font-size:1.2em;">Login</a></li>
+      <li ng-show="$ctrl.isLoggedIn()&& (!$ctrl.isAdmin())"><a href="/submit" style="color:orange;font-weight:900;font-size:1.2em;">Form</a></li>
+      <li ng-show="$ctrl.isLoggedIn()"><a href="/settings" style="color:orange;font-weight:900;font-size:1.2em;">Change Password</a></li>
+      <li ng-show="$ctrl.isLoggedIn()"><a href="/logout" style="color:orange;font-weight:900;font-size:1.2em;">Logout</a></li>
 
 
-<div class="navbar navbar-default navbar-fixed-top" style="width: 100vw; height: 5vh; padding-right: 3vw;">
-  <div>
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/#home" class="navbar-brand" style="color: black;">
-        <span class="glyphicon glyphicon-home"></span>
-        <div class="tif-title">TIF Portal</div>
-      </a>
-    </div>
-
-    <div uib-collapse="$ctrl.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed"><a href="/#one">About</a></li>
-        <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed"><a href="/#two">Why TIF?</a></li>
-        <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed"><a href="/#three">Shortlisting </a></li>
-        <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed"><a href="/#four">Incentives</a></li>
-        <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed"><a href="/#partners">Partners</a></li>
-        <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed"><a href="/#five">Rules</a></li>
-        <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed"><a href="/#six">Contact Us</a></li>
-        <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed" ng-show="$ctrl.isAdmin()"><a href="/list">Registered Users</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed" ng-show="$ctrl.isLoggedIn()&&!$ctrl.isAdmin()"><a href="/submit">Form</a></li>
-        <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed" ng-hide="$ctrl.isLoggedIn()"><a href="/signup">Sign up</a></li>
-        <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed" ng-hide="$ctrl.isLoggedIn()"><a href="/login">Login</a></li>
-        <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed" ng-show="$ctrl.isLoggedIn()"><a href="/settings">Change Password</a></li>
-        <li ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed" ng-show="$ctrl.isLoggedIn()"><a href="/logout">Logout</a></li>
-      </ul>
-    </div>
+    </ul>
   </div>
-</div> -->
+</nav>
 
-<header class="header">
-  <a class="logo" href="/#home">SHAASTRA</a>
-  <input class="menu-btn" type="checkbox" id="menu-btn" />
-  <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-  <ul class="menu">
-    <li><a href="/#aboutus" class="link link-theme link-arrow">About</a></li>
-    <li><a href="/#rules" class="link link-theme link-arrow">Rules</a></li>
-    <li><a href="/#contact" class="link link-theme link-arrow">Contact Us</a></li>
-    <li ng-show="$ctrl.isLoggedIn()&& (!$ctrl.isAdmin())"><a href="/submit" class="link link-theme link-arrow">Form</a></li>
-    <li ng-hide="$ctrl.isLoggedIn()"><a href="/signup" class="link link-theme link-arrow">Sign up</a></li>
-    <li ng-hide="$ctrl.isLoggedIn()"><a href="/login" class="link link-theme link-arrow">Login</a></li>
-    <li ng-show="$ctrl.isLoggedIn()"><a href="/settings" class="link link-theme link-arrow">Change Password</a></li>
-    <li ng-show="$ctrl.isLoggedIn()"><a href="/logout" class="link link-theme link-arrow">Logout</a></li>
-  </ul>
-</header>
+
+<!-- Menu Icon -->
+<div class="menuIcon">
+  <span class="icon icon-bars"></span>
+  <span class="icon icon-bars overlay"></span>
+</div>
+
+
+<div class="overlay-menu">
+  <ul id="menu">
+      <li><a href="#home" style="color:orange;">Home</a></li>
+      <li><a href="#services" style="color:orange;">About</a></li>
+      <li><a href="#about" style="color:orange;">Rules</a></li>
+      <li><a href="#contact" style="color:orange;">Contact</a></li>
+      <li><a href="#contact" style="color:orange;">Sign Up</a></li>
+      <li><a href="#contact" style="color:orange;">Login</a></li>
+    </ul>
+</div>
+
 
 
 <style media="screen">
-@import 'https://fonts.googleapis.com/css?family=Montserrat';
-* {
-font-family: Montserrat;
-}
-
-html {
-color: #222;
-font-size: 1em;
-line-height: 1.5;
-box-sizing: border-box
-}
-
-body {
-margin: 0;
-}
-
 a {
-color: #777;
-text-decoration: none;
-}
-
-p {
-margin: 0 0 45px 0;
-text-align: justify;
-}
-
-.header {
-width: 80%;
-}
-
-h1,h2,h3,h4,h5,h6 {
+color: inherit;
 font-family: Montserrat;
-font-weight: 600;
-color: #484848;
-margin: 30px 0 25px 0;
-line-height: 1.3
-}
-
-.container {
-padding: 0 20px;
-margin: 0 auto
-}
-
-.container:after,
-.container:before {
-content: " ";
-display: table
-}
-
-.container:after {
-clear: both
-}
-
-.intro h1 {
-color: #000;
-}
-
-.intro h1 strong {
-color: #ffd300
+font-size: inherit;
+text-decoration: none;
 }
 
 
-/* - link under - */
-
-.link-arrow:after {
-content: '';
-background-size: 100% 100%;
-width: 16px;
-height: 12px;
-position: absolute;
-top: 5px;
-right: -28px;
--webkit-transition: all .4s cubic-bezier(.35, 1, .33, 1);
-transition: all .4s cubic-bezier(.35, 1, .33, 1)
-}
-
-.link-arrow:hover:after {
-right: -35px
-}
-
-.link-arrow.link-arrow-white:after {
-background-size: 100% 100%
-}
-
-.link-arrow-hover:after {
-right: -35px
-}
-
-.link {
-display: inline-block;
-position: relative;
-border: none;
-padding-bottom: 4px;
-text-transform: uppercase;
-font-family: Montserrat, helvetica, arial, sans-serif;
-font-weight: 700
-}
-
-.link:active,
-.link:focus,
-.link:hover {
-outline: 0
-}
-
-.link:before {
-content: '';
-position: absolute;
-left: 0;
-bottom: 0;
-background: #000;
-width: 0;
-height: 2px;
--webkit-transition: all .4s cubic-bezier(.35, 1, .33, 1);
-transition: all .4s cubic-bezier(.35, 1, .33, 1)
-}
-
-.link:hover {
-color: #000
-}
-
-.link:hover:before {
-width: 100%
-}
-
-.link-theme:before {
-background: #ffd300
-}
-
-@media only screen and (min-width:250px) {
-.main {
-padding-top: 150px;
-}
-.container {
-width: 80%;
-}
-h1 {
-font-size: 30px;
-}
-h2 {
-font-size: 20px;
-}
-
-@media only screen and (min-width:768px) {
-.main {
-padding-top: 150px;
-}
-.container {
-width: 80%;
-}
-h1 {
-font-size: 48px;
-}
-h2 {
-font-size: 28px;
-}
-.footer {
-padding: 70px 0
-}
-.footer ul {
-margin-top: 15px
-}
-.footer ul li {
-display: inline-block;
-margin: 0 0 0 10px
-}
-
-.footer .foot-content-left {
-float: left
-}
-.footer .foot-content {
-float: right
-}
-}
-
-@media only screen and (min-width:992px) {
-.container {
-width: 80%;
-}
-h1 {
-font-size: 60px;
-}
-h2 {
-font-size: 28px;
-}
-
-}
-
-@media only screen and (min-width:1200px) {
-.container {
-width: 1160px;
-width: 80%;
-}
-h1 {
-font-size: 80px;
-}
-h2 {
-font-size: 30px;
-}
-
-}
-
-/* header   box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1); */
-
-.header {
-background-color: #fff;
+/*======================================================
+                        Navbar
+======================================================*/
+#navbar {
+/* background: white; */
+color: rgba(13, 26, 38,1);
 position: fixed;
-width: 100%;
-z-index: 3;
-/* padding-left: 10%;
-padding-right: 10%; */
-padding: 20px 20px;
-}
-
-.header ul {
-margin: 0;
-padding: 0;
-list-style: none;
-overflow: hidden;
-background-color: #fff;
-}
-
-.header li a {
-display: block;
-padding: 20px 20px 4px 20px;
-text-decoration: none;
-}
-
-.header li a:hover,
-.header .menu-btn:hover {
-background-color: #fff;
-}
-
-.header .logo {
-color: #ffd300;
-display: block;
-float: left;
-font-size: 2em;
-padding: 2px 0px;
-text-decoration: none;
-}
-
-/* menu */
-
-.header .menu {
-clear: both;
-max-height: 0;
-transition: max-height .2s ease-out;
-}
-
-/* menu icon */
-
-.header .menu-icon {
-cursor: pointer;
-display: inline-block;
-float: right;
-padding: 28px 20px;
-position: relative;
-user-select: none;
-}
-
-.header .menu-icon .navicon {
-background: #333;
-display: block;
-height: 2px;
-position: relative;
-transition: background .2s ease-out;
-width: 18px;
-}
-
-.header .menu-icon .navicon:before,
-.header .menu-icon .navicon:after {
-background: #333;
-content: '';
-display: block;
-height: 100%;
-position: absolute;
-transition: all .2s ease-out;
-width: 100%;
-}
-
-.header .menu-icon .navicon:before {
-top: 5px;
-}
-
-.header .menu-icon .navicon:after {
-top: -5px;
-}
-
-/* menu btn */
-
-.header .menu-btn {
-display: none;
-}
-
-.header .menu-btn:checked ~ .menu {
-max-height: 240px;
-}
-
-.header .menu-btn:checked ~ .menu-icon .navicon {
-background: transparent;
-}
-
-.header .menu-btn:checked ~ .menu-icon .navicon:before {
-transform: rotate(-45deg);
-}
-
-.header .menu-btn:checked ~ .menu-icon .navicon:after {
-transform: rotate(45deg);
-}
-
-.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
-.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
 top: 0;
+height: 60px;
+line-height: 60px;
+width: 100vw;
+z-index: 10;
 }
 
-/* section */
-
-.section {
-overflow: hidden;
+.nav-wrapper {
 margin: auto;
-max-width: 1400px;
-}
+text-align: center;
+width: 70%;
+} @media(max-width: 768px) {
+  .nav-wrapper {
+    width: 90%;
+  }
+} @media(max-width: 638px) {
+    .nav-wrapper {
+      width: 100%;
+    }
+  }
 
-.section a {
-position: relative;
+
+.logo {
 float: left;
-width: 100%;
-}
-
-.section a img {
-width: 100%;
-display: block;
-}
-
-.section a span {
-color: #fff;
-position: absolute;
-left: 5%;
-bottom: 5%;
-font-size: 2em;
-text-shadow: 1px 1px 0 #000;
-}
-
-.section-split a span {
-display: none;
-}
-
-.section-split a:hover span {
-display: block;
-}
-
-/* 48em = 768px */
-
-@media (min-width: 875px) {
-.header li {
-float: left;
-}
-.header li a {
-padding: 20px 0px 0px 0px;
-margin-left: 30px;
-}
-.header .menu {
-clear: none;
-float: right;
-max-height: none;
-}
-.header .menu-icon {
-display: none;
-}
-}
-
-/* 48em = 768px */
-
-@media (min-width: 48em) {
-.section-split a {
-width: 50%;
-}
-}
-
-
-.footer {
-font-size: 14px;
-padding: 40px 0;
-background: #fff;
-color: #888;
-}
-
-.footer .container {
-position: relative;
-}
-
-.footer ul {
-margin: 0;
-padding: 0;
-list-style-type: none;
-margin-top: 35px;
-}
-
-.footer ul li {
-margin-bottom: 10px;
-}
-
-.footer ul a {
-display: inline-block;
-position: relative;
-border: none;
-padding-bottom: 4px;
+margin-left: 28px;
+font-size: 1.5em;
+height: 60px;
+letter-spacing: 1px;
 text-transform: uppercase;
-color: #000;
-font-family: Montserrat, helvetica, arial, sans-serif;
-font-weight: 700;
-font-family: Montserrat, helvetica, arial, sans-serif;
-font-weight: 400;
-color: #888;
-text-transform: none;
+} @media(max-width: 768px) {
+  .logo {
+/*       margin-left: 5px; */
+  }
 }
 
-.footer ul a:active,
-.footer ul a:focus,
-.footer ul a:hover {
-outline: 0;
+#navbar ul {
+z-index: 999999999;
+display: inline-block;
+float: center;
+list-style: none;
+/* margin-right: 14px; */
+margin-top: 5vh;
+text-align: right;
+transition: transform 0.5s ease-out;
+-webkit-transition: transform 0.5s ease-out;
+} @media(max-width: 1024px) {
+  #navbar ul {
+    display: none;
+  }
+  #navbar li {
+  display: none;
+  }
+} @media(orientation: landscape) {
+    #navbar ul {
+      display: inline-flex;
+    }
+  }
+
+
+#navbar li a {
+color: rgb(13, 26, 38);
+display: block;
+font-size: 0.7em;
+height: 50px;
+letter-spacing: 1px;
+margin: 0 20px;
+padding: 0 4px;
+position: relative;
+text-decoration: none;
+text-transform: uppercase;
+transition: all 0.5s ease;
+-webkit-transition: all 0.5s ease;
 }
 
-.footer ul a:before {
+#navbar li a:hover {
+/* border-bottom: 1px solid rgb(28, 121, 184); */
+color: rgb(28, 121, 184);
+transition: all 1s ease;
+-webkit-transition: all 1s ease;
+}
+
+/* Animated Bottom Line */
+#navbar li a:before, #navbar li a:after {
 content: '';
 position: absolute;
+width: 0%;
+height: 1px;
+bottom: -1px;
+background: rgb(13, 26, 38);
+}
+
+#navbar li a:before {
 left: 0;
-bottom: 0;
-background: #000;
-width: 0;
-height: 2px;
--webkit-transition: all .4s cubic-bezier(.35, 1, .33, 1);
-transition: all .4s cubic-bezier(.35, 1, .33, 1);
+transition: 0.5s;
 }
 
-.footer ul a:hover {
-color: #000;
+#navbar li a:after {
+background: rgb(13, 26, 38);
+right: 0;
+/* transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); */
 }
 
-.footer ul a:hover:before {
+#navbar li a:hover:before {
+background: rgb(13, 26, 38);
 width: 100%;
+transition: width 0.5s cubic-bezier((0.22, 0.61, 0.36, 1));
 }
 
-.footer ul a:before {
-background: #ffd300;
+#navbar li a:hover:after {
+background: transparent;
+width: 100%;
+/* transition: 0s; */
 }
 
-.footer .col-logo .path-letter {
--webkit-transition: all .3s cubic-bezier(.35, 1, .33, 1);
-transition: all .3s cubic-bezier(.35, 1, .33, 1);
-opacity: 0;
--webkit-transform: translate3d(-10px, 0, 0);
-transform: translate3d(-10px, 0, 0)
+
+
+/*======================================================
+                  Mobile Menu Menu Icon
+======================================================*/
+@media(max-width: 1024px) {
+.menuIcon {
+  cursor: pointer;
+  display: block;
+  position: fixed;
+  right: 15px;
+  top: 20px;
+  height: 23px;
+  width: 27px;
+  z-index: 12;
 }
 
-.footer .col-logo:hover .path-letter {
--webkit-transform: translate3d(0, 0, 0);
-transform: translate3d(0, 0, 0);
-opacity: 1;
+/* Icon Bars */
+.icon-bars {
+  background: rgb(13, 26, 38);
+  position: absolute;
+  left: 1px;
+  top: 45%;
+  height: 2px;
+  width: 20px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.icon-bars::before {
+  background: rgb(13, 26, 38);
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -8px;
+  height: 2px;
+  width: 20px;
+/*     -webkit-transition: top 0.2s ease 0.3s;
+  transition: top 0.2s ease 0.3s; */
+  -webkit-transition: 0.3s width 0.4s;
+  transition: 0.3s width 0.4s;
+}
+
+.icon-bars::after {
+  margin-top: 0px;
+  background: rgb(13, 26, 38);
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  height: 2px;
+  width: 20px;
+/*     -webkit-transition: top 0.2s ease 0.3s;
+  transition: top 0.2s ease 0.3s; */
+  -webkit-transition: 0.3s width 0.4s;
+  transition: 0.3s width 0.4s;
+}
+
+/* Bars Shadows */
+.icon-bars.overlay {
+  background: rgb(97, 114, 129);
+  background: rgb(183, 199, 211);
+  width: 20px;
+  animation: middleBar 3s infinite 0.5s;
+  -webkit-animation: middleBar 3s infinite 0.5s;
+} @keyframes middleBar {
+    0% {width: 0px}
+    50% {width: 20px}
+    100% {width: 0px}
+  } @-webkit-keyframes middleBar {
+      0% {width: 0px}
+      50% {width: 20px}
+      100% {width: 0px}
+    }
+
+.icon-bars.overlay::before {
+  background: rgb(97, 114, 129);
+  background: rgb(183, 199, 211);
+  width: 10px;
+  animation: topBar 3s infinite 0.2s;
+  -webkit-animation: topBar 3s infinite 0s;
+} @keyframes topBar {
+    0% {width: 0px}
+    50% {width: 10px}
+    100% {width: 0px}
+  } @-webkit-keyframes topBar {
+      0% {width: 0px}
+      50% {width: 10px}
+      100% {width: 0px}
+    }
+
+.icon-bars.overlay::after {
+  background: rgb(97, 114, 129);
+  background: rgb(183, 199, 211);
+  width: 15px;
+  animation: bottomBar 3s infinite 1s;
+  -webkit-animation: bottomBar 3s infinite 1s;
+} @keyframes bottomBar {
+    0% {width: 0px}
+    50% {width: 15px}
+    100% {width: 0px}
+  } @-webkit-keyframes bottomBar {
+      0% {width: 0px}
+      50% {width: 15px}
+      100% {width: 0px}
+    }
+
+
+/* Toggle Menu Icon */
+.menuIcon.toggle .icon-bars {
+  top: 5px;
+  transform: translate3d(0, 5px, 0) rotate(135deg);
+  transition-delay: 0.1s;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.menuIcon.toggle .icon-bars::before {
+  top: 0;
+  transition-delay: 0.1s;
+  opacity: 0;
+}
+
+.menuIcon.toggle .icon-bars::after {
+  top: 10px;
+  transform: translate3d(0, -10px, 0) rotate(-270deg);
+  transition-delay: 0.1s;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.menuIcon.toggle .icon-bars.overlay {
+  width: 20px;
+  opacity: 0;
+  -webkit-transition: all 0s ease 0s;
+  transition: all 0s ease 0s;
+}
+}
+
+
+/*======================================================
+                 Responsive Mobile Menu
+======================================================*/
+.overlay-menu {
+background: black;
+color: rgb(13, 26, 38);
+display: flex;
+align-items: center;
+justify-content: center;
+position: absolute;
+top: 0;
+right: 0;
+padding-right: 15px;
+transform: translateX(-100%);
+width: 100vw;
+height: 100vh;
+-webkit-transition: transform 0.2s ease-out;
+transition: transform 0.2s ease-out;
+}
+
+.overlay-menu ul, .overlay-menu li {
+display: block;
+position: relative;
+}
+
+.overlay-menu li a {
+display: block;
+font-size: 1.8em;
+letter-spacing: 4px;
+/*   opacity: 0; */
+padding: 10px 0;
+text-align: right;
+text-transform: uppercase;
+-webkit-transition: color 0.3s ease;
+transition: color 0.3s ease;
+/*   -webkit-transition: 0.2s opacity 0.2s ease-out;
+transition: 0.2s opacity 0.2s ease-out; */
+}
+
+.overlay-menu li a:hover,
+.overlay-menu li a:active {
+color: rgb(28, 121, 184);
+-webkit-transition: color 0.3s ease;
+transition: color 0.3s ease;
 }
 </style>
+
+<script type="text/javascript">
+    if($(window).width() >= 1024){
+      $(window).scroll(function(event){
+         // var top = $(document).scrollTop();
+
+        if($(document).scrollTop()>80)
+        {
+          $("#navbar ul").css({
+             "margin-top": 0 + "vh"
+          });
+          $("#navbar").css({
+             "background": "white"
+          });
+        }
+        else{
+          $("#navbar ul").css({
+             "margin-top": 5 + "vh"
+          });
+          $("#navbar").css({
+             "background": "transparent"
+          });
+        }
+      });
+    }
+      let menuIcon = document.querySelector('.menuIcon');
+      let nav = document.querySelector('.overlay-menu');
+
+      menuIcon.addEventListener('click', () => {
+          window.scrollTo(0,0);
+          if (nav.style.transform != 'translateX(0%)') {
+              nav.style.transform = 'translateX(0%)';
+              nav.style.transition = 'transform 0.2s ease-out';
+          } else {
+              nav.style.transform = 'translateX(-100%)';
+              nav.style.transition = 'transform 0.2s ease-out';
+          }
+      });
+
+
+      // Toggle Menu Icon ========================================
+      let toggleIcon = document.querySelector('.menuIcon');
+
+      toggleIcon.addEventListener('click', () => {
+          if (toggleIcon.className != 'menuIcon toggle') {
+              toggleIcon.className += ' toggle';
+          } else {
+              toggleIcon.className = 'menuIcon';
+          }
+      });
+</script>
