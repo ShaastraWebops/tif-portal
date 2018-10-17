@@ -23,6 +23,117 @@
 
 		</div>
 
+    <div class="servicos">
+      <h1 style="color:black;">Timeline</h1>
+      <div id="timeline">
+        <div class="timeline-block">
+          <div class="timeline-content">
+            <button type="button" aria-label="More information" class="timeline-content__dot">
+              <span></span>
+            </button>
+            <br/>
+            <div class="timeline-content__header">
+              <div class="timeline-content__date">
+                <span>2018</span>
+              </div>
+
+              <div class="timeline-content__title">
+                <h3>Registration Deadline</h3>
+              </div>
+            </div>
+
+            <div class="timeline-content__teaser">
+              <p>20th October 2018</p>
+            </div><br/>
+
+      <!--       <div class="timeline-content__content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ne cogitari quidem potest quale sit, ut non repugnet ipsum sibi. Sed haec quidem liberius ab eo dicuntur et saepius. In schola desinis. Duo Reges: constructio interrete. Sed fortuna fortis; Quo modo autem philosophus loquitur?</p>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="timeline-block">
+          <div class="timeline-content">
+            <button type="button" aria-label="More information" class="timeline-content__dot">
+              <span></span>
+            </button>
+      <br/>
+            <div class="timeline-content__header">
+              <div class="timeline-content__date">
+                <span>2018</span>
+              </div>
+
+              <div class="timeline-content__title">
+                <h3>Shortlisting Results</h3>
+              </div>
+            </div>
+
+            <div class="timeline-content__teaser">
+              <p>1st November 2018</p>
+            </div>
+      <br/>
+      <!--       <div class="timeline-content__content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ne cogitari quidem potest quale sit, ut non repugnet ipsum sibi. Sed haec quidem liberius ab eo dicuntur et saepius. In schola desinis. Duo Reges: constructio interrete. Sed fortuna fortis; Quo modo autem philosophus loquitur?</p>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="timeline-block">
+          <div class="timeline-content">
+            <button type="button" aria-label="More information" class="timeline-content__dot">
+              <span></span>
+            </button>
+      <br/><br/>
+            <div class="timeline-content__header">
+              <div class="timeline-content__date">
+                <span>2018</span>
+              </div>
+
+              <div class="timeline-content__title">
+                <h3>Online Webinars and Mentoring Sessions</h3>
+              </div>
+            </div>
+
+            <div class="timeline-content__teaser">
+              <p>November-December 2018</p>
+            </div><br/>
+
+      <!--       <div class="timeline-content__content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ne cogitari quidem potest quale sit, ut non repugnet ipsum sibi. Sed haec quidem liberius ab eo dicuntur et saepius. In schola desinis. Duo Reges: constructio interrete. Sed fortuna fortis; Quo modo autem philosophus loquitur?</p>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="timeline-block">
+          <div class="timeline-content">
+            <button type="button" aria-label="More information" class="timeline-content__dot">
+              <span></span>
+            </button>
+          <br/>
+            <div class="timeline-content__header">
+              <div class="timeline-content__date">
+                <span>2019</span>
+              </div>
+
+              <div class="timeline-content__title">
+                <h3>Finals</h3>
+              </div>
+            </div>
+
+            <div class="timeline-content__teaser">
+              <p>3 - 6 January 2019</p>
+            </div>
+
+      <!--       <div class="timeline-content__content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id ne cogitari quidem potest quale sit, ut non repugnet ipsum sibi. Sed haec quidem liberius ab eo dicuntur et saepius. In schola desinis. Duo Reges: constructio interrete. Sed fortuna fortis; Quo modo autem philosophus loquitur?</p>
+            </div> -->
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
     <!-- Rules -->
     <div class="servicos" id="rules" style="background-color:rgb(252, 252, 252);">
 
@@ -103,6 +214,220 @@
 
 
 <style media="screen">
+
+h3 {
+  font: normal normal 700 1.389em/1.52 -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+#timeline {
+  margin: 2rem auto;
+  max-width: 60rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 2rem;
+  position: relative;
+}
+@media (min-width: 700px) {
+  #timeline::before {
+    background: #aaa;
+    content: " ";
+    height: 100%;
+    left: 1rem;
+    position: absolute;
+    top: 0;
+    width: .056rem;
+  }
+}
+@media (min-width: 1000px) {
+  #timeline::before {
+    left: 50%;
+  }
+}
+#timeline button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+}
+
+.timeline-content {
+  cursor: pointer;
+  position: relative;
+}
+@media screen and (min-width: 700px) {
+  .timeline-content {
+    margin-left: 3rem;
+    padding-left: 1rem;
+  }
+  .timeline-content::before {
+    background: #aaa;
+    content: " ";
+    height: .056rem;
+    position: absolute;
+    right: 100%;
+    top: 7rem;
+    width: 3rem;
+  }
+}
+@media (min-width: 1000px) {
+  .timeline-content {
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 1rem;
+    text-align: right;
+    width: calc(50% - 4rem);
+  }
+  .timeline-content::before {
+    left: 100%;
+  }
+}
+.timeline-content::after {
+  clear: both;
+  content: " ";
+  display: table;
+}
+.timeline-content__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s linear 0s;
+}
+.timeline-content__content > div {
+  margin-top: 1rem;
+}
+.timeline-content.show .timeline-content__content {
+  max-height: 1000px;
+  transition: max-height 1s linear 0s;
+}
+.timeline-content__header {
+  margin-bottom: 1rem;
+}
+.timeline-content__date {
+  margin-bottom: .444rem;
+}
+.timeline-content__date span {
+  background-color: #00f;
+  color: #fff;
+  display: inline-block;
+  line-height: 1;
+  padding: .222rem .444rem;
+}
+.timeline-content__content {
+  text-align: left;
+}
+.timeline-content__dot {
+  background: #fff;
+  border-radius: 100%;
+  display: none;
+  height: 2rem;
+  left: -4rem;
+  position: absolute;
+  top: 6rem;
+  width: 2rem;
+}
+@media screen and (min-width: 700px) {
+  .timeline-content__dot {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (min-width: 1000px) {
+  .timeline-content__dot {
+    left: auto;
+    right: -5rem;
+  }
+}
+.timeline-content__dot span {
+  background-color: #00f;
+  border-radius: 100%;
+  border: 0;
+  display: inline-block;
+  height: 1rem;
+  transition: background-color .3s linear, -webkit-transform .3s linear;
+  transition: transform .3s linear, background-color .3s linear;
+  transition: transform .3s linear, background-color .3s linear, -webkit-transform .3s linear;
+  width: 1rem;
+}
+.timeline-content:hover .timeline-content__dot span, .timeline-content.show .timeline-content__dot span {
+  background-color: #000;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  transition: background-color .3s linear, -webkit-transform .3s linear;
+  transition: transform .3s linear, background-color .3s linear;
+  transition: transform .3s linear, background-color .3s linear, -webkit-transform .3s linear;
+}
+.timeline-content.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  overflow: hidden;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.timeline-block::after {
+  clear: both;
+  content: " ";
+  display: table;
+}
+@media (min-width: 1000px) {
+  .timeline-block:nth-child(1n+2) .timeline-content {
+    margin-top: -1rem;
+  }
+}
+@media (min-width: 1000px) {
+  .timeline-block:nth-child(even) .timeline-content {
+    float: right;
+    padding-left: 1rem;
+    padding-right: 0;
+    text-align: left;
+  }
+}
+.timeline-block:nth-child(even) .timeline-content__dot {
+  left: -4rem;
+  right: auto;
+}
+@media (min-width: 1000px) {
+  .timeline-block:nth-child(even) .timeline-content__dot {
+    left: -5rem;
+  }
+}
+.timeline-block:nth-child(even) .timeline-content::before {
+  left: auto;
+  right: 100%;
+}
+
+.timeline-more {
+  margin-top: 4rem;
+  text-align: center;
+}
+.timeline-more button {
+  background-color: #00f;
+  color: #fff;
+  display: inline-block;
+  padding: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
 
 .contactcard ul, .contactcard li {
 padding: 0;
@@ -396,6 +721,54 @@ background-color: #f47d4a
 
 </style>
 
+<script type="text/javascript">
+if (document.querySelector('#timeline') !== null) {
+var timelineEls = document.querySelectorAll('.timeline-content'),
+loadMoreBtn = document.querySelector('#load-more'),
+maxItems = 5,
+hiddenClass = 'visually-hidden';
+
+Array.prototype.forEach.call(timelineEls, function (timelineEl, index) {
+  if (index > maxItems - 1) {
+    timelineEl.classList.add(hiddenClass);
+  }
+
+  timelineEl.addEventListener('click', function (event) {
+    if (!this.classList.contains('show')) {
+      Array.prototype.forEach.call(timelineEls, function (timelineEl) {
+        timelineEl.classList.remove('show');
+      });
+
+      this.classList.add('show');
+    } else {
+      Array.prototype.forEach.call(timelineEls, function (timelineEl) {
+        timelineEl.classList.remove('show');
+      });
+    }
+
+    event.preventDefault();
+  });
+});
+
+loadMoreBtn.addEventListener('click', function (event) {
+  var hiddenTimelineEls = document.querySelectorAll('.' + hiddenClass),
+  hiddenTimelineElsLength = hiddenTimelineEls.length;
+
+  Array.prototype.forEach.call(hiddenTimelineEls, function (hiddenTimelineEl, index) {
+    if (index < maxItems - 1) {
+      hiddenTimelineEl.classList.remove(hiddenClass);
+      hiddenTimelineElsLength--;
+    }
+
+    if (!hiddenTimelineElsLength) {
+      loadMoreBtn.style.display = 'none';
+    }
+
+    event.preventDefault();
+  });
+});
+}
+</script>
 
     <!-- <div>
 
