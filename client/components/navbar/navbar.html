@@ -1,4 +1,4 @@
-<nav id="navbar" class="">
+<nav id="navbar" class="" ng-if="location()">
   <div class="nav-wrapper">
     <!-- Navbar Logo -->
     <!-- <div class="logo">
@@ -11,6 +11,7 @@
    --><li><a href="/#aboutus" style="color:orange;font-weight:900;font-size:1.2em;">About</a></li><!--
    --><li><a href="/#rules" style="color:orange;font-weight:900;font-size:1.2em;">Rules</a></li><!--
    --><li><a href="/#contactus" style="color:orange;font-weight:900;font-size:1.2em;">Contact</a></li>
+      <li ng-if="$ctrl.isLoggedIn()"><a href="/forumHome" style="color:orange;font-weight:900;font-size:1.2em;">Forum</a></li>
       <li ng-hide="$ctrl.isLoggedIn()"><a href="/signup" style="color:orange;font-weight:900;font-size:1.2em;">Sign Up</a></li>
       <li ng-hide="$ctrl.isLoggedIn()"><a href="/login" style="color:orange;font-weight:900;font-size:1.2em;">Login</a></li>
       <li ng-show="$ctrl.isLoggedIn()&& (!$ctrl.isAdmin())"><a href="/submit" style="color:orange;font-weight:900;font-size:1.2em;">Form</a></li>
@@ -36,6 +37,7 @@
  --><li><a class="l2" href="/#aboutus" style="color:orange;font-weight:900;font-size:1.2em;">About</a></li><!--
  --><li><a class="l3" href="/#rules" style="color:orange;font-weight:900;font-size:1.2em;">Rules</a></li><!--
  --><li><a class="l4" href="/#contactus" style="color:orange;font-weight:900;font-size:1.2em;">Contact</a></li>
+ <li ng-if="$ctrl.isLoggedIn()"><a href="/forumHome" style="color:orange;font-weight:900;font-size:1.2em;">Forum</a></li>
     <li ng-hide="$ctrl.isLoggedIn()"><a class="l5" href="/signup" style="color:orange;font-weight:900;font-size:1.2em;">Sign Up</a></li>
     <li ng-hide="$ctrl.isLoggedIn()"><a class="l6" href="/login" style="color:orange;font-weight:900;font-size:1.2em;">Login</a></li>
     <li ng-show="$ctrl.isLoggedIn()&& (!$ctrl.isAdmin())"><a class="l7" href="/submit" style="color:orange;font-weight:900;font-size:1.2em;">Form</a></li>
@@ -72,7 +74,7 @@ z-index: 10;
 .nav-wrapper {
 margin: auto;
 text-align: center;
-width: 70%;
+width: 80%;
 } @media(max-width: 768px) {
   .nav-wrapper {
     width: 90%;

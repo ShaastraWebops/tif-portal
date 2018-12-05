@@ -1,6 +1,6 @@
 'use strict';
 
-export default function routes($stateProvider) {
+export default function routesForum($stateProvider) {
   'ngInject';
 
   $stateProvider.state('forumHome', {
@@ -8,13 +8,13 @@ export default function routes($stateProvider) {
     template: require('./forumHome/forumHome.html'),
     controller: 'forumHomeController',
     controllerAs: 'vm',
-    authenticate: false
+    authenticate: true
   })
   .state('addQuestion', {
     url: '/addQuestion',
     template: require('./addQuestion/addQuestion.html'),
     controller: 'addQuestionController',
     controllerAs: 'vm',
-    authenticate: false
+    authenticate: true
   });
 }

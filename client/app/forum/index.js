@@ -8,9 +8,6 @@ import routing from './forum.routes';
 import forumHome from './forumHome';
 import addQuestion from './addQuestion';
 
-export default angular.module('caportalApp.account', [uiRouter, forumHome, addQuestion])
+export default angular.module('caportalApp.forumMain', [uiRouter, forumHome, addQuestion])
   .config(routing)
-  .run(function() {
-    'ngInject';
-  })
   .name;

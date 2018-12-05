@@ -30,8 +30,7 @@ import util from '../components/util/util.module';
 import './app.css';
 
 angular.module('caportalApp', [ngCookies, ngFilesaver, ngResource, ngSanitize, uiRouter, uiBootstrap, _Auth,
-  account, admin, 'validation.match', navbar, list,
-   footer, main, submit, constants, util, forum,
+  account, admin, 'validation.match', navbar, list, footer, main, submit, constants, util, forum
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
