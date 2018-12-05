@@ -1,8 +1,8 @@
 'use strict';
 
 import angular from 'angular';
-import fpController from './forgotPassword.controller';
+import forumHomeController from './forumHome.controller';
 
 export default angular.module('caPortalApp.forgotpassword', [])
-  .controller('fpController', fpController)
+  .controller('forumHomeController', forumHomeController)
   .name;
