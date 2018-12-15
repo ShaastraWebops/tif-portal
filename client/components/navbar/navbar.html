@@ -10,6 +10,7 @@
       <li><a href="/#home" style="color:orange;font-weight:900;font-size:1.2em;">Home</a></li><!--
    --><li><a href="/#aboutus" style="color:orange;font-weight:900;font-size:1.2em;">About</a></li><!--
    --><li><a href="/#rules" style="color:orange;font-weight:900;font-size:1.2em;">Rules</a></li><!--
+ -->  <li><a href="/#partners" style="color:orange;font-weight:900;font-size:1.2em;">Partners</a></li><!--
    --><li><a href="/#contactus" style="color:orange;font-weight:900;font-size:1.2em;">Contact</a></li>
       <li ng-if="$ctrl.isLoggedIn()"><a href="/forumHome" style="color:orange;font-weight:900;font-size:1.2em;">Forum</a></li>
       <li ng-hide="$ctrl.isLoggedIn()"><a href="/signup" style="color:orange;font-weight:900;font-size:1.2em;">Sign Up</a></li>
@@ -36,13 +37,14 @@
     <li><a class="l1" href="/#home" style="color:orange;font-weight:900;font-size:1.2em;">Home</a></li><!--
  --><li><a class="l2" href="/#aboutus" style="color:orange;font-weight:900;font-size:1.2em;">About</a></li><!--
  --><li><a class="l3" href="/#rules" style="color:orange;font-weight:900;font-size:1.2em;">Rules</a></li><!--
- --><li><a class="l4" href="/#contactus" style="color:orange;font-weight:900;font-size:1.2em;">Contact</a></li>
+-->  <li><a class="l4" href="/#partners" style="color:orange;font-weight:900;font-size:1.2em;">Partners</a></li><!--
+--><li><a class="l5" href="/#contactus" style="color:orange;font-weight:900;font-size:1.2em;">Contact</a></li>
  <li ng-if="$ctrl.isLoggedIn()"><a href="/forumHome" style="color:orange;font-weight:900;font-size:1.2em;">Forum</a></li>
-    <li ng-hide="$ctrl.isLoggedIn()"><a class="l5" href="/signup" style="color:orange;font-weight:900;font-size:1.2em;">Sign Up</a></li>
-    <li ng-hide="$ctrl.isLoggedIn()"><a class="l6" href="/login" style="color:orange;font-weight:900;font-size:1.2em;">Login</a></li>
-    <li ng-show="$ctrl.isLoggedIn()&& (!$ctrl.isAdmin())"><a class="l7" href="/submit" style="color:orange;font-weight:900;font-size:1.2em;">Form</a></li>
-    <li ng-show="$ctrl.isLoggedIn()"><a class="l8" href="/settings" style="color:orange;font-weight:900;font-size:1.2em;">Change Password</a></li>
-    <li ng-show="$ctrl.isLoggedIn()"><a class="l9" href="/logout" style="color:orange;font-weight:900;font-size:1.2em;">Logout</a></li>
+    <li ng-hide="$ctrl.isLoggedIn()"><a class="l6" href="/signup" style="color:orange;font-weight:900;font-size:1.2em;">Sign Up</a></li>
+    <li ng-hide="$ctrl.isLoggedIn()"><a class="l7" href="/login" style="color:orange;font-weight:900;font-size:1.2em;">Login</a></li>
+    <li ng-show="$ctrl.isLoggedIn()&& (!$ctrl.isAdmin())"><a class="l8" href="/submit" style="color:orange;font-weight:900;font-size:1.2em;">Form</a></li>
+    <li ng-show="$ctrl.isLoggedIn()"><a class="l9" href="/settings" style="color:orange;font-weight:900;font-size:1.2em;">Change Password</a></li>
+    <li ng-show="$ctrl.isLoggedIn()"><a class="l10" href="/logout" style="color:orange;font-weight:900;font-size:1.2em;">Logout</a></li>
     </ul>
 </div>
 
@@ -529,6 +531,19 @@ transition: color 0.3s ease;
       let toggleIcon9 = document.querySelector('.l9');
 
       toggleIcon9.addEventListener('click', () => {
+        nav.style.transform = 'translateX(-100%)';
+        nav.style.transition = 'transform 0.2s ease-out';
+        let toggleIcon = document.querySelector('.menuIcon');
+        if (toggleIcon.className != 'menuIcon toggle') {
+            toggleIcon.className += ' toggle';
+        } else {
+            toggleIcon.className = 'menuIcon';
+        }
+      });
+
+      let toggleIcon10 = document.querySelector('.l10');
+
+      toggleIco10.addEventListener('click', () => {
         nav.style.transform = 'translateX(-100%)';
         nav.style.transition = 'transform 0.2s ease-out';
         let toggleIcon = document.querySelector('.menuIcon');
